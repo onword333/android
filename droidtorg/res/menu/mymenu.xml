@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <group android:id="@+id/groupFirst" >
+        <item
+            android:id="@+id/itemLoadData"
+            android:icon="@drawable/update"
+            android:title="Обновление">
+            <menu>
+                <item
+                    android:id="@+id/itLoadSpav"
+                    android:title="загрузить справочники">
+                </item>
+                <item
+                    android:id="@+id/itemCheckOst"
+                    android:title="узнать дату остатков">
+                </item>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/itSend"
+            android:title="Отправить">
+            <menu>
+                <item
+                    android:id="@+id/itSendZ"
+                    android:title="заявки">
+                </item>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/itReports"
+            android:title="@string/main_menu_report">
+            <menu>
+                <item
+                    android:id="@+id/itSubMenuSels"
+                    android:title="@string/main_submenu_sels">
+                </item>
+                <item
+                    android:id="@+id/itReportsSubMenuDebitorka"
+                    android:title="@string/reports_submenu_debts_buyers">
+                </item>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/itemAdminstration"
+            android:icon="@drawable/admin"
+            android:title="Настройки">
+            <menu>
+                <item
+                    android:id="@+id/itemConstant"
+                    android:title="Константы">
+                </item>
+                <item
+                    android:id="@+id/itSetting"
+                    android:title="Параметры">
+                </item>
+            </menu>
+        </item>
+        <item android:id="@+id/itProcessing"
+            android:title="@string/ru_processing"></item>
+    </group>
+
+</menu>

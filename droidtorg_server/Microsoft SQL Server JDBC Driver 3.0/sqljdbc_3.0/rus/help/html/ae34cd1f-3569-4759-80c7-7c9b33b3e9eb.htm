@@ -1,0 +1,120 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Настройка SSL-шифрования на клиенте</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Настройка SSL-шифрования на клиенте</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Драйвер JDBC Microsoft SQL Server или клиент должен проверить правильность сервера, а также убедиться, что его сертификат выдан центром сертификации, которому доверяет клиент. Чтобы проверить сертификат сервера, необходимо при соединении предоставить данные о доверии. Кроме того, поставщик сертификата сервера должен быть центром сертификации, которому доверяет клиент. </p>
+    <p>В начале этого раздела описано, как задать материал доверия на клиентском компьютере. Далее в этом разделе приведено описание того, как импортировать сертификат сервера в хранилище доверия клиентского компьютера, если экземпляр сертификата SSL для SQL Server выдан закрытым центром сертификации.</p>
+    <p>Дополнительные сведения о проверке сертификата сервера см. в разделе «Проверка сертификата SSL сервера» в <a href="073f3b9e-8edd-4815-88ea-de0655d0325e.htm">Основные сведения о поддержке SSL</a>.</p>
+  </div><h1 class="heading">Настройка клиентского хранилища доверия</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Для проверки сертификата сервера требуется, чтобы материал доверия был явно задан во время соединения с использованием свойства <b>trustStore</b> и свойств соединения <b>trustStorePassword</b> или задан неявно с использованием предусмотренного по умолчанию хранилища доверия базовой виртуальной машины Java (JVM). Дополнительные сведения о том, как задавать свойства <b>trustStore</b> и <b>trustStorePassword</b> в строке соединения, см. в разделе <a href="ec91fa8a-ab7e-4c1e-a05a-d7951ddf33b1.htm">Соединение с помощью SSL-шифрования</a>.</p>
+      <p xmlns="">Если свойство <b>trustStore</b> не задано или имеет значение NULL, то драйвер JDBC Microsoft SQL Server полагается на поставщик безопасности базовой JVM, то есть расширение защищенного сокета Java (SunJSSE). Поставщик SunJSSE предоставляет предусмотренный по умолчанию диспетчер <b>TrustManager</b>, который используется для проверки сертификатов X.509, возвращенных SQL Server, по материалу доверия, предоставленному в хранилище доверия.</p>
+      <p xmlns="">Диспетчер <b>TrustManager</b> предпринимает попытки найти предусмотренное по умолчанию свойство trustStore в следующем порядке поиска.</p>
+      <ul xmlns=""><li>
+          Если системное свойство «javax.net.ssl.trustStore» определено, то диспетчер <b>TrustManager</b> пытается найти предусмотренный по умолчанию файл trustStore с именем файла, указанным этим системным свойством.<br />
+        </li><li>
+          Если свойство системы «javax.net.ssl.trustStore» не указано и существует файл «&lt;java-home&gt;/lib/security/jssecacerts», то используется этот файл. <br />
+        </li><li>
+          Если файл «&lt;java-home&gt;/lib/security/cacerts» существует, то используется именно он.<br />
+        </li></ul>
+      <p xmlns="">Дополнительные сведения см. в документации интерфейса SUNX509 TrustManager на веб-сайте Sun Microsystems.</p>
+      <p xmlns="">Среда выполнения Java позволяет задавать системные свойства trustStore и trustStorePassword следующим образом. </p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>java -Djavax.net.ssl.trustStore=C:\MyCertificates\storeName
+java -Djavax.net.ssl.trustStorePassword=storePassword</pre></span></div>
+      <p xmlns="">В этом случае любое приложение, запущенное на данной виртуальной машине JVM, будет использовать данные параметры по умолчанию. Чтобы переопределить параметры по умолчанию в конкретном приложении, необходимо задать свойства соединения <b>trustStore</b> и <b>trustStorePassword</b> в строке соединения или в соответствующем методе задания класса <a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">SQLServerDataSource</a>.</p>
+      <p xmlns="">Кроме того, можно настраивать и управлять предусмотренными по умолчанию файлами хранилища доверия, такими как «&lt;java-home&gt;/lib/security/jssecacerts» и «&lt;java-home&gt;/lib/security/cacerts». Для этого предназначена программа JAVA «keytool», которая устанавливается вместе со средой выполнения Java (JRE). Дополнительные сведения о программе «keytool» см. в документации по keytool на веб-сайте Sun Microsystems.</p>
+    </content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <h1 class="heading" xmlns="">Импорт сертификата сервера в хранилище доверия</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Во время SSL-подтверждения сервер отправляет свой сертификат открытого ключа клиенту. Поставщик сертификата открытого ключа называется центром сертификации (ЦС). Клиент должен убедиться, что рассматриваемый центр сертификации является для клиента доверенным. Для этого заранее изучаются открытые ключи доверенных центров сертификации. JVM обычно поставляется со стандартным набором доверенных центров сертификации. </p>
+          <p xmlns="">Если используемый экземпляр сертификата SSL для SQL Server выдан закрытым центром сертификации, то необходимо добавить этот сертификат центра сертификации к списку доверенных сертификатов в хранилище доверия клиентского компьютера.</p>
+          <p xmlns="">Для этого используется программа JAVA «keytool», которая устанавливается со средой выполнения Java (JRE). В следующей командной строке показано, как использовать программу «keytool» для импорта сертификата из файла.</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>keytool -import -v -trustcacerts -alias myServer -file caCert.cer -keystore truststore.ks</pre></span></div>
+          <p xmlns="">В этом примере в качестве файла сертификата используется файл «caCert.cer». Этот файл сертификата необходимо получить с сервера. Следующие шаги показывают, как экспортировать сертификат сервера в файл.</p>
+          <ol xmlns=""><li>
+              Нажмите «Пуск», затем «Выполнить» и введите MMC. (MMC — сокращение от Microsoft Management Console, консоль управления Microsoft.)<br />
+            </li><li>
+              В программе MMC откройте окно «Сертификаты». <br />
+            </li><li>
+              Разверните элемент «Личный», затем «Сертификаты». <br />
+            </li><li>
+              Щелкните правой кнопкой мыши сертификат сервера и выберите «Все задачи/Экспорт». <br />
+            </li><li>
+              Нажмите кнопку «Далее», чтобы перейти к окну, которое следует за диалоговым окном приветствия мастера экспорта сертификатов. <br />
+            </li><li>
+              Убедитесь, что выбрано значение «Нет, не экспортировать закрытый ключ», затем нажмите «Далее». <br />
+            </li><li>
+              Выберите либо двоичное значение в DER-кодировке X.509 (.CER), либо в Base64-кодировке X.509 (.CER) и нажмите кнопку «Далее». <br />
+            </li><li>
+              Введите имя файла для экспорта.<br />
+            </li><li>
+              Нажмите кнопку «Далее», затем нажмите кнопку «Готово», чтобы экспортировать сертификат.<br />
+            </li></ol>
+        </content></div>
+    </sections></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="8e566243-2f93-4b21-8065-3c8336649309.htm">Использование SSL-шифрования</a><br /><a href="90724ec6-a9cb-43ef-903e-793f89410bc0.htm">Защита приложений драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

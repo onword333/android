@@ -1,0 +1,5 @@
+D:\test_vs_2008\startWithPrioritet\startWithPrioritet\obj\Debug\ResolveAssemblyReference.cache
+D:\test_vs_2008\startWithPrioritet\startWithPrioritet\bin\Debug\startWithPrioritet.exe
+D:\test_vs_2008\startWithPrioritet\startWithPrioritet\bin\Debug\startWithPrioritet.pdb
+D:\test_vs_2008\startWithPrioritet\startWithPrioritet\obj\Debug\startWithPrioritet.exe
+D:\test_vs_2008\startWithPrioritet\startWithPrioritet\obj\Debug\startWithPrioritet.pdb

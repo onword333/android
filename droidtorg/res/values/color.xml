@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="red">#FF0000</color>
+    <color name="green">#00CD00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="DodgerBlue1">#1E90FF</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="black">#000000</color>
+    <color name="gray">#BEBEBE</color>
+    <color name="grey61">#828282</color>
+    <color name="IndianRed1">#FF6A6A</color>
+    <color name="Orange">#FFA500</color>
+    <color name="Khaki1">#FFF68F</color>
+    <color name="Chocolate1">#FF7F24</color>
+    <color name="test">#55000000</color>
+    <color name="grey31">#4F4F4F</color>
+    <color name="grey11">#1C1C1C</color>
+    <color name="grey21">#363636</color>
+    <color name="grey41">#333333</color>
+    <color name="grey51">#666666</color>
+    <color name="grey612">#9C9C9C</color>
+    <color name="grey71">#B5B5B5</color>
+    <color name="grey81">#CFCFCF</color>
+    <color name="grey91">#E8E8E8</color>
+    <color name="darkGrey">#A9A9A9</color>
+    <color name="lavender">#E6E6FA</color>
+    <color name="LightGray">#D3D3D3</color>
+    <color name="Snow2">#EEE9E9</color>
+    <color name="PeachPuff4">#8B7765</color>
+    <color name="PeachPuff3">#CDAF95</color>
+    <color name="PeachPuff2">#EECBAD</color>
+
+    <drawable name="post_cell_pressed">#FF0000</drawable>
+    <drawable name="post_cell_selected">#FF9912</drawable>
+    <drawable name="post_cell_normal">#00000000</drawable>
+    <drawable name="post_cell_active">#FFFFFF</drawable>
+    <drawable name="post_cell_check">#FFFFFF</drawable>
+
+</resources>

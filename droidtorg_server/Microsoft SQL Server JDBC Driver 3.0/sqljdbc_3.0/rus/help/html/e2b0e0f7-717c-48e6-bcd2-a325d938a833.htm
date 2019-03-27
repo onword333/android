@@ -1,0 +1,505 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getFunctionColumns (SQLServerDatabaseMetaData)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getFunctionColumns (SQLServerDatabaseMetaData)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Возвращает описание параметров и возвращаемого типа системной или пользовательской функции указанного каталога. </p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Эта функция введена в драйвере JDBC для Microsoft SQL Server версии 2.0.<p />
+    </div>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public ResultSet <b>getFunctionColumns</b>(java.lang.String <i>catalog</i>,
+                       java.lang.String <i>schemaPattern</i>,
+                       java.lang.String <i>functionNamePattern</i>
+                       java.lang.String <i>columnNamePattern</i>)</pre></span></div><h1 class="heading">Параметры</h1><div id="parametersSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <i>catalog</i>
+      </p>
+      <p xmlns="">Значение <b>String</b>, содержащее имя каталога. Если это пустая строка, то результат включает функции, доступные без каталога. Если это значение <b>null</b>, то имя каталога не используется для поиска.</p>
+      <p xmlns="">
+        <i>schemaPattern</i>
+      </p>
+      <p xmlns="">Значение <b>String</b>, содержащее шаблон имени схемы. Если это пустая строка, то результат включает функции, доступные без схемы. Если это значение <b>null</b>, то имя схемы не используется для поиска.</p>
+      <p xmlns="">
+        <i>functionNamePattern</i>
+      </p>
+      <p xmlns="">Значение <b>String</b>, содержащее имя функции.</p>
+      <p xmlns="">
+        <i>columnNamePattern</i>
+      </p>
+      <p xmlns="">Значение <b>String</b>, содержащее имя параметра.</p>
+    </content>
+  </div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Объект <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.</p>
+    </content>
+  </div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>getFunctionColumns</b> указывается методом <b>getFunctionColumns</b> в интерфейсе java.sql.DatabaseMetaData.</p>
+      <p xmlns="">Этот метод возвращает только те функции и параметры, которые соответствуют указанному имени@@@ схемы, имени функции, имени параметра в указанном каталоге</p>
+      <p xmlns="">Каждая строка в результирующем наборе содержит следующие столбцы для описания параметра, описания столбца или возвращаемого типа.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Имя
+            </th>
+            <th>
+              Тип
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>FUNCTION_CAT</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя базы данных, в которой находится указанная функция.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FUNCTION_SCHEM</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя@@@ схемы для функции.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FUNCTION_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя функции.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>COLUMN_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя параметра или столбца.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>COLUMN_TYPE</p>
+          </td>
+          <td>
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td>
+            <p>Тип столбца. Может иметь одно из следующих значений.</p>
+            <ul><li>
+                functionColumnUnknown (0): неизвестный тип.<br />
+              </li><li>
+                functionColumnIn (1): входной параметр.<br />
+              </li><li>
+                functionColumnInOut (2): входной/выходной параметр.<br />
+              </li><li>
+                functionColumnOut (3): выходной параметр.<br />
+              </li><li>
+                functionReturn (4): значение, возвращаемое функцией.<br />
+              </li><li>
+                functionColumnResult (5): параметр или столбец представляет собой столбец в результирующем наборе.<br />
+              </li></ul>
+          </td>
+        </tr><tr>
+          <td>
+            <p>DATA_TYPE</p>
+          </td>
+          <td>
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td>
+            <p>Значение типа данных SQL из <b>Java.sql.Types</b>.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TYPE_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя типа данных.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>PRECISION</p>
+          </td>
+          <td>
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td>
+            <p>Общее количество значащих цифр.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>LENGTH</p>
+          </td>
+          <td>
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td>
+            <p>Длина данных в байтах.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SCALE</p>
+          </td>
+          <td>
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td>
+            <p>Число цифр справа от десятичной запятой.</p>
+            <p>
+            </p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>RADIX</p>
+          </td>
+          <td>
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td>
+            <p>Основание системы счисления для числовых типов.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>NULLABLE</p>
+          </td>
+          <td>
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td>
+            <p>Показывает, может ли содержать возвращаемое значение или параметр значение <b>null</b>. </p>
+            <p> Может иметь одно из следующих значений.</p>
+            <ul><li>
+                functionNoNulls (0): значение NULL недопустимо.<br />
+              </li><li>
+                functionNullable (1): значение NULL допустимо.<br />
+              </li><li>
+                functionNullableUnknown (2): неизвестно.<br />
+              </li></ul>
+          </td>
+        </tr><tr>
+          <td>
+            <p>REMARKS</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Примечания по параметру или столбцу.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>COLUMN_DEF</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Значение по умолчанию для столбца.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              Эти данные доступны только для SQL Server и определяются драйвером JDBC.<p />
+            </div>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQL_DATA_TYPE</p>
+          </td>
+          <td>
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td>
+            <p>Этот столбец эквивалентен столбцу <b>DATA_TYPE</b>, за исключением типа данных <b>datetime</b> и типа данных ISO <b>interval</b>.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              Эти данные доступны только для SQL Server и определяются драйвером JDBC.<p />
+            </div>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQL_DATETIME_SUB</p>
+          </td>
+          <td>
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td>
+            <p>Вложенный код типа ISO <b>datetime</b> <b>interval</b>, если значение <b>SQL_DATA_TYPE</b> равно <b>SQL_DATETIME</b> или <b>SQL_INTERVAL</b>. Для типов данных, отличных от <b>datetime</b> и <b>interval</b> по стандарту ISO, этот столбец имеет значение NULL.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              Эти данные доступны только для SQL Server и определяются драйвером JDBC.<p />
+            </div>
+          </td>
+        </tr><tr>
+          <td>
+            <p>CHAR_OCTET_LENGTH</p>
+          </td>
+          <td>
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td>
+            <p>Максимальная длина значений символьных и двоичных параметров или столбцов. Для остальных типов данных имеет значение равное NULL.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>ORDINAL_POSITION</p>
+          </td>
+          <td>
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td>
+            <p>Для входных или выходных параметров представляет позицию начинающуюся с 1  </p>
+            <p>Для результирующего набора столбцов представляет позицию столбца в результирующем наборе начинающуюся с 1.</p>
+            <p>Для возвращаемого значения имеет значение равное 0.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>IS_NULLABLE</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Определяет допустимость значений NULL для параметра или столбца.</p>
+            <p>Может иметь одно из следующих значений.</p>
+            <p>
+              <b>YES</b>: параметр или столбец могут содержать значения NULL.</p>
+            <p>
+              <b>NO</b>: параметр или столбец не могут содержать значения NULL.</p>
+            <p>Пустая строка (""): неизвестно.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_TYPE_CATALOG_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя каталога, содержащего определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_TYPE_SCHEMA_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя схемы, содержащей определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_UDT_CATALOG_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Определяемый пользователем тип с полным именем.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_UDT_SCHEMA_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя каталога, в котором определено имя коллекции схем XML. Если не удается найти имя каталога, то эта переменная содержит пустую строку.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_UDT_ASSEMBLY_TYPE_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя схемы, в которой определено имя коллекции схем XML. Если не удается найти имя схемы, значением является пустая строка.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_XML_SCHEMACOLLECTION_CATALOG_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя коллекции схем XML. Если не удается найти имя, значением является пустая строка.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_XML_SCHEMACOLLECTION_SCHEMA_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя каталога, содержащего определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_XML_SCHEMACOLLECTION_NAME</p>
+          </td>
+          <td>
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td>
+            <p>Имя схемы, содержащей определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SS_DATA_TYPE</p>
+          </td>
+          <td>
+            <p>
+              <b>tinyint</b>
+            </p>
+          </td>
+          <td>
+            <p>Тип данных SQL Server, используемый расширенными хранимыми процедурами.</p>
+            <p>
+              <b>Примечание.</b>   Дополнительные сведения о типах данных, возвращаемых SQL Server, см. в разделе "Типы данных (Transact-SQL)" в электронной документации SQL Server.</p>
+          </td>
+        </tr></table>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="8b8049d0-8c6d-4476-866b-098709f37eec.htm">Класс SQLServerDatabaseMetaData</a><br /><a href="327ba0bc-438a-494c-b119-1cd4a096bb58.htm">Элементы SQLServerDatabaseMetaData</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

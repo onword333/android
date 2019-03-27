@@ -1,0 +1,377 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getTypeInfo (SQLServerDatabaseMetaData)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getTypeInfo (SQLServerDatabaseMetaData)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Извлекает описание всех стандартных типов SQL, которые поддерживаются в текущей базе данных.</p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public java.sql.ResultSet <b>getTypeInfo</b>()</pre></span></div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Объект <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.</p>
+    </content>
+  </div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>getTypeInfo</b> указывается методом <b>getTypeInfo</b> в интерфейсе java.sql.DatabaseMetaData.</p>
+      <p xmlns="">Результирующий набор, возвращаемый методом <b>getTypeInfo</b>, включает следующие данные.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Имя
+            </th>
+            <th colspan="">
+              Тип
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>TYPE_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя типа данных.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>DATA_TYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Тип данных SQL из java.sql.Types.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>PRECISION</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Общее количество значащих цифр.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>LITERAL_PREFIX</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Символ или символы, используемые перед константой.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>LITERAL_SUFFIX</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Символ или символы, используемые для удаления константы.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>CREATE_PARAMS</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Описание создания параметров типа данных.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>NULLABLE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, может ли столбец содержать значение NULL. Может иметь одно из следующих значений.</p>
+            <p>typeNoNulls (0)</p>
+            <p>typeNullable (1)</p>
+            <p>typeNullableUnknown (2)</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>CASE_SENSITIVE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>boolean</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, учитывается ли регистр символов для типа данных. "<b>true</b>", если регистр символов учитывается, в противном случае — "<b>false</b>".</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SEARCHABLE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, может ли указанный столбец использоваться в предложении SQL WHERE. Может иметь одно из следующих значений.</p>
+            <p>typePredNone (0)</p>
+            <p>typePredChar (1)</p>
+            <p>typePredBasic (2)</p>
+            <p>typeSeachable (3)</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>UNSIGNED_ATTRIBUTE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>boolean</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает знак типа данных. "<b>true</b>", если тип данных не имеет знака, в противном случае — "<b>false</b>".</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>FIXED_PREC_SCALE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>boolean</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, что тип данных может быть значением типа money. "<b>true</b>", если тип данных является значением типа money, в противном случае — "<b>false</b>".</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>AUTO_INCREMENT</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>boolean</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, что тип данных может быть автоматически увеличен. "<b>true</b>", если тип данных может быть автоматически увеличен, в противном случае — "<b>false</b>".</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>LOCAL_TYPE_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Локализованное имя типа данных.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>MINIMUM_SCALE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Максимальное число цифр справа от десятичной запятой.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>MAXIMUM_SCALE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Минимальное число цифр справа от десятичной запятой.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SQL_DATA_TYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается драйвером JDBC.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SQL_DATETIME_SUB</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается драйвером JDBC.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>NUM_PREC_RADIX</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Количество битов или цифр для расчета максимального числа, которое может содержаться в столбце.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>INTERVAL_PRECISION</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Значение точности интервала.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>USERTYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Значение <b>usertype</b> из таблицы  <b>systypes</b>. Дополнительные сведения см. в электронной документации SQL Server.</p>
+          </td>
+        </tr></table>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Дополнительные сведения о данных, возвращаемых методом <b>getTypeInfo</b>, см. в разделе "sp_datatype_info (Transact-SQL)" электронной документации по SQL Server.<p />
+      </div>
+    </content>
+  </div><h1 class="heading">Пример</h1><div id="codeExampleSection" class="section" name="collapseableSection">
+    <description xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <content>
+        <p xmlns="">Следующий пример показывает использование метода <b>getTypeInfo</b> для возврата сведений о типах данных, используемых в базе данных SQL Server 2005 или более поздней версии.</p>
+      </content>
+    </description>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void executeGetTypeInfo(Connection con) {
+   try {
+      DatabaseMetaData dbmd = con.getMetaData();
+      ResultSet rs = dbmd.getTypeInfo();
+      ResultSetMetaData rsmd = rs.getMetaData();
+
+      // Display the result set data.
+      int cols = rsmd.getColumnCount();
+      while(rs.next()) {
+         for (int i = 1; i &lt;= cols; i++) {
+            System.out.println(rs.getString(i));
+         }
+      }
+      rs.close();
+   } 
+
+   catch (Exception e) {
+      e.printStackTrace();
+   }
+}</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="8b8049d0-8c6d-4476-866b-098709f37eec.htm">Класс SQLServerDatabaseMetaData</a><br /><a href="772de447-c922-4b85-8e10-5f0d9277966c.htm">Методы SQLServerDatabaseMetaData</a><br /><a href="327ba0bc-438a-494c-b119-1cd4a096bb58.htm">Элементы SQLServerDatabaseMetaData</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

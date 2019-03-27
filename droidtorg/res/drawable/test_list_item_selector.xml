@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/post_cell_selected" android:state_selected="true"/>
+    <item android:drawable="@drawable/post_cell_pressed" android:state_pressed="true"/>
+    <item android:drawable="@drawable/post_cell_active" android:state_focused="true"/> 
+    <item android:drawable="@drawable/post_cell_normal"/>
+
+    <!-- <item android:drawable="@drawable/post_cell_normal" android:state_enabled="false"/> -->
+
+
+    <!--
+    <item android:drawable="@drawable/post_cell_active" android:state_pressed="true"/> нажатие
+    <item android:drawable="@drawable/post_cell_active" android:state_focused="true"/> ?
+	<item android:drawable="@drawable/post_cell_selected" android:state_active="true"/> ?    
+    <item android:drawable="@drawable/post_cell_active" android:state_checked="true"/> ?
+    <item android:drawable="@drawable/post_cell_selected" android:state_selected="true"/> выделенная строка
+	<item android:drawable="@drawable/post_cell_selected" android:state_window_focused="true"/> некоторые строки прозрчные
+    <item android:drawable="@drawable/post_cell_selected" android:state_checkable="true"/> ?
+    <item android:drawable="@drawable/post_cell_selected" android:state_single="true"/> ?
+    
+    
+    
+    <item android:drawable="@drawable/post_cell_selected" android:state_first="true"/> ?
+    
+    
+    <item android:drawable="@drawable/post_cell_normal" android:state_middle="true"/>
+    
+    <item android:drawable="@drawable/post_cell_active" android:state_last="false"/>
+    -->
+
+</selector>

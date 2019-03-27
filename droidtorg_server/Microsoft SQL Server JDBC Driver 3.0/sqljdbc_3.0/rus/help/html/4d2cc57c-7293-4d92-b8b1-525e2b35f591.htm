@@ -1,0 +1,244 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Программирование с SQLXML.</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Программирование с SQLXML.</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>В этом разделе описывается использование методов API драйвера Microsoft SQL Server JDBC для сохранения XML-документа в реляционной базе данных и извлечения документов из нее с использованием объектов <b>SQLXML</b>. </p>
+    <p>В этом разделе также содержатся сведения о типах объектов SQLXML и список важных рекомендаций и ограничений при работе с объектами SQLXML.</p>
+  </div><h1 class="heading">Чтение и запись XML-данных с использованием объектов SQLXML</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">В следующем списке описывается использование методов API драйвера Microsoft SQL Server JDBC для чтения и записи XML-данных с использованием объектов SQLXML.</p>
+      <ul xmlns=""><li>
+          Для создания объекта SQLXML используйте метод <a href="cf5bfcdd-bc03-4c5b-b554-d8a8a4067e93.htm">createSQLXML</a> класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. Обратите внимание, что этот метод создает объект SQLXML без данных. Чтобы добавить данные <b>xml</b> к объекту SQLXML, вызовите один из следующих методов, указанных в интерфейсе SQLXML: <b>setResult</b>, <b>setCharacterStream</b>, <b>setBinaryStream</b>, или <b>setString</b>. <br />
+        </li><li>
+          Чтобы извлечь сам объект SQLXML, используйте методы <b>getSQLXML</b> класса <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a> или класса <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a>. <br />
+        </li><li>
+          Чтобы извлечь данные <b>xml</b> из объекта SQLXML, используйте один из следующих методов, указанных в интерфейсе SQLXML: <b>getSource</b>, <b>getCharacterStream</b>, <b>getBinaryStream</b>, или <b>getString</b>. <br />
+        </li><li>
+          Чтобы обновить данные <b>xml</b> в объекте SQLXML, используйте метод <a href="abe8ff37-72e5-4ec1-a226-6b68dbf2c1b4.htm">updateSQLXML</a> класса <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.<br />
+        </li><li>
+          Чтобы сохранить объект SQLXML в столбце таблицы базы данных типа <b>xml</b>, используйте методы  <b>setSQLXML</b> класса <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> или класса <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a>.<br />
+        </li></ul>
+      <p xmlns="">В примере кода в <a href="8f2ff25b-71fd-46d7-b6de-d656095d2aad.htm">SQLXML Data Type Sample</a> показывается выполнение общих задач API. </p>
+    </content></div><h1 class="heading">Читаемые и записываемые объекты SQLXML </h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">В следующей таблице перечислены типы объектов SQLXML, поддерживаемые методами задания, считывания и обновления свойств, предоставленными JDBC API. Столбцы в таблице ссылаются на следующее: </p>
+      <ul xmlns=""><li>
+          В столбце <b>Имя метода</b> перечислены поддерживаемые методы задания, считывания и обновления в JDBC API.<br />
+        </li><li>
+          Столбец <b>Объект считывания SQLXML</b> представляет объект SQLXML, созданный методом <a href="8bcf9eda-b36c-480c-8bf2-91c392d5a0ee.htm">getSQLXML</a> класса <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> или методом  <a href="a07e0f30-cbc6-4ad7-b931-c30cad382e64.htm">getSQLXML</a> класса <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.<br />
+        </li><li>
+          Столбец <b>Объект задания SQLXML</b> представляет объект SQLXML, созданный методом <a href="cf5bfcdd-bc03-4c5b-b554-d8a8a4067e93.htm">createSQLXML</a> класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. Обратите внимание, что метод задания, описанный ниже, принимает только объект SQLXML, созданный методом <a href="cf5bfcdd-bc03-4c5b-b554-d8a8a4067e93.htm">createSQLXML</a>.<br />
+        </li></ul>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Имя метода 
+            </th>
+            <th colspan="">
+              Объект считывания SQLXML
+              (читаемый)
+            </th>
+            <th colspan="">
+              Объект задания SQLXML
+              (записываемый)
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>
+              <b>CallableStatement.setSQLXML()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>CallableStatement.setObject()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>PreparedStatement.setSQLXML()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>PreparedStatement.setObject()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>ResultSet.updateSQLXML()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>ResultSet.updateObject()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>ResultSet.getSQLXML()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>
+              <b>CallableStatement.getSQLXML()</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Поддерживается</p>
+          </td>
+          <td colspan="">
+            <p>Не поддерживается</p>
+          </td>
+        </tr></table>
+      <p xmlns="">Как показано в таблице выше, методы задания SQLXML не будут работать при использовании с читаемыми объектами SQLXML; аналогичным образом методы считывания не будут работать при использовании с записываемыми объектами SQLXML.</p>
+      <p xmlns="">Если приложение вызывает метод <b>setObject</b> с помощью указания параметра масштаба или длины объекта SQLXML, параметр масштаба или длины пропускается.</p>
+    </content></div><h1 class="heading">Рекомендации и ограничения при использовании объектов SQLXML</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Приложения могут использовать объекты SQLXML для чтения и записи данных XML в базе данных. В следующем списке содержатся сведения об определенных ограничениях и рекомендациях при использовании объектов SQLXML: </p>
+      <ul xmlns=""><li>
+          Объект SQLXML является действительным только во время выполнении транзакции, в которой он был создан.<br />
+        </li><li>
+          Объект SQLXML, полученный методом считывания, может быть использован только для чтения данных. <br />
+        </li><li>
+          Объект SQLXML, созданный методом соединения, может быть использован только для записи данных.<br />
+        </li><li>
+          Приложение может вызвать только один метод считывания на читаемом объекте SQLXML для чтения данных. После вызова метода считывания в работе всех остальных методов считывания и задания на этом же объекте SQLXML произойдет ошибка. <br />
+        </li><li>
+          Приложение может вызвать метод <b>free</b> на объекте SQLXML только после его чтения или записи. Однако еще сохраняется возможность обработки возвращенного потока или источника, если базовый столбец или параметр активен. Если базовый столбец или параметр становится неактивен, то будет закрыт поток или источник, связанный с объектом SQLXML. Если базовый столбец или параметр более не является допустимым, то базовые данные будут недоступны для методов считывания Stream, Simple API for XML (SAX) и Streaming API for XML (StAX).<br />
+        </li><li>
+          Приложение может вызвать только один метод задания на записываемом объекте SQLXML. После вызова метода задания в работе всех остальных методов считывания и задания на этом же объекте SQLXML произойдет ошибка.<br />
+        </li><li>
+          Чтобы задать данные для объекта SQLXML, приложение должно использовать соответствующий метод задания и функции в возвращенном объекте.<br />
+        </li><li>
+          Методы <b>getSQLXML</b> классов <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> и <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a> возвращают данные <b>null</b>, если для базового столбца задано значение <b>null</b>.<br />
+        </li><li>
+          Объекты метода задания являются допустимыми в период выполнения соединения, в котором они были созданы. <br />
+        </li><li>
+          Приложения не могут задавать значение <b>null</b> с помощью методов задания, предоставленных интерфейсом SQLXML. Приложения могут задавать пустую строку с помощью методов задания, предоставленных в интерфейсе SQLXML. Чтобы задать значение <b>null</b>, приложения должны вызвать одно из следующих:<br />
+          <ul><li>
+              Методы <b>setNull</b> классов <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> и <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a>.<br />
+            </li><li>
+              Методы <b>setObject</b> классов <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> и <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a>. <br />
+            </li><li>
+              Методы <b>setSQLXML</b> классов <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> и <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> со значением параметра <b>null</b>.<br />
+            </li></ul>
+        </li><li>
+          При работе с XML-документами рекомендуется использовать средства синтаксического анализа Simple API for XML (SAX) и Streaming API for XML (StAX) вместо средств синтаксического анализа модели DOM, т.к. они обеспечивают более высокий уровень производительности.<br />
+        </li></ul>
+      <p xmlns="">Средства синтаксического анализа XML не могут обрабатывать пустые значения. Однако SQL Server позволяет приложениям извлекать и сохранять пустые значения в столбцах баз данных типа данных XML. Это означает, что если базовое значение пустое, то при синтаксическом анализе XML-данных средство синтаксического анализа вызовет исключение. При использовании выходных значений DOM драйвер JDBC обрабатывает это исключение и вызывает ошибку. При работе с выходными значениями SAX и Stax ошибка вызывается средством синтаксического анализа напрямую.</p>
+    </content></div><h1 class="heading">Адаптивная буферизация и поддержка SQLXML</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Двоичные и символьные потоки, возвращаемые объектом SQLXML, поддерживают режимы адаптивной и полной буферизации. С другой стороны, если средства синтаксического анализа XML не являются потоками, они не поддерживают настройки адаптивной и полной буферизации. Дополнительные сведения об адаптивной буферизации см. в разделе <a href="92d4e3be-c3e9-4732-9a60-b57f4d0f7cb7.htm">Использование адаптивной буферизации</a>.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="32b7217e-1f0c-473d-9a45-176daa81584e.htm">Поддержка XML-данных</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

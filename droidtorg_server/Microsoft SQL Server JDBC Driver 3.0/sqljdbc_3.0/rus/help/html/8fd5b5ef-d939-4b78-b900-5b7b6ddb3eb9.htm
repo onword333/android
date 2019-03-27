@@ -1,0 +1,110 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Обработка ошибок</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Обработка ошибок</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>При использовании драйвера JDBC Microsoft SQL Server все условия ошибок базы данных возвращаются в приложения Java в виде исключений при помощи класса <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>. Приведенные далее методы класса <b>SQLServerException</b> унаследованы от классов java.sql.SQLException и java.lang.Throwable. Их можно использовать для возвращения специфической информации о возникшей ошибке SQL Server. </p>
+    <ul><li>
+        
+          <b>getSQLState</b> возвращает стандартный код состояния исключения X/Open или SQL99.<br />
+      </li><li>
+        
+          <b>getErrorCode</b> возвращает специфический номер ошибки базы данных.<br />
+      </li><li>
+        
+          <b>getMessage</b> возвращает полный текст исключения. В тексте сообщения об ошибке описывается проблема и зачастую содержатся заполнители для информации, такие как имена объектов, которые вставляются в сообщение об ошибке во время отображения.<br />
+      </li><li>
+        
+          <b>getNextException</b> возвращает следующий объект <b>SQLServerException</b> или значение NULL, если нет других объектов исключений для возвращения.<br />
+      </li></ul>
+    <p>В следующем примере открытое соединение с образцом базы данных SQL Server AdventureWorks передается в функцию и создается инструкция SQL неправильного формата, которая не имеет предложения FROM. Далее инструкция выполняется и происходит обработка исключения SQL.</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void executeSQLException(Connection con) {
+   try {
+      String SQL = "SELECT TOP 10 * Person.Contact";
+      Statement stmt = con.createStatement();
+      ResultSet rs = stmt.executeQuery(SQL);
+
+      while (rs.next()) {
+         System.out.println(rs.getString(4) + " " + rs.getString(6));
+      }
+      stmt.close();
+   }
+   catch (SQLException se) {
+      do {
+         System.out.println("SQL STATE: " + se.getSQLState());
+         System.out.println("ERROR CODE: " + se.getErrorCode());
+         System.out.println("MESSAGE: " + se.getMessage());
+         System.out.println();
+         se = se.getNextException();
+      } while (se != null);
+   }
+}
+</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="723e2680-a0c5-4a7d-a319-1e49e41078cf.htm">Диагностика проблем с драйвером JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

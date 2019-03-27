@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/bt_from_server"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Загрузить с сервера" />
+
+    <Button
+        android:id="@+id/bt_from_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Загрузить из файла" />
+
+    <TextView
+        android:id="@+id/tv_status_connection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_14" />
+
+</LinearLayout>

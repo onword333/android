@@ -1,0 +1,100 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Функции поддержки различных языков драйвера JDBC</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Функции поддержки различных языков драйвера JDBC</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Ниже приведены возможности локализации драйвера JDBC Microsoft SQL Server: </p>
+    <ul><li>
+        Поддержка полной локализации на тех же языках, что и SQL Server.<br />
+      </li><li>
+        Поддержка преобразований языка Java для данных SQL Server, зависящих от локали.<br />
+      </li><li>
+        Поддержка международных языков независимо от операционной системы.<br />
+      </li></ul>
+  </div><h1 class="heading">Работа с символьными данными</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Символьные данные на Java по умолчанию рассматриваются как данные в формате Unicode. Объект Java <b>String</b> представляет символьные данные в формате Unicode. Единственное исключение из этого правила в драйвере JDBC — методы считывания и задания ASCII-потока, но это особый случай, поскольку в этих методах при обработке байтовых потоков неявно предполагается использование конкретной известной кодовой страницы (ASCII). </p>
+      <p xmlns="">В дополнение, драйвер JDBC обеспечивает свойство строки соединения <b>sendStringParametersAsUnicode</b>. С помощью этого свойства можно указывать, что подготовленные параметры для символьных данных были отправлены в формате ASCII или MBCS, а не в Юникоде. Дополнительные сведения о свойстве строки соединения <b>sendStringParametersAsUnicode</b> см. в разделе <a href="f1b62700-f046-488d-bd6b-a5cd8fc345b7.htm">Задание свойств соединения</a>. </p>
+    </content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <h1 class="heading" xmlns="">Входящие преобразования драйвера</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Текстовые данные в Юникоде, приходящие с сервера, преобразовывать не нужно. Они передаются непосредственно в Юникоде. Данные в других форматах, приходящие с сервера, преобразовываются в Юникод из кодировки для данных на уровне базы данных или столбца.  Драйвер JDBC использует для выполнения этих преобразований подпрограммы Java Virtual Machine (JVM). Этим преобразованиям подвергаются все методы получения потоков строчных и символьных данных. </p>
+          <p xmlns="">Если база данных не поддерживает нужные кодировки для JVM, то драйвер JDBC вызовет исключение «Кодовая страница ХХХ не поддерживает средой Java».   Чтобы решить эту проблему, следует установить полную поддержку международных символов, необходимую для данной виртуальной машины JVM. Пример приведен в документации по поддерживаемым кодировкам на веб-сайте Sun Microsystems.</p>
+        </content></div>
+      <h1 class="heading" xmlns="">Исходящие преобразования драйвера</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Символьные данные, исходящие из драйвера на сервер, могут иметь форматы ASCII или Юникод.  Например, новые методы для национальных символов в JDBC 4.0, например <b>setNString</b>, <b>setNCharacterStream</b>, <b>setNClob</b> классов <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> и <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a>, всегда отправляют на сервер значения своих параметров в Юникоде.</p>
+          <p xmlns="">C другой стороны, новые методы для API ненациональных символов в JDBC 4.0, например <b>setString</b>, <b>setCharacterStream</b> и <b>setClob</b> классов <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> и <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> отправляют на сервер значения своих параметров в формате Юникод только если свойство <b>sendStringParametersAsUnicode</b> имеет значение «true» (это значение по умолчанию). </p>
+        </content></div>
+    </sections></div><h1 class="heading">Параметры для кодировок, отличных от Юникода</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Для опитмальной работы типов <b>CHAR</b>, <b>VARCHAR</b> или <b>LONGVARCHAR</b> (в параметрах, отличных от Юникода), задайте для свойства строки соединения <b>sendStringParametersAsUnicode</b> значение «false» и воспользуйтесь методами ненациональных символов.</p>
+    </content></div><h1 class="heading">Особенности форматирования</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Все форматирование локализованных данных для дат, времени и валют выполняется на уровне языка Java с помощью объекта <b>Locale</b> и различных методов форматирования для типов данных <b>Date</b>, <b>Calendar</b> и <b>Number</b>. В редких случаях, когда драйвер JDBC должен передать зависящие от локали конфиденциальные данные в локализованном формате, нужный инструмент форматирования используется с языковым стандартом JVM, заданным по умолчанию.</p>
+    </content></div><h1 class="heading">Поддержка параметров сортировки</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">В версии драйвера JDBC 3.0 поддерживаются все параметры сортировки, поддерживаемые SQL Server 2000 и SQL Server 2005, а также новые параметры сортировки и новые версии имен параметров сортировки Windows, реализованные в SQL Server 2008.</p>
+      <p xmlns="">Дополнительные сведения о параметрах сортировки см. в разделах <a href="http://go.microsoft.com/fwlink/?LinkId=131366" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Поддержка параметров сортировки и Юникода</linkText></a> и <a href="http://go.microsoft.com/fwlink/?LinkId=131367" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Имя параметров сортировки Windows (Transact-SQL)</linkText></a> электронной документации по SQL Server.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="939a8773-2583-49a4-bf00-6b892fbe39dc.htm">Общие сведения о драйвере JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

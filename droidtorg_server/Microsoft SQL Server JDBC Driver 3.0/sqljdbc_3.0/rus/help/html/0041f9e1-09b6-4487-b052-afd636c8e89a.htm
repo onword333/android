@@ -1,0 +1,152 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование инструкций с хранимыми процедурами</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование инструкций с хранимыми процедурами</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Хранимая процедура является процедурой базы данных, схожей с процедурой на других языках программирования, которая хранится в самой базе данных. В SQL Server хранимые процедуры можно создавать с помощью Transact-SQL или с помощью среды CLR и одного из языков программирования Visual Studio, такого как Visual Basic или C#. Как правило, хранимые процедуры SQL Server используются для следующего: </p>
+    <ul><li>
+        они обрабатывают входные параметры и возвращают вызывающей процедуре или пакету значения в виде выходных параметров;<br />
+      </li><li>
+        они содержат программные инструкции, которые выполняют операции в базе данных, в том числе вызывающие другие процедуры; <br />
+      </li><li>
+        они возвращают значение состояния вызывающей процедуре или пакету, таким образом передавая сведения об успешном или неуспешном завершении (и причины последнего).<br />
+      </li></ul>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Дополнительные сведения о хранимых процедурах SQL Server см. в разделе «Основные сведения о хранимых процедурах» электронной документации SQL Server.<p />
+    </div>
+    <p>Для работы с данными в базе данных SQL Server с использованием хранимой процедуры драйвер JDBC Microsoft SQL Server предоставляет классы <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>, <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> и <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a>. Выбор класса для использования зависит от того, какие IN (входные) или OUT (выходные) параметры требуются хранимой процедуре. Если хранимая процедура не требует параметров IN или OUT, можно использовать класс <b>SQLServerStatement</b>; если хранимая процедура будет вызываться несколько раз или требует только параметры IN, можно использовать класс <b>SQLServerPreparedStatement</b>. Если хранимая процедура требует использования и параметров IN, и параметров OUT, следует использовать класс <b>SQLServerCallableStatement</b>. Необходимо использовать класс <b>SQLServerCallableStatement</b> только в том случае, когда хранимая процедура требует использования параметров OUT.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Хранимые процедуры могут также возвращать счетчики обновлений и несколько результирующих наборов. Дополнительные сведения см. в разделах <a href="64cf4877-5995-4bfc-8865-b7618a5c8d01.htm">Использование хранимых процедур со счетчиком обновлений</a> и <a href="ab6a3cfa-073b-44e9-afca-a8675cfe5fd1.htm">Использование нескольких результирующих наборов</a>.<p />
+    </div>
+    <p>При использовании драйвера JDBC для вызова хранимой процедуры с параметрами следует использовать escape-последовательность SQL <code> call </code> вместе с методом <a href="265b024c-898a-4bd0-98b5-f06076717b9e.htm">prepareCall</a> класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. Ниже приводится полный синтаксис escape-последовательности<code> call</code>:</p>
+    <p>
+      <code>{[?=]call procedure-name[([parameter][,[parameter]]...)]}</code>
+    </p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Дополнительные сведения об <code> call </code> и других escape-последовательностях SQL см. в разделе <a href="00f9e25a-088e-4ac6-aa75-43eacace8f03.htm">Использование Escape-последовательностей SQL</a>.<p />
+    </div>
+    <p>В этом разделе описываются способы вызова хранимых процедур SQL Server с помощью драйвера JDBC и escape-последовательности SQL <code> call </code>.</p>
+  </div><h1 class="heading">В этом подразделе</h1><div id="inThisSectionSection" class="section">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Подраздел
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>
+              <a href="e9470a6d-a758-4c56-96ec-7b37139e36a7.htm">Использование хранимых процедур без параметров</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает способы использования драйвера JDBC для запуска хранимых процедур, не содержащих входных или выходных параметров.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>
+              <a href="8f491b70-7d1b-42bd-964f-9a8b86af5eaa.htm">Использование хранимых процедур с входными параметрами</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает способы использования драйвера JDBC для запуска хранимых процедур, содержащих входные параметры.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>
+              <a href="1c006f27-7e99-43d5-974c-7b782659290c.htm">Использование хранимых процедур с выходными параметрами</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает способы использования драйвера JDBC для запуска хранимых процедур, содержащих выходные параметры.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>
+              <a href="4b126e95-8458-41d6-af37-fc6662859f19.htm">Использование хранимых процедур с состояниями возврата</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает способы использования драйвера JDBC для запуска хранимых процедур, содержащих возвращаемые значения состояния.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>
+              <a href="64cf4877-5995-4bfc-8865-b7618a5c8d01.htm">Использование хранимых процедур со счетчиком обновлений</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает способы использования драйвера JDBC для запуска хранимых процедур, содержащих счетчики обновления.</p>
+          </td>
+        </tr></table>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7f8f3e8f-841e-4449-9154-b5366870121f.htm">Использование инструкций с драйвером JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

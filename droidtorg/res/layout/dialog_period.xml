@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+-->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:shrinkColumns="*"
+    android:stretchColumns="*" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="с: " />
+
+        <Spinner
+            android:id="@+id/dialog_period_sp_date_start"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:clickable="false" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="по: " />
+
+        <Spinner
+            android:id="@+id/dialog_period_sp_date_end"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:clickable="false" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingTop="4dp" >
+
+        <Button
+            android:id="@+id/dialog_period_bt_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_save_ok" />
+    </TableRow>
+
+</TableLayout> <!-- </LinearLayout> -->

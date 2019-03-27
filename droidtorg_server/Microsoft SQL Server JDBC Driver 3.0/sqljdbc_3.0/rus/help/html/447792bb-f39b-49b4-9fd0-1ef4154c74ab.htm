@@ -1,0 +1,127 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Системные требования для драйверов JDBC</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Системные требования для драйверов JDBC</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Чтобы получить доступ к данным из базы данных SQL Server с помощью драйвера JDBC Microsoft SQL Server, на компьютере должны быть установлены следующие компоненты: </p>
+    <ul><li>
+        
+          Microsoft SQL Server Драйвер JDBC<br />
+      </li><li>
+        Среда выполнения Java <br />
+      </li></ul>
+  </div><h1 class="heading">Требования к среде выполнения Java </h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">В драйвере Microsoft SQL Server JDBC поддержка API спецификации Java Database Connectivity была расширена и теперь включает API JDBC 4.0. JDBC 4.0 была реализована как часть Sun Java SE Development Kit (JDK) 6.0 и среды выполнения Java (JRE) 6.0. JDBC 4.0 является множеством JDBC 3.0.  </p>
+      <p xmlns="">Драйвер Microsoft SQL Server JDBC поддерживает JDBC 3.0 и JDBC 4.0. </p>
+      <p xmlns="">При развертывании драйвера Microsoft SQL Server JDBC в операционных системах Windows и UNIX необходимо использовать пакеты установки <i>sqljdbc_&lt;version&gt;_enu.exe</i> и <i>sqljdbc_&lt;version&gt;_enu.tar.gz</i> соответственно. Дополнительные сведения о развертывании драйвера JDBC см. в разделе <a href="3ad3508d-d9b1-47fb-a63b-21cdc3ed44e0.htm">Развертывание драйвера JDBC</a>.</p>
+      <p xmlns="">Драйвер JDBC во всех пакетах установки содержит 2 библиотеки классов JAR: <b>sqljdbc.jar</b> и <b>sqljdbc4.jar</b>, что позволяет обеспечить поддержку обратной совместимости и возможных вариантов обновления.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              JAR
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>sqljdbc.jar</p>
+          </td>
+          <td colspan="">
+            <p>
+              Библиотека классов <b>sqljdbc.jar</b> обеспечивает поддержку JDBC 3.0.</p>
+            <p>
+              Для класса <b>sqljdbc.jar</b> необходима среда выполнения Java (JRE) версии 5.0. Использование <b>sqljdbc.jar</b> в JRE 6.0 приведет к возникновению исключения при соединении с базой данных.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              Драйвер JDBC не поддерживает JRE 1.4. При использовании драйвера JDBC необходимо обновить JRE 1.4 до версии 5.0 или более поздней. В некоторых случаях может потребоваться перекомпиляция приложения, если оно не совместимо с JDK 5.0 или более поздней версией. Дополнительные сведения см. в документации на веб-сайте Sun Microsystems.<p />
+            </div>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>sqljdbc4.jar</p>
+          </td>
+          <td colspan="">
+            <p>
+              Библиотека классов <b>sqljdbc4.jar</b> обеспечивает поддержку JDBC 4.0. Она включает все функции <b>sqljdbc.jar</b>, а также новые методы JDBC 4.0.</p>
+            <p>
+              Для класса <b>sqljdbc4.jar</b> необходима среда выполнения Java (JRE) версии 6.0 или более поздняя версия. Использование <b>sqljdbc4.jar</b> в JRE 1.4 или 5.0 приведет к возникновению исключения.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              Если необходимо использование приложения в JRE 6.0, следует использовать <b>sqljdbc4.jar</b>, даже если в приложении не используются функции JDBC 4.0. <p />
+            </div>
+          </td>
+        </tr></table>
+      <p xmlns="">Обратите внимание, что драйвер JDBC разработан и поддерживается при использовании со всеми основными аналогами виртуальных машин Java от Sun, но его проверка выполняется в Sun JRE 5.0 или более поздней версии.</p>
+    </content></div><h1 class="heading">Требования к SQL Server</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC был разработан специально для использования функций, появившихся в SQL Server 2005, но он также обеспечивает обратную совместимость с SQL Server 2000, включая 64-разрядную версию. Версия 3.0 драйвера JDBC поддерживает новые типы даты и времени, крупные, определяемые пользователем типы и разреженные столбцы в SQL Server 2008.</p>
+    </content></div><h1 class="heading">Требования к операционной системе</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC разработан для использования с любой операционной системой, поддерживающей использование виртуальных машин Java (JVM). Только следующие операционные системы были официально протестированы: Sun Solaris, SUSE Linux, и Windows XP и более поздник версии.</p>
+    </content></div><h1 class="heading">Поддерживаемые языки</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает все параметры сортировки столбцов SQL Server. Дополнительные сведения о параметрах сортировки, поддерживаемых драйвером JDBC, см. в разделе <a href="bbb74a1d-9278-401f-9530-7b5f45aa79de.htm">Функции поддержки различных языков драйвера JDBC</a>.</p>
+      <p xmlns="">Дополнительные сведения о параметрах сортировки см. в разделе "Использование параметров сортировки" электронной документации SQL Server.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="939a8773-2583-49a4-bf00-6b892fbe39dc.htm">Общие сведения о драйвере JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+Сведения о версии
+Драйвер JDBC 3.0 для Microsoft SQL Server 
+Апрель 2010 г.
+
+
+ВВЕДЕНИЕ
+------------
+Этот документ содержит самые последние сведения и другие важные дополнения к 
+документации по драйверу JDBC для Microsoft SQL Server. Перед установкой драйвера 
+JDBC следует полностью прочитать этот файл.
+
+Корпорация Майкрософт высоко ценит отзывы пользователей и прилагает все усилия, 
+чтобы своевременно реагировать на них. Сведения о передаче отзывов через группу 
+новостей драйвера JDBC и форумы в сети см. на странице драйвера JDBC для 
+Microsoft SQL Server по адресу http://msdn.microsoft.com/data/jdbc.
+
+
+УСТАНОВКА
+------------
+Инструкции по установке драйвера JDBC приводятся в файле install.txt.
+В этом файле даны сведения об установке драйвера JDBC в операционных системах Windows и Unix.
+
+ПОДДЕРЖИВАЕМЫЕ ОПЕРАЦИОННЫЕ СИСТЕМЫ
+---------------------------
+Драйвер JDBC 3.0 для Microsoft SQL Server поддерживает следующие операционные системы: 
+Linux, Unix, Windows Server 2003 с пакетом обновления 2 (SP2), Windows Server 2008, 
+Windows Vista с пакетом обновления 1 (SP1), Windows XP с пакетом обновления 3 (SP3), 
+Windows Server 2008 R2 и Windows 7.
+
+В вышеприведенном списке представлены некоторые из поддерживаемых операционных систем.
+Драйвер JDBC разработан для использования с любой операционной системой, поддерживающей 
+использование виртуальной машины Java (JVM). Однако официально протестированы только 
+системы Sun Solaris, SUSE Linux и Windows XP и более поздней версии.
+
+СОСТАВ РАСПРОСТРАНЯЕМОЙ ВЕРСИИ
+----------------
+Исполняемый ZIP-файл или TAR-файл драйвера JDBC для Microsoft SQL Server распаковывает 
+следующие файлы в указанное расположение относительно выбранного каталога установки:
+
+<installation directory>\sqljdbc_<version>\<language>\install.txt
+<installation directory>\sqljdbc_<version>\<language>\release.txt
+<installation directory>\sqljdbc_<version>\<language>\license.txt
+<installation directory>\sqljdbc_<version>\<language>\sqljdbc.jar
+<installation directory>\sqljdbc_<version>\<language>\sqljdbc4.jar
+<installation directory>\sqljdbc_<version>\<language>\auth\x86\sqljdbc_auth.dll
+<installation directory>\sqljdbc_<version>\<language>\auth\x64\sqljdbc_auth.dll
+<installation directory>\sqljdbc_<version>\<language>\auth\ia64\sqljdbc_auth.dll
+<installation directory>\sqljdbc_<version>\<language>\help\default.htm
+<installation directory>\sqljdbc_<version>\<language>\help\index.htm
+<installation directory>\sqljdbc_<version>\<language>\help\toc.htm
+<installation directory>\sqljdbc_<version>\<language>\help\html\<doc pages...>
+<installation directory>\sqljdbc_<version>\<language>\help\local\<doc files...>
+<installation directory>\sqljdbc_<version>\<language>\help\samples\<sample files...>
+<installation directory>\sqljdbc_<version>\<language>\xa\xa_install.sql
+<installation directory>\sqljdbc_<version>\<language>\xa\x86\sqljdbc_xa.dll
+<installation directory>\sqljdbc_<version>\<language>\xa\x64\sqljdbc_xa.dll
+<installation directory>\sqljdbc_<version>\<language>\xa\ia64\sqljdbc_xa.dll
+
+
+СПИСОК ИЗМЕНЕНИЙ
+-----------
+Изменения в версии 3.0 относительно версии 2.0.
+
+327029 Исключение «Не удалось загрузить sqljdbc_auth.dll» теперь содержит 
+       дополнительные сведения о причинах ошибки.
+
+329180 Серверы приложений теперь могут использовать интерфейс Wrapper для реализации 
+       прокси-экземпляров класса SQLServerDataSource и других классов, в которых 
+       реализован интерфейс Wrapper.
+
+293533 Возвращаемое значение хранимой процедуры, выполняемой триггером таблицы, 
+       больше не влияет на число обновлений в запросе INSERT, UPDATE или DELETE, 
+       если lastUpdateCount=true
+
+345336 Исправлена ошибка с образованием бесконечного цикла в методе Statement.close() 
+       после непредвиденного закрытия базового соединения.
+
+351393 Метод executeUpdate теперь возвращает правильное число обновлений для запроса BULK INSERT.
+
+327052 Метод ResultSet.getHoldability() теперь возвращает значение ResultSet.HOLD_CURSORS_OVER_COMMIT, 
+       когда при неявном преобразовании курсора создается результирующий набор, не поддерживаемый 
+       серверным курсором.
+
+374320 Исправлен бесконечный цикл в методе ResultSet.close(), который возникал, когда в методе 
+       истекало время ожидания блокировки или происходила другая ошибка строки.
+
+373923 Теперь для передачи данных SSL в драйвере применяется протокол TLS в соответствии с 
+       федеральным стандартом обработки информации (FIPS).
+
+376322 Теперь драйвер подключается к участнику отработки отказа, выполняющему роль основного 
+       сервера в среде Kerberos.
+
+305612 Метод ResultSet.getInt("DATA_TYPE") больше не вызывает исключение NullPointerException 
+       с типом TABLE SQL.
+
+411695 Метод getSchemas должен возвращать сведения о схеме. В предыдущих версиях драйвер 
+       возвращал сведения о пользователе вместо сведения о схеме. Теперь драйвер возвращает 
+       сведения о схеме и поддерживает сопоставление шаблонов для имени схемы в соответствии 
+       со спецификацией JDBC.
+
+
+ИЗВЕСТНЫЕ ПРОБЛЕМЫ
+------------
+Далее представлены известные проблемы с драйвером JDBC 3.0 для Microsoft SQL Server.
+
+
+1) ОГРАНИЧЕНИЯ ПАРАМЕТРОВ МЕТАДАННЫХ В ИНСТРУКЦИИ SQL MERGE
+
+Метод PreparedStatement.getParameterMetadata() вызывает исключение SQLException в случае 
+использования с параметризованным запросом MERGE.
+

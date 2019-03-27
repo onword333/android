@@ -1,0 +1,115 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование нескольких результирующих наборов</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование нескольких результирующих наборов</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>При работе со встроенным кодом SQL или хранимыми процедурами SQL Server, которые возвращают несколько результирующих наборов, помните, что в классе <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a> драйвера JDBC Microsoft SQL Server предусмотрен метод <a href="929a14e2-8e98-4c32-89aa-86733c717ec1.htm">getResultSet</a>  для получения каждого возвращенного набора данных. Кроме того, при вызове на выполнение инструкции, которая возвращает несколько результирующих наборов набора, можно использовать метод <a href="e1367f39-23d7-4e26-b160-6d988d7e6988.htm">execute</a> класса <b>SQLServerStatement</b>. Он возвращает значения <b>boolean</b>, указывающий, чем является возвращенное значение: результирующим набором или счетчиком обновлений. </p>
+    <p>Если метод <b>execute</b> возвращает значение <b>true</b>, то выполненная инструкция возвратила один или несколько результирующих наборов. Доступ к первому результирующему набору можно получить вызвав метод <b>getResultSet</b>. Чтобы определять, есть ли еще доступные результирующие наборы, можно вызвать метод <a href="6b18510a-4d6d-4eeb-a9d0-32e920eb0048.htm">getMoreResults</a>, который возвращает значение <b>boolean</b> <b>true</b>, если доступны также другие результирующие наборы. Если доступно большее количество результирующих наборов, можно снова вызвать метод <b>getResultSet</b>, чтобы получить к ним доступ. Эту процедуру можно продолжать до тех пор, пока не будут обработаны все результирующие наборы. Если метод <b>getMoreResults</b> возвращает <b>false</b>, то больше нет результирующих наборов, доступных для обработки.</p>
+    <p>Если метод <b>execute</b> возвращает <b>false</b>, то выполненная инструкция возвратила значение счетчика обновлений, которое можно получить с помощью метода <a href="e9570228-4500-44b6-b2f1-84ac050b5112.htm">getUpdateCount</a>.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Дополнительные сведения о счетчиках обновлений см. в разделе <a href="64cf4877-5995-4bfc-8865-b7618a5c8d01.htm">Использование хранимых процедур со счетчиком обновлений</a>.<p />
+    </div>
+    <p>В следующем примере открытое соединение с образцом базы данных SQL Server 2005 AdventureWorks передается в функцию и создается инструкция SQL, которая после выполнения возвращает два результирующих набора:</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void executeStatement(Connection con) {
+   try {
+      String SQL = "SELECT TOP 10 * FROM Person.Contact; " +
+                   "SELECT TOP 20 * FROM Person.Contact";
+      Statement stmt = con.createStatement();
+      boolean results = stmt.execute(SQL);
+      int rsCount = 0;
+
+      //Loop through the available result sets.
+     do {
+        if(results) {
+           ResultSet rs = stmt.getResultSet();
+           rsCount++;
+
+           //Show data from the result set.
+           System.out.println("RESULT SET #" + rsCount);
+           while (rs.next()) {
+              System.out.println(rs.getString("LastName") + ", " + rs.getString("FirstName"));
+           }
+           rs.close();
+        }
+        System.out.println();
+        results = stmt.getMoreResults();
+        } while(results);
+      stmt.close();
+      }
+   catch (Exception e) {
+      e.printStackTrace();
+   }
+}
+</pre></span></div>
+    <p>В этом случае известно, что количество результирующих наборов равно двум. Но этот код написан таким образом, что даже если количество возвращенных результирующих наборов было бы неизвестно, как при вызове хранимой процедуры, все они были бы обработаны. Пример вызова хранимой процедуры, которая возвращает несколько результирующих наборов наряду со значениями обновления, см. в разделе <a href="6b807a45-a8b5-4b1c-8b7b-d8175c710ce0.htm">Обработка сложных инструкций</a>.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      При вызове метода <b>getMoreResults</b> класса <b>SQLServerStatement</b> возвращенный ранее результирующий набор неявно закрывается.<p />
+    </div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7f8f3e8f-841e-4449-9154-b5366870121f.htm">Использование инструкций с драйвером JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

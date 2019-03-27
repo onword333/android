@@ -1,0 +1,96 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование метаданных результирующего набора</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование метаданных результирующего набора</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>В драйвере Microsoft SQL Server JDBC реализован класс <a href="9a36885f-83f3-44af-85f0-2b849dfd20d4.htm">SQLServerResultSetMetaData</a>, позволяющий запрашивать в результирующем наборе сведения о содержащихся в нем столбцах. Этот класс содержит многочисленные методы, которые возвращают сведения в виде одного значения. </p>
+    <p>Для создания объекта <b>SQLServerResultSetMetaData</b> можно использовать метод <a href="9dcdbf69-1d47-422c-842e-0bed5afdcb93.htm">getMetaData</a> класса <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.</p>
+    <p>В следующем примере в функцию передается открытое соединение с образцом базы данных SQL Server 2005 AdventureWorks, метод <b>getMetaData</b> method класса <b>SQLServerResultSet</b> возвращает объект <b>SQLServerResultSetMetaData</b>, а затем с помощью различных методов объекта <b>SQLServerResultSetMetaData</b> выводятся сведения об имени и типе данных столбцов, содержащихся в результирующем наборе.</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void getResultSetMetaData(Connection con) {
+   try {
+      String SQL = "SELECT TOP 10 * FROM Person.Contact";
+      Statement stmt = con.createStatement();
+      ResultSet rs = stmt.executeQuery(SQL);
+      ResultSetMetaData rsmd = rs.getMetaData();
+
+      // Display the column name and type.
+      int cols = rsmd.getColumnCount();
+      for (int i = 1; i &lt;= cols; i++) {
+         System.out.println("NAME: " + rsmd.getColumnName(i) + " " + "TYPE: " + rsmd.getColumnTypeName(i));
+      }
+      rs.close();
+      stmt.close();
+   }
+   catch (Exception e) {
+      e.printStackTrace();
+   }
+}
+</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="5cfb35d4-ddcd-40a2-8091-f29cddc32552.htm">Обработка метаданных с использованием драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

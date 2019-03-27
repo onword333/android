@@ -1,0 +1,229 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование расширенных типов данных</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование расширенных типов данных</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>В драйвере Microsoft JDBC SQL Server расширенные типы данных JDBC используются для преобразования типов данных SQL Server в формат, распознаваемый языком программирования Java. </p>
+    <p>В следующей таблице перечислены все стандартные соответствия между расширенными типами данных SQL Server, типами данных JDBC, и типами данных языка программирования Java.</p>
+    <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;"><tr>
+          <th colspan="">
+            Типы SQL Server
+          </th>
+          <th colspan="">
+            Типы JDBC (java.sql.Types)
+          </th>
+          <th colspan="">
+            Типы языка Java
+          </th>
+        </tr><tr>
+        <td colspan="">
+          <p>varbinary(max)</p>
+          <p>image</p>
+        </td>
+        <td colspan="">
+          <p>LONGVARBINARY</p>
+        </td>
+        <td colspan="">
+          <p>byte[] (по умолчанию), Blob, InputStream, String</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>text</p>
+          <p>varchar(max)</p>
+        </td>
+        <td colspan="">
+          <p>LONGVARCHAR</p>
+        </td>
+        <td colspan="">
+          <p>String (по умолчанию), Clob, InputStream</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>ntext</p>
+          <p>nvarchar(max)</p>
+        </td>
+        <td colspan="">
+          <p>LONGVARCHAR</p>
+          <p>LONGNVARCHAR (Java SE 6.0)</p>
+        </td>
+        <td colspan="">
+          <p>String (по умолчанию), Clob, NClob (Java SE 6.0)</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>xml</p>
+        </td>
+        <td colspan="">
+          <p>LONGVARCHAR</p>
+          <p>SQLXML (Java SE 6.0)</p>
+        </td>
+        <td colspan="">
+          <p>String (по умолчанию), InputStream, Clob, byte[],Blob, SQLXML (Java SE 6.0)</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>определяемый пользователем тип</p>
+        </td>
+        <td colspan="">
+          <p>VARBINARY</p>
+        </td>
+        <td colspan="">
+          <p>String (по умолчанию), byte[], InputStream</p>
+        </td>
+      </tr></table>
+    <p>В следующих разделах приведены примеры использования драйвера JDBC и расширенных типов данных.</p>
+  </div><h1 class="heading">Типы данных BLOB, CLOB и NCLOB </h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC реализует все методы интерфейсов java.sql.Blob, java.sql.Clob и java.sql.NClob.  </p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Значения CLOB могут использоваться с типами данных больших значений SQL Server 2005 и более поздних версий. В частности, типы CLOB могут использоваться с типами данных <b>varchar(max)</b> и <b>nvarchar(max)</b>, типы BLOB могут использоваться с типами данных <b>varbinary(max)</b> и <b>image</b>, а типы NCLOB могут использоваться с <b>ntext</b> и <b>nvarchar(max)</b>.<p />
+      </div>
+    </content></div><h1 class="heading">Типы данных большого объема</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">В ранних версиях SQL Server работа с типами данных большого объема требовала особого подхода. Типами данных большого объема называются типы, у которых превышен максимальный размер строки в 8 КБ. В SQL Server введен указатель максимального размера для типов данных <b>varchar</b>, <b>nvarchar</b> и <b>varbinary</b> позволяющий хранить значения размером до 2^31 байт. Столбцы таблицы и переменные Transact-SQL могут указывать типы данных <b>varchar(max)</b>, <b>nvarchar(max)</b> или  <b>varbinary(max)</b>.</p>
+      <p xmlns="">В большинстве случаев работа с типами данных большого объема предполагает их извлечение из базы данных или добавление в базу данных. В следующих разделах описываются различные способы выполнения этих задач.</p>
+    </content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <h1 class="heading" xmlns="">Извлечение типов данных большого объема из базы данных</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Извлечь тип недвоичных данных большого объема, например, типа данных <b>varchar(max)</b> из базы данных можно путем считывания данных в виде потока символов. В следующем примере для извлечения данных из базы данных и их возвращения в виде результирующего набора используется метод <a href="599cf463-e19f-4baa-bacb-513cad7c6cd8.htm">executeQuery</a> класса <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>. Затем для считывания данных большого объема из результирующего набора используется метод<a href="c70e210f-0288-47cc-9268-a29c45979729.htm">getCharacterStream</a> класса <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>ResultSet rs = stmt.executeQuery("SELECT TOP 1 * FROM Test1");
+rs.next();
+Reader reader = rs.getCharacterStream(2);</pre></span></div>
+          <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+            Аналогичный способ можно использовать для типов данных <b>text</b>, <b>ntext</b> и <b>nvarchar(max)</b>.<p />
+          </div>
+          <p xmlns="">Извлечь тип двоичных данных большого объема, например, типа данных <b>varbinary(max)</b> из базы данных можно несколькими способами. Эффективнее всего считать данные в виде двоичного потока следующим образом:</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>ResultSet rs = stmt.executeQuery("SELECT photo FROM mypics");
+rs.next();
+InputStream is = rs.getBinaryStream(2);</pre></span></div>
+          <p xmlns="">Кроме того, для считывания данных в виде байтового массива можно следующим образом использовать метод <a href="d16a0aea-6144-4fcb-bcbc-5d7daa36d327.htm">getBytes</a>:</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>ResultSet rs = stmt.executeQuery("SELECT photo FROM mypics");
+rs.next();
+byte [] b = rs.getBytes(2);</pre></span></div>
+          <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+            Также можно считать данные в виде BLOB. Однако это менее эффективно, чем два предыдущих способа.<p />
+          </div>
+        </content></div>
+      <h1 class="heading" xmlns="">Добавление типов данных большого объема в базу данных.</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Драйвер JDBC хорошо справляется с загрузкой больших объемов данных при наличии достаточного объема памяти. В противном случае рекомендуется использовать потоковую передачу. Тем не менее, эффективнее всего загружать большие объемы данных с помощью потоковых интерфейсов.</p>
+          <p xmlns="">Также можно использовать передачу в виде строки или байтов следующим образом:</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>PreparedStatement pstmt = con.prepareStatement("INSERT INTO test1 (c1_id, c2_vcmax) VALUES (?, ?)");
+pstmt.setInt(1, 1);
+pstmt.setString(2, htmlStr);
+pstmt.executeUpdate();</pre></span></div>
+          <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+            Такой способ применим и для величин, хранимых в столбцах <b>text</b>, <b>ntext</b> и <b>nvarchar(max)</b>.<p />
+          </div>
+          <p xmlns="">При наличии на сервере библиотеки изображений и при необходимости загрузить целые двоичные файлы изображений в столбец <b>varbinary(max)</b> эффективнее всего использовать драйвер JDBC, организуя потоки напрямую следующим образом:</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>PreparedStatement pstmt = con.prepareStatement("INSERT INTO test1 (Col1, Col2) VALUES(?,?)");
+File inputFile = new File("CLOBFile20mb.jpg");
+FileInputStream inStream = new FileInputStream(inputFile);
+int id = 1;
+pstmt.setInt(1,id);
+pstmt.setBinaryStream(2, inStream);
+pstmt.executeUpdate();
+inStream.close();</pre></span></div>
+          <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+            Методы CLOB и BLOB для загрузки больших объемов данных неэффективны.<p />
+          </div>
+        </content></div>
+      <h1 class="heading" xmlns="">Изменение типов данных большого объема в базе данных.</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">В большинстве случаев для обновления или изменения больших значений в базе данных рекомендуется передавать параметра через классы <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> и <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a> с помощью таких команд Transact-SQL, как UPDATE, WRITE и SUBSTRING.</p>
+          <p xmlns="">Если нужно заменить экземпляр слова в крупном текстовом файле, например в архивном HTML-файле, можно воспользоваться объектом <b>Clob</b> следующим образом:</p>
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>String SQL = "SELECT * FROM test1;";
+Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+ResultSet rs = stmt.executeQuery(SQL);
+rs.next();
+
+Clob clob = rs.getClob(2);
+long pos = clob.position("dog", 1);
+clob.setString(pos, "cat");
+rs.updateClob(2, clob);
+rs.updateRow();</pre></span></div>
+          <p xmlns="">Кроме того, можно выполнить все операции на сервере и просто передать параметры в подготовленную инструкцию UPDATE.</p>
+          <p xmlns="">Дополнительные сведения о типах данных большого объема ищите в разделе «Использование типов данных большого объема» электронной документации по Microsoft SQL Server. </p>
+        </content></div>
+    </sections></div><h1 class="heading">Тип данных XML</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        SQL Server содержит тип данных <b>xml</b>, который позволяет хранить XML-документы и фрагменты в базе данных SQL Server. Тип данных <b>xml</b> — это встроенный в SQL Server тип данных, в чем-то напоминающий другие встроенные типы данных, такие как <b>int</b> и <b>varchar</b>. Аналогично другим встроенным типам, типы данных <b>xml</b> можно использовать следующим образом: как тип переменной, тип параметра, тип возвращаемой функции или тип столбца при создании таблицы, а также в функциях CAST и CONVERT Transact-SQL.</p>
+      <p xmlns="">В драйвере JDBC тип данных <b>xml</b> может быть сопоставлен со строкой, байтовым массивом, потоком или объектом CLOB, BLOB или SQLXML. По умолчанию задана строка. Для драйвера JDBC, начиная с версии 2.0, обеспечивается поддержка API-интерфейса JDBC 4.0, что позволяет использовать интерфейс SQLXML. Интерфейс SQLXML определяет методы для обмена данными XML и их обработки. Тип данных <b>SQLXML</b> сопоставляется с типом данных SQL Server <b>xml</b>. Дополнительные сведения о считывании XML-данных из реляционной базы данных и записи их в нее с типом данных Java <b>SQLXML</b> можно найти по адресу <a href="32b7217e-1f0c-473d-9a45-176daa81584e.htm">Поддержка XML-данных</a>.</p>
+      <p xmlns="">Благодаря реализации типа данных <b>xml</b> в драйвере JDBC обеспечена поддержка следующих возможностей:</p>
+      <ul xmlns=""><li>
+          Доступ к XML как к стандартным строкам Java UTF-16 для большинства общепринятых методик программирования.<br />
+        </li><li>
+          Ввод UTF-8 и других XML-данных с 8-битным кодированием.<br />
+        </li><li>
+          Доступ к XML как к байтовому массиву с ведущей меткой следования байтов (BOM) при кодировании в UTF-16 для взаимообмена с другими средствами обработками XML и файлами на диске.<br />
+        </li></ul>
+      <p xmlns="">
+        SQL Server требует для XML в кодировке UTF-16 ведущую метку следования байтов (BOM). Приложение должно обеспечивать эти функции, если значения параметра XML предоставлено в виде байтовых массивов. SQL Server всегда выводит значения XML значения в виде строк в кодировке UTF-16 без метки следования байтов или со встроенным объявлением кодировки. Если значения XML извлекаются в формате byte[], BinaryStream или Blob, то для значения ожидается метка следования байтов UTF-16.</p>
+      <p xmlns="">Дополнительные сведения о типе данных <b>xml</b> можно найти в разделе «Тип данных XML» электронной документации по SQL Server.</p>
+    </content></div><h1 class="heading">Пользовательский тип данных</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Введение определяемых пользователем типов (UDT) в SQL Server 2005 совершенствует систему типов SQL, позволяя пользователю сохранять объекты и настраиваемые структуры данных в базе данных SQL Server. Определяемые пользователем типы могут содержать несколько типов данных, и их поведение может отличаться от традиционных псевдонимов типов данных, которые состоят из одного системного типа данных SQL Server. Определяемые пользователем типы данных определяются с помощью любого из языков, которые поддерживаются средой Microsoft .NET CLR и формируют проверяемый код. Это языки Microsoft Visual C# и Visual Basic .NET. Данные предоставляются в виде полей и свойств класса или структуры на базе платформы .NET Framework, а  особенности работы определяются методами класса или структуры. </p>
+      <p xmlns="">В SQL Server пользовательские типы данных можно использовать в качестве идентификатора столбцов таблицы, как переменную в пакете Transact-SQL или как аргумент функции Transact-SQL или хранимой процедуры.</p>
+      <p xmlns="">Дополнительные сведения о применении пользовательских типов данных см. в разделе «Использование и изменение экземпляров пользовательских типов» в электронной документации по SQL Server.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7802328d-4d23-4775-9573-4169b127d258.htm">Основные сведения о типах данных драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

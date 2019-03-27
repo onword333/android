@@ -1,0 +1,272 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование Escape-последовательностей SQL</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование Escape-последовательностей SQL</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Согласно определению API JDBC, драйвер JDBC Microsoft SQL Server поддерживает использование escape-последовательностей SQL. Escape-последовательности используются в инструкции SQL для передачи драйверу сведений о том, что экранированные части SQL-строки должны обрабатываться иначе. При обработке драйвером JDBC части escape-последовательности SQL-строки выполняется преобразование этой части строки в SQL-код, распознаваемый SQL Server. </p>
+    <p>Существует пять типов escape-последовательностей, требуемых API JDBC, и все они поддерживаются драйвером JDBC:</p>
+    <ul><li>
+        Литералы-шаблоны LIKE<br />
+      </li><li>
+        Обработка функций<br />
+      </li><li>
+        Литералы даты и времени<br />
+      </li><li>
+        Вызовы хранимых процедур<br />
+      </li><li>
+        Внешние соединения<br />
+      </li></ul>
+    <p>Драйвер JDBC использует следующий синтаксис escape-последовательности: </p>
+    <p>
+      <code>{keyword ...parameters...}</code>
+    </p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Для драйвера JDBC всегда включена обработка escape-последовательностей SQL.<p />
+    </div>
+    <p>В следующих разделах описывается пять типов escape-последовательностей и способы их поддержки драйвером JDBC.</p>
+  </div><h1 class="heading">Литералы-шаблоны LIKE</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает синтаксис <code>{escape 'escape character'}</code> для использования шаблонов предложения LIKE в качестве литералов. Например, в следующем коде возвращаются значения col3, для которых значение col2 начинается с символа подчеркивания (и не используется как шаблон).</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>ResultSet rst = stmt.executeQuery("SELECT col3 FROM test1 WHERE col2 
+LIKE '\\_%' {escape '\\'}");</pre></span></div>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Escape-последовательность должна быть в конце инструкции SQL. При наличии в командной строке нескольких инструкций SQL escape-последовательность должна быть в конце каждой соответствующей инструкции SQL.<p />
+      </div>
+    </content></div><h1 class="heading">Обработка функций</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает использование escape-последовательностей функций в инструкциях SQL со следующим синтаксисом:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>{fn functionName}</pre></span></div>
+      <p xmlns="">где <code>functionName</code> представляет собой функцию, поддерживаемую драйвером JDBC. Например:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>SELECT {fn UCASE(Name)} FROM Employee</pre></span></div>
+      <p xmlns="">В следующей таблице перечислены различные функции, поддерживаемые драйвером JDBC при использовании escape-последовательностей функций:</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Строковые функции
+            </th>
+            <th>
+              Числовые функции
+            </th>
+            <th>
+              Функции Datetime
+            </th>
+            <th>
+              Системные функции
+            </th>
+          </tr><tr>
+          <td>
+            <p>ASCII</p>
+            <p>CHAR</p>
+            <p>CONCAT</p>
+            <p>DIFFERENCE</p>
+            <p>INSERT</p>
+            <p>LCASE</p>
+            <p>LEFT</p>
+            <p>LENGTH</p>
+            <p>LOCATE</p>
+            <p>LTRIM</p>
+            <p>REPEAT</p>
+            <p>REPLACE</p>
+            <p>RIGHT</p>
+            <p>RTRIM</p>
+            <p>SOUNDEX</p>
+            <p>SPACE</p>
+            <p>SUBSTRING</p>
+            <p>UCASE</p>
+          </td>
+          <td>
+            <p>ABS</p>
+            <p>ACOS</p>
+            <p>ASIN</p>
+            <p>ATAN</p>
+            <p>ATAN2</p>
+            <p>CEILING</p>
+            <p>COS</p>
+            <p>COT</p>
+            <p>DEGREES</p>
+            <p>EXP</p>
+            <p>FLOOR</p>
+            <p>LOG</p>
+            <p>LOG10</p>
+            <p>MOD</p>
+            <p>PI</p>
+            <p>POWER</p>
+            <p>RADIANS</p>
+            <p>RAND</p>
+            <p>ROUND</p>
+            <p>SIGN</p>
+            <p>SIN</p>
+            <p>SQRT</p>
+            <p>TAN</p>
+            <p>TRUNCATE</p>
+          </td>
+          <td>
+            <p>CURDATE</p>
+            <p>CURTIME</p>
+            <p>DAYNAME</p>
+            <p>DAYOFMONTH</p>
+            <p>DAYOFWEEK</p>
+            <p>DAYOFYEAR</p>
+            <p>EXTRACT</p>
+            <p>HOUR</p>
+            <p>MINUTE</p>
+            <p>MONTH</p>
+            <p>MONTHNAME</p>
+            <p>NOW</p>
+            <p>QUARTER</p>
+            <p>SECOND</p>
+            <p>TIMESTAMPADD</p>
+            <p>TIMESTAMPDIFF</p>
+            <p>WEEK</p>
+            <p>YEAR</p>
+          </td>
+          <td>
+            <p>DATABASE</p>
+            <p>IFNULL</p>
+            <p>USER</p>
+          </td>
+        </tr></table>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Использование функции, не поддерживаемой базой данных, приведет к возникновению ошибки.<p />
+      </div>
+    </content></div><h1 class="heading">Литералы даты и времени</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Ниже приводится синтаксис escape-последовательности для литералов даты, времени и временных меток: </p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>{literal-type 'value'}</pre></span></div>
+      <p xmlns="">где <code>literal-type</code> является одним из следующих:</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Тип литерала
+            </th>
+            <th>
+              Описание
+            </th>
+            <th>
+              Формат значения
+            </th>
+          </tr><tr>
+          <td>
+            <p>d</p>
+          </td>
+          <td>
+            <p>Дата</p>
+          </td>
+          <td>
+            <p>гггг-мм-дд</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>t</p>
+          </td>
+          <td>
+            <p>Измерение времени</p>
+          </td>
+          <td>
+            <p>чч:мм:сс [1]</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>ts</p>
+          </td>
+          <td>
+            <p>TimeStamp</p>
+          </td>
+          <td>
+            <p>гггг-мм-дд чч:мм:сс[.f...]</p>
+          </td>
+        </tr></table>
+      <p xmlns="">Например:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>UPDATE Orders SET OpenDate={d '2005-01-31'} 
+WHERE OrderID=1025</pre></span></div>
+    </content></div><h1 class="heading">Вызовы хранимых процедур</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает синтаксис escape-последовательностей <code>{? = call proc_name(?,...)}</code> и <code>{call proc_name(?,...)}</code> для вызовов хранимых процедур, в зависимости от того, требуется ли обработка возвращаемого параметра. </p>
+      <p xmlns="">Процедура представляет собой исполняемый объект, который хранится в базе данных. Обычно процедурой является одна или несколько заранее скомпилированных инструкций SQL. Ниже приводится синтаксис escape-последовательности вызова хранимой процедуры: </p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>{[?=]call procedure-name[([parameter][,[parameter]]...)]}</pre></span></div>
+      <p xmlns="">где <code>procedure-name</code> указывает имя хранимой процедуры, а <code>parameter</code> указывает параметр хранимой процедуры.</p>
+      <p xmlns="">Дополнительные сведения об использовании escape-последовательностей <code>call</code> с хранимыми процедурами см. в разделе <a href="0041f9e1-09b6-4487-b052-afd636c8e89a.htm">Использование инструкций с хранимыми процедурами</a>.</p>
+    </content></div><h1 class="heading">Внешние соединения</h1><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает синтаксис левого, правого и полного внешнего соединения SQL92. Ниже приводится синтаксис escape-последовательности для внешних соединений: </p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>{oj outer-join}</pre></span></div>
+      <p xmlns="">где внешнее соединение:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>table-reference {LEFT | RIGHT | FULL} OUTER JOIN  
+{table-reference | outer-join} ON search-condition</pre></span></div>
+      <p xmlns="">где <code>table-reference</code> является именем таблицы, а <code>search-condition</code> представляет собой условия соединения, которые необходимо использовать для таблиц.</p>
+      <p xmlns="">Например:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>SELECT Customers.CustID, Customers.Name, Orders.OrderID, Orders.Status 
+   FROM {oj Customers LEFT OUTER JOIN 
+      Orders ON Customers.CustID=Orders.CustID} 
+   WHERE Orders.Status='OPEN'</pre></span></div>
+      <p xmlns="">Драйвер JDBC поддерживает следующие escape-последовательности внешнего соединения:</p>
+      <ul xmlns=""><li>
+          Левые внешние соединения<br />
+        </li><li>
+          Правые внешние соединения<br />
+        </li><li>
+          Полные внешние соединения<br />
+        </li><li>
+          Вложенные внешние соединения<br />
+        </li></ul>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7f8f3e8f-841e-4449-9154-b5366870121f.htm">Использование инструкций с драйвером JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

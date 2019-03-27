@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="arr_main_menu">
+        <item>@string/str_tovar</item>
+        <item>@string/str_partner</item>
+        <item>@string/str_zayavka</item>
+        <item>@string/str_new_zayavka</item>
+        <!-- <item>@string/main_menu_report</item> -->
+        <!-- <item>@string/str_administration</item> -->
+    </string-array>
+    <string-array name="arr_doc_table">
+        <item>@string/str_view_tovar</item>
+        <item>@string/str_view_order</item>
+    </string-array>
+    <string-array name="arr_update_file">
+
+        <!-- последовательность списка файла менять с осторожностью -->
+        <item>@string/str_lk</item>
+        <item>@string/str_xf</item>
+        <item>@string/str_ya</item>
+        <item>@string/str_yb</item>
+        <item>@string/str_yc</item>
+        <item>@string/str_yd</item>
+        <item>@string/str_ye</item>
+        <item>@string/str_yf</item>
+        <item>@string/str_zc</item>
+        <item>@string/str_zd</item>
+        <item>@string/str_ze</item>
+    </string-array>
+
+    <!--
+    arr_fields_... - массивы с полями таблиц БД, (последовательность полей менять осторожно, 
+    т.к. индекс массива соответст. определеннуму полю таблицы и его смещение 
+    повлияет на обновление базы)
+    -->
+    <string-array name="arr_field_tovar">
+        <item>fIsGroup</item>
+        <item>fLevel</item>
+        <item>fCodeParent</item>
+        <item>_id</item>
+        <item>fName</item>
+        <item>fIsRed</item>
+        <item>fPriceKOpt</item>
+        <item>fPriceOpt</item>
+        <item>fPriceRozn</item>
+        <item>fCount</item>
+        <item>fPriceO</item>
+        <item>fPriceMOpt</item>
+        <item>fCodeRoot</item>
+        <item>fKeyEdIzm</item>
+        <item>fPriceBN</item>
+        <item>fPriceOpt2</item>
+        <item>fPriceVip</item>
+    </string-array>
+    <string-array name="arr_fields_counteragent">
+        <item>_id</item>
+        <item>fName</item>
+        <item>fRestThem</item>
+        <item>fRestOur</item>
+        <item>fTypePrice</item>
+        <item>fPercentPrice</item>
+    </string-array>
+    <string-array name="arr_fields_mag">
+        <item>_id</item>
+        <item>fName</item>
+        <item>fKeyPartner</item>
+        <item>fRestThem</item>
+        <item>fRestOur</item>
+    </string-array>
+    <string-array name="arr_fields_edizm">
+        <item>_id</item>
+        <item>fName</item>
+    </string-array>
+    <string-array name="arr_fields_edizmkr">
+        <item>_id</item>
+        <item>fName</item>
+        <item>fKr</item>
+        <item>fKeyEdIzm</item>
+    </string-array>
+    <string-array name="arr_fields_tovkr">
+        <item>_id</item>
+        <item>fKeyKr</item>
+    </string-array>
+    <string-array name="arr_fields_tovsetka">
+        <item>_id</item>
+        <item>fk_tovar</item>
+        <item>fName</item>
+        <item>fPrice</item>
+    </string-array>
+    <string-array name="arr_fields_part_price">
+
+        <!-- fk_partner -->
+        <item>_id</item>
+        <item>fk_tovar</item>
+        <item>fk_tovar_setka</item>
+        <item>fPrice</item>
+        <item>fBase</item>
+        <item>fParcent</item>
+        <item>fHow</item>
+    </string-array>
+    <string-array name="arr_field_debetorka">
+
+        <!-- fNDoc -->
+        <item>_id</item>
+        <item>fDDoc</item>
+        <item>fVDoc</item>
+        <item>fk_partner</item>
+        <item>fk_magazin</item>
+        <item>fPrihod</item>
+        <item>fRashod</item>
+    </string-array>
+    <string-array name="arr_fields_dochead">
+        <item>_id</item>
+        <item>fKeyPartner</item>
+        <item>fDate</item>
+        <item>fSum</item>
+        <item>fOut</item>
+        <item>fNote</item>
+        <item>fKeyMag</item>
+    </string-array>
+    <string-array name="arr_fields_doctable">
+        <item>_id</item>
+        <item>fKeyZ</item>
+        <item>fKeyTovar</item>
+        <item>fCount</item>
+        <item>fPrice</item>
+        <item>fSum</item>
+        <item>fKeyEdIzm</item>
+        <item>fKeyEdIzmKr</item>
+        <item>fCountKr</item>
+    </string-array>
+    <string-array name="arr_fields_constant">
+        <item>_id</item>
+        <item>fProgID</item>
+        <item>fName</item>
+        <item>fValue</item>
+    </string-array>
+    
+    
+    <string-array name="arr_list_sprav">
+        <item>номенклатура</item>
+        <item>контрагенты</item>
+        <item>магазины</item>
+        <item>ед. измерения</item>
+        <item>кратность</item>
+        <item>остаток ед. изм.</item>
+        <item>прайс котрагентов</item>
+        <item>сетка номенклатуры</item>
+        <item>остатки</item>
+        <item>дебиторка</item>
+        
+        
+    </string-array>
+    
+    
+
+</resources>

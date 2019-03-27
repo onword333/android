@@ -1,0 +1,25 @@
+установка сервера приема заявок:
+1. уст. jdk
+2. скопировать в C:\Program Files\Microsoft SQL Server JDBC Driver 3.0\sqljdbc_3.0\rus\ файл sqljdbc4.jar
+В переменную среды CLASSPATH добавить:
+	C:\Program Files\Microsoft SQL Server JDBC Driver 3.0\sqljdbc_3.0\rus\sqljdbc4.jar
+
+
+
+
+
+
+
+наблюдение за работой сервера:
+ОС: windows xp pro
+почему если добавить на сервере в метод run() Theard.sleep(35*1000), а на клиенте socket.setSoTimeOut(60*1000), то
+при подключении сервер создает поток и засыпает на 35 сек., клиент в это время ждет на методе BufferedInputStream.read(),
+поток просыпается передает данные 
+	BufferedOutputStream.write(); 
+	BufferedOutputStream.flush(); 
+клиент нормально их считывает.
+Но если установить на сервере например 40 сек. и выше, то серверный поток просыпается и отправляет данные, а 
+клиент продолжает ожидать на методе BufferedInputStream.read() до тех пор пока не пройдет 60 сек. после чего выдаст 
+java.net.SocketTimeOutException на методе BufferedInputStream.read(). Почему с 35 сек. все нормально, а если выставить больше
+то исключение.
+

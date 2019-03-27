@@ -1,0 +1,108 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод updateNCharacterStream (int, java.io.Reader, long)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод updateNCharacterStream (int, java.io.Reader, long)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Обновляет указанный столбец значением потока символов, который будет содержать указанное число байтов.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Эта функция введена в драйвере JDBC Microsoft SQL Server версии 2.0.<p />
+    </div>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public void <b>updateNCharacterStream</b>(int <i>columnIndex</i>,
+                                    java.io.Reader <i>x</i>,
+                                    long <i>length</i>)</pre></span></div><h1 class="heading">Параметры</h1><div id="parametersSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <i>columnIndex</i>
+      </p>
+      <p xmlns="">Значение<b> int</b>, указывающее индекс столбца.</p>
+      <p xmlns="">
+        <i>x</i>
+      </p>
+      <p xmlns="">Объект <b>Reader</b>.</p>
+      <p xmlns="">
+        <i>length</i>
+      </p>
+      <p xmlns="">Длина потока.</p>
+    </content>
+  </div></div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>updateNCharacterStream</b> указывается с помощью метода <b>updateNCharacterStream</b> в интерфейсе java.sql.ResultSet. </p>
+      <p xmlns="">Этот метод передает символы в Юникоде из объекта <b>Reader</b> в выбранные столбцы <b>nchar</b>, <b>nvarchar(max)</b>, <b>ntext</b> и <b>xml</b>. Использование этого метода при работе со столбцами других типов данных приведет к возникновению исключения. </p>
+      <p xmlns="">Если длина потока отличается от указанной в параметре <i>length</i>, то драйвер JDBC вызовет исключение при обновлении или вставке строки. </p>
+      <p xmlns="">Если длина потока неизвестна, то для параметра <i>length</i> может быть задано значение -1, после чего драйвер будет принимать потоки независимо от их длины. Для sqljdbc4.jar рекомендуется использовать метод JDBC 4.0 <a href="fc746413-bdbf-4109-aee0-385a1270c847.htm">Метод updateNCharacterStream (int, java.io.Reader)</a>, при котором приложения обновляют столбец с помощью потока, длина которого неизвестна.</p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="eaffcff1-286c-459f-83da-3150778480c9.htm">Класс SQLServerResultSet</a><br /><a href="d6a21d01-6d8e-4449-9fdf-ddb09bd4fdb8.htm">Метод updateNCharacterStream (ISQLServerResultSet)</a><br /><a href="2a438d5d-2d6a-46a0-a2ae-f35fbae4a472.htm">Элементы ISQLServerResultSet</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

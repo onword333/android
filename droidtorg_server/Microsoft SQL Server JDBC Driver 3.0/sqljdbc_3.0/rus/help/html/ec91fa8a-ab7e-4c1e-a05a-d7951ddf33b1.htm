@@ -1,0 +1,99 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Соединение с помощью SSL-шифрования</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Соединение с помощью SSL-шифрования</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>В примерах из этого раздела описывается использование свойств строки соединения, которые разрешают приложениям использовать шифрование SSL в приложении Java. Дополнительные сведения об этих новых свойствах строки соединения, например, <b>encrypt</b>, <b>trustServerCertificate</b>, <b>trustStore</b>, <b>trustStorePassword</b>, <b>hostNameInCertificate</b>, см. в разделе <a href="f1b62700-f046-488d-bd6b-a5cd8fc345b7.htm">Задание свойств соединения</a>.</p>
+    <p>Если свойству <b>encrypt</b> присвоено значение <b>true</b>, а свойству <b>trustServerCertificate</b> установлено значение <b>true</b>, драйвер JDBC Microsoft SQL Server не проверяет SSL-сертификат SQL Server. Обычно это требуется для того, чтобы разрешить подключения в тестовой среде.</p>
+    <p>В следующем примере кода показано, как можно задать свойство <b>trustServerCertificate</b> в строке подключения:</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>String connectionUrl = 
+    "jdbc:sqlserver://localhost:1433;" +
+     "databaseName=AdventureWorks;integratedSecurity=true;" +
+     "encrypt=true;trustServerCertificate=true";</pre></span></div>
+    <p>Если свойству <b>encrypt</b> присвоено значение <b>true</b>, а свойству <b>trustServerCertificate</b> установлено значение <b>false</b>, драйвер JDBC Microsoft SQL Server проверяет SSL-сертификат SQL Server. Проверка сертификата сервера является частью SSL-подтверждения и гарантирует, что для подключения выбран правильный сервер. Чтобы проверить сертификат сервера, при подключении необходимо явно предоставить доверенный материал с помощью свойств подключения <b>trustStore</b> и <b>trustStorePassword</b> или неявно, с помощью базового доверенного хранилища JVM по умолчанию. </p>
+    <p>Свойство <b>trustStore</b> указывает путь (включая имя файла) к файлу сертификата trustStore, который содержит список сертификатов, которым доверяет клиент. Свойство <b>trustStorePassword</b> задает пароль, используемый для проверки целостности данных trustStore. Дополнительные сведения об использовании доверенного хранилища JVM по умолчанию см. в разделе <a href="ae34cd1f-3569-4759-80c7-7c9b33b3e9eb.htm">Настройка SSL-шифрования на клиенте</a>.</p>
+    <p>В следующем примере кода показано, как в строке подключения можно задать свойства <b>trustStore</b> и <b>trustStorePassword</b>: </p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>String connectionUrl = 
+    "jdbc:sqlserver://localhost:1433;" +
+     "databaseName=AdventureWorks;integratedSecurity=true;" +
+     "encrypt=true; trustServerCertificate=false;" +
+     "trustStore=storeName;trustStorePassword=storePassword";</pre></span></div>
+    <p>Драйвер JDBC предоставляет дополнительное свойство, <b>hostNameInCertificate</b>, которое задает имя узла сервера. Значение этого свойства должно совпадать со значением свойства subject сертификата. </p>
+    <p>В следующем примере кода показано, как в строке подключения можно использовать свойство <b>hostNameInCertificate</b>:</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>String connectionUrl = 
+    "jdbc:sqlserver://localhost:1433;" +
+     "databaseName=AdventureWorks;integratedSecurity=true;" +
+     "encrypt=true; trustServerCertificate=false;" +
+     "trustStore=storeName;trustStorePassword=storePassword" +
+     "hostNameInCertificate=hostName";</pre></span></div>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Кроме того, можно задать значение свойству подключения с помощью соответствующих методов <b>setter</b>, предоставляемых классом <a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">SQLServerDataSource</a>.<p />
+    </div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="8e566243-2f93-4b21-8065-3c8336649309.htm">Использование SSL-шифрования</a><br /><a href="90724ec6-a9cb-43ef-903e-793f89410bc0.htm">Защита приложений драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

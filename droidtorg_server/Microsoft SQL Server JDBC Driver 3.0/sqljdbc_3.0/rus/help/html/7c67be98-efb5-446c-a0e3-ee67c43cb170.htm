@@ -1,0 +1,175 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Интерфейс SQLXML</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Интерфейс SQLXML</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Начиная с версии 2.0 драйвера Microsoft SQL Server JDBC, обеспечивается поддержка API-интерфейса JDBC 4.0, в котором появился интерфейс java.sql.SQLXML. Интерфейс SQLXML определяет методы для обмена данными XML и их обработки. Тип данных <b>SQLXML</b> сопоставляется с типом данных SQL Server <b>xml</b>.</p>
+    <p>Интерфейс SQLXML обеспечивает методы для доступа к значению XML в виде <b>String</b>, <b>Reader</b> или <b>Writer</b> или в виде <b>Stream</b>. Обратиться к значению XML можно также получить через свойство <b>Source</b>, а задать его значение через свойство <b>Result</b>. Эти свойства используются API-интерфейсами синтаксического анализатора XML, такими как модель DOM, простой API-интерфейс для XML (SAX) и потоковый API-интерфейс для XML (StAX), а также преобразованиями XSLT и XPath. </p>
+    <p>В следующей таблице приводится описание методов, определенных в интерфейсе SQLXML. </p>
+    <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;"><tr>
+          <th colspan="">
+            Синтаксис метода
+          </th>
+          <th colspan="">
+            Описание метода
+          </th>
+        </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131685" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">void free()</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Этот метод освобождает объект SQLXML и ресурсы, занятые им.</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131754" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">InputStream getBinaryStream()</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Возвращает входной поток для чтения данных из SQLXML.</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131755" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Reader getCharacterStream()</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Возвращает данные <b>XML</b> в виде объекта <b>java.io.Reader</b> или потока символов.</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131756" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">T extends Source T getSource(Class&lt;T&gt; sourceClass)</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Возвращает <b>Source</b> для чтения значения <b>XML</b>, заданного объектом <b>SQLXML</b>.</p>
+          <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+            Метод <b>getSource</b> поддерживает следующие источники: javax.xml.transform.dom.DOMSource, javax.xml.transform.sax.SAXSource, javax.xml.transform.stax.StAXSource и java.io.InputStream.<p />
+          </div>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131757" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">String getString()</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Возвращает представление строки значения <b>XML</b>, указанного данным объектом SQLXML.</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131758" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">OutputStream setBinaryStream()</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Извлекает поток, который может быть использован для записи значения <b>XML</b>, представляемого данным объектом SQLXML.</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131759" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Writer setCharacterStream()</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Возвращает поток, который должен быть использован для записи значения <b>XML</b>, представляемого данным объектом SQLXML.</p>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131760" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">T extends Result T setResult(Class&lt;T&gt; resultClass)</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Возвращает <b>Result</b> для установки значения <b>XML</b>, заданного объектом <b>SQLXML</b>. </p>
+          <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+            Метод <b>setResult</b> поддерживает следующие источники: javax.xml.transform.dom.DOMResult, javax.xml.transform.sax.SAXResult, javax.xml.transform.stax.StaxResult и java.io.OutputStream.<p />
+          </div>
+        </td>
+      </tr><tr>
+        <td colspan="">
+          <p>
+            <a href="http://go.microsoft.com/fwlink/?LinkId=131762" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">void setString(значение строки)</linkText></a>
+          </p>
+        </td>
+        <td colspan="">
+          <p>Задает значение XML, заданное данным объектом SQLXML для указанного представления <b>String</b>.</p>
+        </td>
+      </tr></table>
+    <p>Приложения могут читать XML-значения в объекте SQLXML или записывать их только один раз. </p>
+    <p>При вызове метода <b>free()</b> объект SQLXML становится недействительным, его больше нельзя прочесть или записать в него значения. Если приложения пытается вызвать для этого объекта SQLXML метод, отличный от метода <b>free()</b>, возникает исключение. </p>
+    <p>Объект SQLXML больше нельзя будет прочесть или записать в него значения, если приложение вызовет какой-либо из следующих методов считывания <b>getSource</b>, <b>getCharacterStream</b>, <b>getBinaryStream</b> и <b>getString</b>.</p>
+    <p>Объект SQLXML больше нельзя будет прочесть или записать в него значения, если приложение вызовет какой-либо из следующих методов задания: <b>setResult</b>, <b>setCharacterStream</b>, <b>setBinaryStream</b> и <b>setString</b>.</p>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="32b7217e-1f0c-473d-9a45-176daa81584e.htm">Поддержка XML-данных</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingBottom="@dimen/font_12"
+    android:paddingTop="@dimen/font_5"
+    android:shadowColor="@color/red"
+    android:shadowDx="5"
+    
+    android:shadowRadius="50"
+    android:text="@string/str_tovar"
+    android:textColor="@color/white"
+    android:textSize="@dimen/font_23" >
+
+</TextView>

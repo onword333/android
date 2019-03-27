@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="my.pack.namespace"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".MainMenuActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MySimpleCursorActivity" >
+        </activity>
+        <activity android:name=".AddOrder" >
+        </activity>
+        <activity
+            android:name=".NewZayavkaActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/str_new_zayavka" >
+        </activity>
+        <activity
+            android:name=".NomenclatureActivity"
+            android:label="@string/str_tovar" >
+        </activity>
+        <activity
+            android:name="CounteragentActivity"
+            android:label="@string/str_partner" >
+        </activity>
+        <activity
+            android:name="AdminActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/str_administration" >
+        </activity>
+        <activity android:name="DocTableActivity" >
+        </activity>
+        <activity android:name="DocHeadActivity" >
+        </activity>
+        <activity
+            android:name="DateDialog"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity android:name="InputOrderActivity" >
+        </activity>
+        <activity android:name="TestActivity" >
+        </activity>
+        <activity
+            android:name="MagazinActivity"
+            android:label="@string/str_mag" >
+        </activity>
+        <activity
+            android:name="DocJournal"
+            android:label="@string/str_zayavka" >
+        </activity>
+        <activity
+            android:name="ConstantActivity"
+            android:label="@string/str_constant" >
+        </activity>
+        <activity
+            android:name="SettingActivity"
+            android:label="@string/str_setting_label" >
+        </activity>
+        <activity
+            android:name="DialogPeriodActivity"
+            android:label="@string/str_select_period"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="ReportActivity"
+            android:label="@string/main_submenu_sels" >
+        </activity>
+        <activity android:name="ReportDebtsBuyers"></activity>
+        <activity android:name="PasswordActivity" android:theme="@android:style/Theme.Dialog" android:label="@string/str_password"></activity>
+        <activity android:name="Processing"></activity>
+    </application>
+
+</manifest>

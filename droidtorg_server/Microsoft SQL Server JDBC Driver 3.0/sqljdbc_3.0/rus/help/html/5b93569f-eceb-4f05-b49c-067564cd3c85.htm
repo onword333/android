@@ -1,0 +1,115 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Работа с большими объемами данных</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Работа с большими объемами данных</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Начиная с версии 1.2, драйвер Microsoft SQL Server 2005 JDBC обеспечивает поддержку адаптивной буферизации, которая позволяет получать любые данные большого объема, не расходуя ресурсы на серверные курсоры. Драйвер Microsoft SQL Server JDBC с адаптивной буферизацией получает результаты выполнения инструкции с SQL Server по мере запросов приложения, а не все сразу. Драйвер также удаляет результаты, когда приложение теряет к ним доступ.</p>
+    <p>В версии 1.2 драйвера Microsoft SQL Server 2005 JDBC по умолчанию использовался режим буферизации <b>full</b>. Если приложение не устанавливало свойство responseBuffering в значение <b>adaptive</b> в свойствах соединения или с помощью метода <a href="9f489835-6cda-4c8c-b139-079639a169cf.htm">setResponseBuffering</a> объекта <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>, то драйвер поддерживал одновременное считывание всех результатов с сервера. Чтобы включить режим адаптивной буферизации, приложение должно было явно устанавливать свойство соединения responseBuffering в значение <b>adaptive</b>.</p>
+    <p>Начиная с версии 2.0 драйвера Microsoft SQL Server JDBC, режим буферизации по умолчанию имеет значение <b>adaptive</b>, и драйвер JDBC выполняет буферизацию для минимально необходимого объема данных. Дополнительные сведения об использовании адаптивной буферизации см. в разделе <a href="92d4e3be-c3e9-4732-9a60-b57f4d0f7cb7.htm">Использование адаптивной буферизации</a>.</p>
+    <p> Здесь представлены разделы, где описываются различные способы получения данных большого объема из базы данных SQL Server. </p>
+  </div><h1 class="heading">В этом подразделе</h1><div id="inThisSectionSection" class="section">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Подраздел
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>
+              <a href="6c986144-3854-4352-8331-e79eccbefc28.htm">Образец считывания данных большого объема</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает получение данных большого объема с помощью инструкции SQL. </p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>
+              <a href="58c76635-a117-4661-8781-d6cb231c5809.htm">Образец считывания данных большого объема с помощью хранимых процедур</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает получение значений параметра CallableStatement OUT большого объема.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>
+              <a href="76ecc05f-a77d-40a2-bab9-91a7fcf17347.htm">Образец обновления данных большого объема</a>
+            </p>
+          </td>
+          <td>
+            <p>Описывает обновление данных большого объема в базе данных.</p>
+          </td>
+        </tr></table>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="e136b87c-a138-45d6-8c3e-bcef94b7e483.htm">Образец приложений драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

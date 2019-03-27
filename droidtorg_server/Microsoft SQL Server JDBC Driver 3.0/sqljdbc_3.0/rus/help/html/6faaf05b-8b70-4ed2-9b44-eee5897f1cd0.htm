@@ -1,0 +1,121 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование драйвера JDBC</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование драйвера JDBC</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>В этом разделе приводятся краткие указания по установлению простого соединения с базой данных SQL Server с использованием драйвера Microsoft SQL Server JDBC. Перед соединением с базой данных SQL Server необходимо установить SQL Server на локальном компьютере или на сервере, а также установить драйвер JDBC на локальном компьютере. </p>
+  </div><h1 class="heading">Выбор нужного JAR-файла</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер Microsoft SQL Server JDBC предоставляет файлы библиотеки классов <b>sqljdbc.jar</b> и <b>sqljdbc4.jar</b> для использования в зависимости от выбранных параметров среды выполнения Java (JRE). Дополнительные сведения о том, какие файлы JAR следует выбрать, см. в разделе <a href="447792bb-f39b-49b4-9fd0-1ef4154c74ab.htm">Системные требования для драйверов JDBC</a>.</p>
+    </content></div><h1 class="heading">Задание пути к классу</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC не входит в пакет Java SDK. Если нужно его использовать, необходимо включить в путь к классу файл sqljdbc.jar или sqljdbc4.jar. Если в пути к классу не указан файл sqljdbc.jar или sqljdbc4.jar, то приложение вызовет общее исключение «Класс не найден».</p>
+      <p xmlns="">Файлы sqljdbc.jar и sqljdbc4.jar устанавливаются в следующую папку:</p>
+      <p xmlns="">&lt;<i>каталог_установки</i>&gt;\sqljdbc_&lt;<i>версия</i>&gt;\&lt;<i>язык</i>&gt;\sqljdbc.jar</p>
+      <p xmlns="">&lt;<i>каталог_установки</i>&gt;\sqljdbc_&lt;<i>версия</i>&gt;\&lt;<i>язык</i>&gt;\sqljdbc4.jar</p>
+      <p xmlns="">Далее представлен пример инструкции CLASSPATH, используемой для приложения Windows.</p>
+      <p xmlns="">
+        <code>CLASSPATH =.;C:\Program Files\Microsoft SQL Server JDBC Driver\sqljdbc_3.0\enu\sqljdbc.jar</code>
+      </p>
+      <p xmlns="">Далее представлен пример инструкции CLASSPATH, используемой для приложения Unix/Linux.</p>
+      <p xmlns="">
+        <code>CLASSPATH =.:/home/usr1/mssqlserverjdbc/Driver/sqljdbc_3.0/enu/sqljdbc.jar</code>
+      </p>
+      <p xmlns="">Необходимо убедиться в том, что инструкция CLASSPATH содержит только один драйвер Microsoft SQL Server JDBC, то есть либо sqljdbc.jar, либо sqljdbc4.jar.</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        В системах Windows имена каталогов длиной более 8 символов (+ 3 символа расширения) и имена папок, содержащие пробелы, могут вызывать проблемы с путями к классу. Если предполагаются проблемы такого типа, следует временно переместить файл sqljdbc.jar или sqljdbc4.jar в каталог с простым именем, например<code> C:\Temp</code>, изменить путь к классу и проверить, устранена ли проблема.<p />
+      </div>
+    </content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <h1 class="heading" xmlns="">Приложения, которые выполняются непосредственно в командной строке</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Путь к классу настраивается в операционной системе. Добавьте в путь к классу в системе файл sqljdbc.jar или sqljdbc4.jar. Также можно указать путь к классу в командной строке Java, которая запускает приложения, воспользовавшись параметром<code> java -classpath</code>.</p>
+        </content></div>
+      <h1 class="heading" xmlns="">Приложения, выполняющиеся в интегрированной среде разработки</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Каждый поставщик интегрированной среды разработки предоставляет собственный метод задания пути к классу в среде. Простой установки пути к классу в операционной системе недостаточно. Необходимо добавить файл sqljdbc.jar или sqljdbc4.jar к пути к классу в интегрированной среде разработки.</p>
+        </content></div>
+      <h1 class="heading" xmlns="">Сервлеты и JSP</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Сервлеты и JSP выполняются в подсистеме сервлетов/JSP, например Tomcat. Путь к классу необходимо установить в соответствии с документацией по подсистеме сервлетов/JSP. Простой установки пути к классу в операционной системе недостаточно. Некоторые подсистемы сервлетов/JSP выводят окна установка, в которых можно задать путь к классу. В этом случае необходимо добавить к существующему пути к классу подсистемы нужный JAR-файл драйвера JDBC и перезапустить подсистему. В остальных случаях можно развернуть драйвер, скопировав файл sqljdbc.jar или sqljdbc4.jar в определенный каталог (например, lib) во время установки подсистемы. Путь к классу драйвера подсистемы также можно указать в файле конфигурации для подсистемы.</p>
+        </content></div>
+      <h1 class="heading" xmlns="">Enterprise Java Beans</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">Компоненты Enterprise Java Beans (EJB) выполняются в контейнере EJB. Контейнеры EJB предоставляются различными поставщиками. Java-приложения работают в браузере, но загружаются с веб-сервера. Скопируйте файл sqljdbc.jar или sqljdbc4.jar в корневой каталог веб-сервера и укажите имя JAR-файл на вкладке HTML-архива приложения, например <code>&lt;applet ... archive=sqljdbc.jar&gt;</code>.</p>
+        </content></div>
+    </sections></div><h1 class="heading">Установление простого соединения с базой данных</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">В случае использования библиотеки классов sqljdbc.jar приложения сначала должны зарегистрировать драйвер следующим образом:</p>
+      <p xmlns="">
+        <code>Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");</code>
+      </p>
+      <p xmlns="">После загрузки драйвера можно установить соединение, используя URL-адрес соединения и метод <b>getConnection</b> класса <b>DriverManager</b>:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>String connectionUrl = "jdbc:sqlserver://localhost:1433;" +
+   "databaseName=AdventureWorks;user=MyUserName;password=*****;";
+Connection con = DriverManager.getConnection(connectionUrl);</pre></span></div>
+      <p xmlns="">В JDBC API 4.0 метод <b>DriverManager.getConnection</b> усовершенствован и автоматически загружает драйверы JDBC. Поэтому в случае использования библиотеки классов sqljdbc4.jar приложениям не обязательно вызывать метод <b>Class.forName</b> для регистрации или загрузки драйвера.</p>
+      <p xmlns="">Когда вызывается метод <b>getConnection</b> класса <b>DriverManager</b>, из набора зарегистрированных драйверов JDBC выбирается подходящий драйвер. Файл sqljdbc4.jar содержит файл «META-INF/services/java.sql.Driver», который содержит зарегистрированный драйвер <b>com.microsoft.sqlserver.jdbc.SQLServerDriver</b>. Существующие приложения, которые загружают драйверы с помощью метода <b>Class.forName</b>, продолжат работать, не требуя изменений.</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Для библиотеки классов sqljdbc4.jar необходима среда выполнения Java (JRE) версии 6.0 или более поздней.<p />
+      </div>
+      <p xmlns="">Дополнительные сведения о соединении с источниками данных и использовании URL-адреса соединения см. в разделах <a href="44996746-d373-4f59-9863-a8a20bb8024a.htm">Формирование URL-адреса соединения</a> и <a href="f1b62700-f046-488d-bd6b-a5cd8fc345b7.htm">Задание свойств соединения</a>.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="939a8773-2583-49a4-bf00-6b892fbe39dc.htm">Общие сведения о драйвере JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

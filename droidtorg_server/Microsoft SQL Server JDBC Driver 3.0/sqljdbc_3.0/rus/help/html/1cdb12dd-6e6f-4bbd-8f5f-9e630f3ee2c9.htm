@@ -1,0 +1,85 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getEncrypt (SQLServerDataSource)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getEncrypt (SQLServerDataSource)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Возвращает значение<b> boolean</b>, определяющее, включено ли свойство шифрования.</p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public boolean <b>getEncypt</b>()</pre></span></div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <b>true</b>, если шифрование включено. В противном случае значение <b>false</b>.</p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Если для свойства шифрования задано значение <b>true</b>, драйвер JDBC Microsoft SQL Server гарантирует использование SQL Server SSL-шифрования для всех данных, передаваемых между клиентом и сервером, при условии, что на сервере установлен сертификат. </p>
+      <p xmlns="">Если свойство шифрования не указано или задано значение <b>false</b>, то драйвер не будет принудительно выполнять в SQL Server поддержку SSL-шифрования. Если в экземпляре SQL Server не настроено принудительное выполнение SSL-шифрования, то соединение устанавливается без применения шифрования. Если в экземпляре SQL Server настроено принудительное выполнение SSL-шифрования, драйвер JDBC Microsoft SQL Server автоматически включит SSL-шифрование при запуске на правильно настроенной виртуальной машине Java (JVM), иначе соединение будет разорвано и в работе драйвера будет вызвана ошибка. Если свойство шифрования не задано, метод <a href="1cdb12dd-6e6f-4bbd-8f5f-9e630f3ee2c9.htm">getEncrypt</a> возвращает значение  <b>false</b>.</p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">Класс SQLServerDataSource Class</a><br /><a href="7e749bc5-d765-4864-be2b-7822d4c20c09.htm">Элементы SQLServerDataSource</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

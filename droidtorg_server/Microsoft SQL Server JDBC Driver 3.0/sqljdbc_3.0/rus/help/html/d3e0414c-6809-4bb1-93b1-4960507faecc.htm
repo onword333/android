@@ -1,0 +1,108 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Основные сведения о транзакциях</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Основные сведения о транзакциях</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Транзакции — это группы операций, объединенные в логические рабочие модули. Их используют для управления согласованностью и целостностью каждого действия в транзакции и технической поддержки во избежание возможных ошибок в системе. </p>
+    <p>С драйвером JDBC Microsoft SQL Server транзакция может находиться в локальной или распределенной среде. В транзакциях применяются также уровни изоляции. Дополнительные сведения об уровнях изоляции, поддерживаемых драйвером JDBC, см. в разделе <a href="2c41e23a-da6c-4650-b5fc-b5fe53ba65c3.htm">Основные сведения об уровнях изоляции</a>.</p>
+    <p>Транзакции должны управляться приложениями посредством или инструкций Transact-SQL, или методов, предоставляемых драйвером JDBC, но не тем и другим одновременно. Одновременное использование инструкций Transact-SQL и методов JDBC API для одной и той же транзакции может привести к неполадкам, например к невозможности зафиксировать транзакцию в ожидаемое время: фиксация или откат транзакции и начало новой произойдет в неожиданный момент, возникнут исключения «Не удалось возобновить транзакцию».</p>
+  </div><h1 class="heading">Использование локальных транзакций</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Транзакция считается локальной, если она является однофазной и управляется базой данных напрямую. Драйвер JDBC поддерживает локальные транзакции с помощью различных методов класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>, включая <a href="db1e22d2-e53f-474e-8c99-cb1fff7f491a.htm">setAutoCommit</a>, <a href="c7346165-51bf-4844-b64c-29833c147236.htm">commit</a> и <a href="7adb6772-4047-4d8e-931d-b3d20eec44b5.htm">rollback</a>. Локальные транзакции обычно явно управляются приложением или автоматически управляются сервером приложений Java Enterprise Edition (Java EE).</p>
+      <p xmlns="">В следующем примере выполняется локальная транзакция, состоящая из двух отдельных инструкций в блоке<code> try</code>. Инструкции выполняются для таблицы Production.ScrapReason в образце базы данных AdventureWorks SQL Server 2005 и при отсутствии исключений фиксируются. Код в блоке<code> catch </code>откатит транзакцию, если возникнет исключение.</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>public static void executeTransaction(Connection con) {
+   try {
+      //Switch to manual transaction mode by setting
+      //autocommit to false. Note that this starts the first 
+      //manual transaction.
+      con.setAutoCommit(false);
+      Statement stmt = con.createStatement();
+      stmt.executeUpdate("INSERT INTO Production.ScrapReason(Name) VALUES('Wrong size')");
+      stmt.executeUpdate("INSERT INTO Production.ScrapReason(Name) VALUES('Wrong color')");
+      con.commit(); //This commits the transaction and starts a new one.
+      stmt.close(); //This turns off the transaction.
+      System.out.println("Transaction succeeded. Both records were written to the database.");
+   }
+   catch (SQLException ex) {
+      ex.printStackTrace();
+      try {
+         System.out.println("Transaction failed.");
+         con.rollback();
+      }
+      catch (SQLException se) {
+         se.printStackTrace();
+      }
+   }
+}
+</pre></span></div>
+    </content></div><h1 class="heading">Использование распределенных транзакций</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Распределенная транзакция обновляет данные в двух или более сетевых базах данных, при этом сохраняются свойства атомарности, согласованности, изолированности и устойчивости (ACID) обработки транзакций. Поддержка распределенных транзакций была добавлена в JDBC API в дополнительной спецификации API JDBC 2.0. Распределенные транзакции обычно автоматически управляются диспетчером транзакций Java Transaction Service (JTS) в среде сервера приложений Java EE. Тем не менее драйвер JDBC Microsoft SQL Server поддерживает распределенные транзакции с любым диспетчером транзакции, совместимым с интерфейсом Java Transaction API (JTA).</p>
+      <p xmlns="">Драйвер JDBC безупречно интегрируется с координатором распределенных транзакций (MS DTC) (Майкрософт), обеспечивая полноценную поддержку распределенных транзакций с SQL Server. MS DTC — это средство управления распределенными транзакциями, предоставляемое Майкрософт для систем Майкрософт в среде Windows. При помощи проверенной технологии обработки транзакций Microsoft MS DTC поддерживает функции XA, например полный двухфазный распределенный протокол фиксации и восстановление распределенных транзакций.</p>
+      <p xmlns="">Дополнительные сведения об использовании распределенных транзакций см. в разделе <a href="574e326f-0520-4003-bdf1-62d92c3db457.htm">Основные сведения о транзакциях XA</a>.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="afbb776f-05dc-4e79-bb25-2c340483e401.htm">Выполнение транзакций с помощью драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

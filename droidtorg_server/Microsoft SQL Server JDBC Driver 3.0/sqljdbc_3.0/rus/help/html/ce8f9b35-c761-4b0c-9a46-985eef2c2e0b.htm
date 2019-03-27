@@ -1,0 +1,75 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Закрытие неиспользуемых объектов</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Закрытие неиспользуемых объектов</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>При работе с объектами драйвера JDBC Microsoft SQL Server, в особенности с <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a> или одним из объектов <b>Statement</b>, например <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>, <a href="a8481c06-fbba-432b-8c69-4f4619c20ad4.htm">SQLServerPreparedStatement</a> или <a href="30710a63-c05d-47d9-9cf9-c087a1c76373.htm">SQLServerCallableStatement</a>, их следует явно закрывать с помощью методов <b>close</b>, когда они больше не нужны. При этом улучшается производительность, поскольку ресурсы драйвера и сервера освобождаются незамедлительно, а не тогда, когда сработает сборщик мусора приложения Java Virtual Machine. </p>
+    <p>Закрывать объекты особенно важно для поддержания хорошего параллелизма на сервере при использовании блокирования прокрутки. Блокирование прокрутки в последнем использованном буфере выборки сохраняется до закрытия результирующего набора. При повторном использовании соединения для нескольких инструкций закрытие инструкций до того, как они выйдут за пределы области, позволит серверу раньше очистить подготовленные дескрипторы.</p>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="e1592499-b87b-45ee-bab8-beaba8fde841.htm">Повышение производительности и надежности с помощью драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

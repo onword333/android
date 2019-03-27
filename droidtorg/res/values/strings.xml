@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MySimpleCursorActivity!</string>
+    <string name="app_name">Мобильная торговля</string>
+    <string name="str_add_record">Заполнить базу</string>
+    <string name="str_delete_record">Удалить все</string>
+
+    <!-- dialog_period.xml -->
+    <string name="str_select_period">Период</string>
+
+    <!-- style.xml -->
+    <string name="str_match_parent">match_parent</string>
+    <string name="str_wrap_content">wrap_content</string>
+
+    <!-- alert dialog -->
+    <string name="str_save_data">Сохранить заявку ?</string>
+    <string name="str_save_ok">OK</string>
+    <string name="str_save_yes">Да</string>
+    <string name="str_save_no">Нет</string>
+    <string name="str_save_cancel">Отмена</string>
+
+    <!-- main_menu -->
+    <string name="str_tovar">Номенклатура</string>
+    <string name="str_partner">Контрагенты</string>
+    <string name="str_zayavka">Журнал заявок</string>
+    <string name="str_new_zayavka">Создать заявку</string>
+    <string name="toSending">К отправке: </string>
+    <string name="unit"> шт.</string>
+    <string name="restDate">Остатки на: </string>
+    <string name="dbVersion">Версия БД: </string>
+    
+    
+
+    <!-- admin -->
+    <string name="str_administration">Загрузить справочники</string>
+    <string name="str_insert_db">Заполнить базу</string>
+    <string name="str_connection">Соединение</string>
+    <string name="str_load">Загрузка</string>
+    <string name="str_result">Загрузка выполнена</string>
+
+    <!-- magazin -->
+    <string name="str_mag">Список магазинов</string>
+
+    <!-- new zayavka -->
+    <string name="str_doc_head">Шапка</string>
+    <string name="str_doc_table">Строки</string>
+    <string name="str_doc_close">Закрыть ?</string>
+
+    <!-- doc_header -->
+    <string name="str_doc_num">Заявка № </string>
+    <string name="str_doc_date">Дата: </string>
+    <string name="str_doc_partner">Клиент: </string>
+    <string name="str_doc_mag">Точка: </string>
+    <string name="str_doc_debts">Долг: </string>
+    <string name="str_doc_debts_value">0.00</string>
+    <string name="str_doc_note">Прим.: </string>
+    <string name="str_doc_note_enter">Введите примечание</string>
+    <string name="str_doc_save">Сохранить</string>
+
+    <!-- doc_table -->
+    <string name="str_view_tovar">Подбор</string>
+    <string name="str_view_order">Показать заказ</string>
+
+    <!-- add_order -->
+    <string name="str_ed_izm">Еденица изм.: </string>
+    <string name="str_count">Количество: </string>
+    <string name="str_price">Цена: </string>
+    <string name="str_sum">Сумма:</string>
+    <string name="str_add">Добавить</string>
+
+    <!-- doc_journal -->
+    <string name="str_number_jour">№</string>
+    <string name="str_date_jour">дата</string>
+    <string name="str_sum_jour">сумма</string>
+
+    <!-- mymenu -->
+    <string name="str_menu_lookup">Проверить, что лежит на сервере</string>
+    <string name="str_menu_download_server">Загрузить обновления с сервера</string>
+    <string name="str_menu_download_flie">Загрузить обновления из файла</string>
+
+    <!-- file list (наименования файлов обновления) -->
+    <!-- файл блокировки -->
+    <string name="str_lk">LK</string>
+    <string name="str_xf">XF</string>
+    <string name="str_ya">YA</string>
+    <string name="str_yb">YB</string>
+    <string name="str_yc">YC</string>
+    <string name="str_yd">YD</string>
+    <string name="str_ye">YE</string>
+    <string name="str_yf">YF</string>
+    <string name="str_zc">ZC</string>
+    <string name="str_zd">ZD</string>
+    <string name="str_ze">ZE</string>
+    <string name="str_table_">tblPartnerPrice</string>
+
+    <!-- constant -->
+    <string name="str_constant">Константы</string>
+
+    <!-- dialog_change_value -->
+    <string name="str_change_value_title">Введите новое значение</string>
+
+    <!-- setting.xml -->
+    <string name="str_setting_label">Параметры</string>
+    <string name="str_rg_name">Временная папка:</string>
+    <string name="str_sdcard">карта памяти</string>
+    <string name="str_system_folder">системный каталог</string>
+
+    <!-- main_menu.xml, report.xml -->
+    <string name="main_menu_report">Отчеты</string>
+    <string name="main_submenu_sels">Объем продаж</string>
+    <string name="reports_submenu_debts_buyers">Дебиторка</string>
+    <string name="ru_processing">Обработка</string>
+
+    <!-- report.xml -->
+    <string name="str_reports_type_item">Товар/Группа: </string>
+    <string name="str_reports_execute">Выполнить</string>
+
+    <!-- PasswordActivity.java -->
+    <string name="str_password">Введите пароль</string>
+    <string name="str_report_debits_byuers">Дебиторка</string>
+
+    <!-- processing.xml -->
+    <string name="select_period">Интервал обработки заявок</string>
+    <string name="delete_doc">удалить отправленные заявки</string>
+    <string name="clean_sprav">чистить справочники</string>
+    <string name="block_doc">заблокировать заявки</string>
+    <string name="unblock_doc">разблокировать заявки</string>
+    <string name="delete_all">удалить все</string>
+    
+    
+    <!-- dialogs -->
+    <string name="dialog_title">Информация</string>
+    <string name="load_sprav">Загрузка справочников</string>
+    
+    
+    <!-- ошибки -->
+   <string name="error1">Ошибка разбора строки. </string> 
+    
+
+</resources>

@@ -1,0 +1,116 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getObject (java.lang.String, java.util.Map) (ISQLServerResultSet)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getObject (java.lang.String, java.util.Map) (ISQLServerResultSet)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Получает значение заданного имени столбца в текущей строке этого объекта <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a> в виде объекта языка программирования Java, используя данный объект <b>Map</b>.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      В настоящее время этот метод не поддерживается драйвером JDBC Microsoft SQL Server. Этот метод всегда возвращает сопоставление по умолчанию.<p />
+    </div>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public java.lang.Object <b>getObject</b>(java.lang.String <i>colName</i>,
+                                  java.util.Map <i>map</i>)</pre></span></div><h1 class="heading">Параметры</h1><div id="parametersSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <i>colName</i>
+      </p>
+      <p xmlns="">Значение<b> String</b>, содержащее имя столбца.</p>
+      <p xmlns="">
+        <i>map</i>
+      </p>
+      <p xmlns="">Объект <b>Map</b>.</p>
+    </content>
+  </div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Значение<b> Object</b>.</p>
+    </content>
+  </div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>getObject</b> указывается с помощью метода <b>getObject</b> в интерфейсе java.sql.ResultSet.</p>
+      <p xmlns="">Этот метод вернет значение данного столбца в виде объекта Java. Объект Java будет иметь заданный по умолчанию тип, соответствующий типу SQL Server столбца и сопоставленный встроенным типам, указанным в спецификации JDBC. Если значение SQL NULL, то драйвер вернет значение Java NULL. </p>
+      <p xmlns="">Этот метод также может быть использован для чтения абстрактных типов данных, относящихся к базе данных. В API JDBC 2.0 возможности метода <b>getObject</b> расширены и поддерживают материализацию данных определяемых пользователем типов SQL Server. Если в столбце содержится структурированное или уникальное значение, то выполнение этого метода будет аналогично вызову <code>getObject(columnIndex, this.getStatement().getConnection().getTypeMap())</code>.</p>
+      <p xmlns="">Начиная с версии 3.0 драйвера SQL Server JDBC.</p>
+      <ul xmlns=""><li>
+          Значение типа date будет возвращаться в виде объекта java.sql.Date.<br />
+        </li><li>
+          Значение типа time будет возвращаться в виде объекта java.sql.Time.<br />
+        </li><li>
+          Значение типа datetime2 будет возвращаться в виде объекта java.sql.Timestamp.<br />
+        </li><li>
+          Значение типа datetimeoffset будет возвращаться в виде объекта microsoft.sql.DateTimeOffset.<br />
+        </li></ul>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="eaffcff1-286c-459f-83da-3150778480c9.htm">Класс SQLServerResultSet</a><br /><a href="924df406-14b2-40b8-a7bc-c2fd145d7d7c.htm">Метод getObject (ISQLServerResultSet)</a><br /><a href="2a438d5d-2d6a-46a0-a2ae-f35fbae4a472.htm">Элементы ISQLServerResultSet</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

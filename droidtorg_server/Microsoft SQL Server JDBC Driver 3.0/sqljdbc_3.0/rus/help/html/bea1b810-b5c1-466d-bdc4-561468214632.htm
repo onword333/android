@@ -1,0 +1,103 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getBytes (SQLServerBlob)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getBytes (SQLServerBlob)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Получает данные большого двоичного объекта в виде массива байтов. </p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public byte[] <b>getBytes</b>(long <i>pos</i>,
+                       int <i>length</i>)</pre></span></div><h1 class="heading">Параметры</h1><div id="parametersSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <i>pos</i>
+      </p>
+      <p xmlns="">Начальная позиция (отсчет с 1, а не с 0).</p>
+      <p xmlns="">
+        <i>length</i>
+      </p>
+      <p xmlns="">Длина получаемых данных.</p>
+    </content>
+  </div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Массив типа<b> byte</b>, содержащий запрошенные данные.</p>
+    </content>
+  </div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>getBytes</b> указывается с помощью метода <b>getBytes</b> в интерфейсе java.sql.Blob.</p>
+      <p xmlns="">Если длина большого двоичного объекта равна нулю или имеет значение NULL, то при попытке получить ровно 0 байт в позиции 1 возвращается пустой массив типа<b> byte </b>(массив длиной 0).</p>
+      <p xmlns="">Если длина большого двоичного объекта равна нулю или имеет значение NULL, то при попытке получить данные любой длины в позиции, отличной от 1, будет вызвано исключение позиции.</p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="88bd8623-889d-4b5d-99ff-c85b32f3ff5c.htm">Класс SQLServerBlob</a><br /><a href="0d57940a-90bc-4f1b-a20f-5a97d7d20b61.htm">Методы SQLServerBlob</a><br /><a href="90e48555-ea83-4a90-80a3-51bc685015ec.htm">Элементы SQLServerBlob</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

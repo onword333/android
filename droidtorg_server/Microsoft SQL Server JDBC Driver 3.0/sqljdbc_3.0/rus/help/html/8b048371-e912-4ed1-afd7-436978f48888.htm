@@ -1,0 +1,89 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование метаданных базы данных</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование метаданных базы данных</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Чтобы запросить у базы данных сведения о поддерживаемых функциях, драйвер JDBC Microsoft SQL Server реализует класс <a href="8b8049d0-8c6d-4476-866b-098709f37eec.htm">SQLServerDatabaseMetaData</a>. Этот класс содержит многочисленные методы, которые возвращают сведения в виде одного значения или результирующего набора. </p>
+    <p>Чтобы создать объект <b>SQLServerDatabaseMetaData</b>, можно использовать метод <a href="86223cb5-3bf4-489a-8c82-669a91764f2b.htm">getMetaData</a> класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a> для получения сведений о базе данных, с которой установлено соединение.</p>
+    <p>В следующем примере открытое соединение с образцом базы данных SQL Server 2005 AdventureWorks передается в функцию, метод <b>getMetaData</b> класса <b>SQLServerConnection</b> используется для возвращения объекта <b>SQLServerDatabaseMetadata</b>, и затем используются различные методы объекта <b>SQLServerDatabaseMetaData</b> для отображения сведений о драйвере, версии драйвера, имени базы данных и версии базы данных.</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void getDatabaseMetaData(Connection con) {
+   try {
+      DatabaseMetaData dbmd = con.getMetaData();
+      System.out.println("dbmd:driver version = " + dbmd.getDriverVersion());
+      System.out.println("dbmd:driver name = " + dbmd.getDriverName());
+      System.out.println("db name = " + dbmd.getDatabaseProductName());
+      System.out.println("db ver = " + dbmd.getDatabaseProductVersion());
+   }
+   catch (Exception e) {
+      e.printStackTrace();
+   }
+}
+</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="5cfb35d4-ddcd-40a2-8091-f29cddc32552.htm">Обработка метаданных с использованием драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

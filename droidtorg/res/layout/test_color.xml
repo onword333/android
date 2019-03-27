@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TableRow
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:background="@color/Chocolate1" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/DodgerBlue1" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/green" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey11" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey21" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey31" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey41" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey51" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/grey61" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/IndianRed1" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/Khaki1" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/Orange" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/red" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/test" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/yellow" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/lavender" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/LightGray" >
+
+        <TextView />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/Snow2" >
+
+        <TextView />
+    </TableRow>
+
+</TableLayout>

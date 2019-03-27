@@ -1,0 +1,108 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Использование удержания</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Использование удержания</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>По умолчанию результирующий набор, созданный внутри транзакции, сохраняется открытым после фиксации транзакции в базе данных или ее отката. Однако иногда полезно закрыть результирующий набор после фиксации транзакции. Для этого драйвер JDBC Microsoft SQL Server поддерживает удержание результирующего набора. </p>
+    <p>Удержание результирующего набора задается при помощи метода <a href="552eebd0-4c38-43f0-961f-35244f99109b.htm">setHoldability</a> класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. При установке удержания при помощи метода <b>setHoldability</b> можно использовать константы удержания результирующего набора <b>ResultSet.HOLD_CURSORS_OVER_COMMIT</b> или <b>ResultSet.CLOSE_CURSORS_AT_COMMIT</b>.</p>
+    <p>Драйвер JDBC также поддерживает удержание при создании одного из объектов инструкции. При создании объектов инструкции, имеющих перегрузку параметров удержания результирующего набора, удержание объекта инструкции должно соответствовать удержанию подключения. Если они не соответствуют друг другу, возникает исключение. Это происходит потому, что SQL Server поддерживает удержание только на уровне соединения.</p>
+    <p>Сохранение результирующего набора — это удержание объекта <b>SQLServerConnection</b>, связанного с результирующим набором, в момент создания результирующего набора только для курсоров на стороне сервера. Это не применяется к курсорам на стороне клиента. Все результирующие наборы с курсорами на стороне клиента всегда имеют значение удержания <b>ResultSet.HOLD_CURSORS_OVER_COMMIT</b>.</p>
+    <p>Для серверных курсоров при соединении с SQL Server 2005 или более поздней версии параметр возможности сохранения влияет только на новые результирующие наборы, которые будут созданы для этого соединения. Это означает, что настройка удержания не имеет влияния на удержание каких-либо результирующих наборов, которые были созданы ранее и открыты в настоящий момент относительно того соединения. Однако для SQL Server 2000 установка возможности сохранения относится и к существующим результирующим наборам, и к новым, которые пока не созданы для данного соединения.</p>
+    <p>В следующем примере удержание результирующего набора задается при выполнении локальной транзакции, состоящей из двух раздельных инструкций в блоке <code>try</code>. Инструкции выполняются для таблицы Production.ScrapReason в образце базы данных SQL Server 2005 AdventureWorks. Сначала выполняется переключение на ручной режим транзакции посредством установки для автоматической фиксации значения <b>false</b>. После отключения режима автоматической фиксации инструкции SQL не будут фиксироваться, пока приложение не вызовет явным образом метод <a href="c7346165-51bf-4844-b64c-29833c147236.htm">commit</a>. Код в блоке catch откатит транзакцию, если возникнет исключение.</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void executeTransaction(Connection con) {
+   try {
+       con.setAutoCommit(false);
+       con.setHoldability(ResultSet.HOLD_CURSORS_OVER_COMMIT);
+       Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+       stmt.executeUpdate("INSERT INTO Production.ScrapReason(Name) VALUES('Bad part')");
+       ResultSet rs = stmt.executeQuery("SELECT * FROM Production.ScrapReason");
+       con.commit();
+       System.out.println("Transaction succeeded.");
+
+       //Display results.
+       while (rs.next()) {
+          System.out.println(rs.getString(2));
+       }
+       stmt.close();
+      }
+      catch (SQLException ex) {
+         ex.printStackTrace();
+         try {
+            System.out.println("Transaction failed.");
+            con.rollback();
+         }
+         catch (SQLException se) {
+            se.printStackTrace();
+         }
+      }
+   }
+}
+</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="afbb776f-05dc-4e79-bb25-2c340483e401.htm">Выполнение транзакций с помощью драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

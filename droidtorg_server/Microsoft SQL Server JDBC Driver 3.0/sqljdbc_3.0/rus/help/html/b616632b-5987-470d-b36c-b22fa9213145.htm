@@ -1,0 +1,86 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Класс SQLServerDataSourceObjectFactory</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Класс SQLServerDataSourceObjectFactory</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Представляет фабрику объектов для материализации источников данных из интерфейса JNDI. </p>
+    <p>
+      <b>Пакет:</b> com.microsoft.sqlserver.jdbc</p>
+    <p>
+      <b>Расширяет:</b> java.lang.Object</p>
+    <p>
+      <b>Реализует:</b> javax.naming.spi.ObjectFactory</p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public class <b>SQLServerDataSourceObjectFactory</b></pre></span></div></div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод наследуется всеми классами источников данных. В рамках поддержки интерфейса Referenceable драйвер Microsoft SQL Server JDBC предоставляет доступ к этому классу, реализующему <b>ObjectFactory</b>. Серверы приложений Java вызовут <b>getReference</b> для класса источников данных, и при этом будет создан объект <b>Reference</b>, использующий имя класса внутри себя в качестве своей фабрики класса.</p>
+      <p xmlns="">Если серверу Java Application требуется отменить ссылку на объект <b>Reference</b>, он создает экземпляр объекта <b>SQLServerDataSourceObjectFactory</b> и вызывает метод <a href="0a1503e2-e991-4d70-a223-087fc63baf73.htm">getObjectInstance</a>, передавая объект <b>Reference</b> для извлечения экземпляра источника данных.</p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="52c6b133-f7ed-468d-8f34-bc2e4b81553e.htm">Элементы SQLServerDataSourceObjectFactory</a><br /><a href="e4e1ae9d-18a6-41db-8bd2-9cf0eee4cccb.htm">Справочник интерфейса драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Общие сведения о различиях типов данных</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Общие сведения о различиях типов данных</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Есть целый ряд различий между типами данных языка программирования Java и типами данных SQL Server. Драйвер JDBC Microsoft SQL Server помогает уменьшить значимость этих различий с помощью различных преобразований. </p>
+  </div><h1 class="heading">Символьные типы</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Типами данных символьных строк JDBC являются <b>CHAR</b>, <b>VARCHAR</b> и <b>LONGVARCHAR</b>. Начиная с версии 2.0 драйвера JDBC Microsoft SQL Server в драйвере JDBC предусмотрена поддержка для API-интерфейса JDBC 4.0. В версии JDBC 4.0 типами данных символьных строк JDBC могут также быть <b>NCHAR</b>, <b>NVARCHAR</b> и <b>LONGNVARCHAR</b>. Эти новые типы символьных строк поддерживают собственные символьные типы Java в формате Юникода и исключают необходимость выполнять какие-либо преобразования из ANSI в Юникод или из Юникода в ANSI.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Тип
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>Фиксированная длина</p>
+          </td>
+          <td colspan="">
+            <p>Типы данных SQL Server <b>char</b> и <b>nchar</b> непосредственно соответствуют типам <b>CHAR</b> и <b>NCHAR</b> JDBC. Они представляют собой типы фиксированной длины с заполнением, предоставляемым сервером, при условии, что для столбца установлено значение SET ANSI_PADDING ON. Заполнение всегда включено для <b>nchar</b>, а что касается <b>char</b>, то в случае, если на сервере заполнение для столбцов символьных типов не предусмотрено, то заполнение добавляет драйвер JDBC.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>Переменная длина</p>
+          </td>
+          <td colspan="">
+            <p>Типы SQL Server <b>varchar</b> и <b>nvarchar</b> непосредственно соответствуют типам <b>VARCHAR</b> и <b>NVARCHAR</b> JDBC.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>Long</p>
+          </td>
+          <td colspan="">
+            <p>Типы SQL Server <b>text</b> и <b>ntext</b> соответствуют типам <b>LONGVARCHAR</b> и <b>LONGNVARCHAR</b> JDBC. Эти типы являются устаревшими, начиная с версии SQL Server 2005, и вместо них нужно использовать типы больших значений <b>varchar(max)</b> и <b>nvarchar(max)</b>.</p>
+            <p>Использование методов <b>update&lt;Numeric Type&gt;</b> и <a href="4993dfe1-2232-4b3c-b931-dfdb35dd225a.htm">updateObject (int, java.lang.Object)</a> по отношению к серверным столбцам <b>text</b> и <b>ntext</b> завершается с ошибками. Однако использование метода <a href="93a2b22c-82b4-48c7-a428-369ebe98a372.htm">setObject</a> с указанным символьным типом преобразования по отношению к серверным столбцам <b>text</b> и <b>ntext</b> поддерживается.</p>
+          </td>
+        </tr></table>
+    </content></div><h1 class="heading">Типы двоичных строк</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Типами двоичных строк JDBC являются <b>BINARY</b>, <b>VARBINARY</b> и <b>LONGVARBINARY</b>. </p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Тип
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>Фиксированная длина</p>
+          </td>
+          <td colspan="">
+            <p>Тип SQL Server <b>binary</b> непосредственно соответствует типу <b>BINARY</b> JDBC. Это тип фиксированной длины с заполнением, предоставляемым сервером в случае, если для столбца установлено значение SET ANSI_PADDING ON. Если на сервере заполнение для столбцов символьных типов не предусмотрено, то заполнение добавляет драйвер JDBC.</p>
+            <p>Тип SQL Server <b>timestamp</b> представляет собой тип <b>BINARY</b> JDBC с постоянной длиной 8 байт.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>Переменная длина</p>
+          </td>
+          <td colspan="">
+            <p>Тип SQL Server <b>varbinary</b> сопоставляется с типом JDBC <b>VARBINARY</b>.</p>
+            <p>Тип <b>udt</b> в SQL Server соответствует JDBC как тип <b>VARBINARY</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>Long</p>
+          </td>
+          <td colspan="">
+            <p>Тип SQL Server <b>image</b> сопоставляется с типом JDBC <b>LONGVARBINARY</b>. Этот тип является устаревшим, начиная с версии SQL Server 2005, и вместо него следует использовать тип больших значений <b>varbinary(max)</b>.</p>
+          </td>
+        </tr></table>
+    </content></div><h1 class="heading">Точные числовые типы</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Точные числовые типы JDBC непосредственно соответствуют аналогичным типами SQL Server.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Тип
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>BIT</p>
+          </td>
+          <td colspan="">
+            <p>Тип <b>BIT</b> JDBC представляет единственный бит, который может иметь значение 0 или 1. Сопоставляется с типом SQL Server <b>bit</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>TINYINT</p>
+          </td>
+          <td colspan="">
+            <p>Тип <b>TINYINT</b> JDBC представляет единственный байт. Сопоставляется с типом SQL Server <b>tinyint</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SMALLINT</p>
+          </td>
+          <td colspan="">
+            <p>Тип JDBC <b>SMALLINT</b> представляет 16-разрядное целочисленное значение со знаком. Сопоставляется с типом SQL Server <b>smallint</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>INTEGER</p>
+          </td>
+          <td colspan="">
+            <p>Тип JDBC <b>INTEGER</b> представляет 32-разрядное целочисленное значение со знаком. Сопоставляется с типом SQL Server <b>int</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>BIGINT</p>
+          </td>
+          <td colspan="">
+            <p>Тип JDBC <b>BIGINT</b> представляет 64-разрядное целочисленное значение со знаком. Сопоставляется с типом SQL Server <b>bigint</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>NUMERIC</p>
+          </td>
+          <td colspan="">
+            <p>Тип <b>NUMERIC</b> JDBC представляет значение десятичного числа постоянной точности, которое хранит значения идентичной точности. Тип <b>NUMERIC</b> сопоставляется с типом SQL Server <b>numeric</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>DECIMAL</p>
+          </td>
+          <td colspan="">
+            <p>Тип <b>DECIMAL</b> JDBC представляет значение десятичного числа постоянной точности, которое хранит значения по крайней мере указанной точности. Тип <b>DECIMAL</b> сопоставляется с типом SQL Server <b>decimal</b>.</p>
+            <p>Тип <b>DECIMAL</b> JDBC также соответствует типам SQL Server <b>money</b> и <b>smallmoney</b>, которые являются конкретными типами десятичного числа постоянной точности, хранящимися в 8 и 4 байтах соответственно.</p>
+          </td>
+        </tr></table>
+    </content></div><h1 class="heading">Приблизительные числовые типы</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Приблизительными числовыми типами JDBC являются <b>REAL</b>, <b>DOUBLE</b> и <b>FLOAT</b>.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Тип
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>REAL</p>
+          </td>
+          <td colspan="">
+            <p>Тип <b>REAL</b> JDBC имеет семь цифр точности (одинарная точность) и непосредственно соотетствует типу SQL Server <b>real</b>.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>DOUBLE</p>
+          </td>
+          <td colspan="">
+            <p>Тип <b>DOUBLE</b> JDBC имеет 15 цифр точности (двойная точность) и соответствует типу SQL Server <b>float</b>. «Тип <b>FLOAT</b> JDBC» — синоним «<b>DOUBLE</b>». В связи с возможной путаницей между <b>FLOAT</b> и <b>DOUBLE</b> предпочтительным является <b>DOUBLE</b>.</p>
+          </td>
+        </tr></table>
+    </content></div><h1 class="heading">Типы даты и времени</h1><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Тип <b>TIMESTAMP</b> JDBC соответствует типам SQL Server <b>datetime</b> и <b>smalldatetime</b>. Значения типа <b>datetime</b> хранятся в двух четырехбайтовых целых числах. Тип <b>smalldatetime</b> хранит ту же информацию (дату и время), но с меньшей точностью, в двух двухбайтовых целых числах типа small.</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Тип SQL Server <b>timestamp</b> — это тип двоичной строки фиксированной длины. Он не соответствует ни одному типу типов JDBC для представления времени: <b>DATE</b>, <b>TIME</b> или <b>TIMESTAMP</b>.<p />
+      </div>
+    </content></div><h1 class="heading">Соответствие пользовательских типов</h1><div id="sectionSection5" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Функция сопоставления пользовательских типов JDBC, использующая интерфейсы <b>SQLData</b> для усовершенствованных типов JDBC (пользовательские, типы Struct и так далее), не реализованы в драйвере JDBC.</p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7802328d-4d23-4775-9573-4169b127d258.htm">Основные сведения о типах данных драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

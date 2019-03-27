@@ -1,0 +1,104 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод setBinaryStream (int, java.io.InputStream, int)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод setBinaryStream (int, java.io.InputStream, int)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Присваивает указанному параметру указанный входной поток, который будет содержать указанное число байтов.</p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public final void <b>setBinaryStream</b>(int <i>n</i>,
+                                  java.io.InputStream <i>x</i>,
+                                  int <i>length</i>)</pre></span></div><h1 class="heading">Параметры</h1><div id="parametersSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <i>n</i>
+      </p>
+      <p xmlns="">Значение типа<b> int</b>, указывающее номер параметра.</p>
+      <p xmlns="">
+        <i>x</i>
+      </p>
+      <p xmlns="">Объект <b>InputStream</b>.</p>
+      <p xmlns="">
+        <i>length</i>
+      </p>
+      <p xmlns="">Значение типа <b>int</b>, определяющее число байтов.</p>
+    </content>
+  </div></div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>setBinaryStream</b> указывается методом <b>setBinaryStream</b> в интерфейсе java.sql.PreparedStatement.</p>
+      <p xmlns="">Если длина потока отличается от указанной в параметре <i>length</i>, то драйвер JDBC вызовет исключение при обновлении или вставке строки. </p>
+      <p xmlns="">Если длина потока неизвестна, то для параметра <i>length</i> может быть задано значение -1, после чего драйвер будет принимать потоки независимо от их длины. Для sqljdbc4.jar рекомендуется использовать метод JDBC 4.0 <a href="6c32b904-c44b-472e-a084-38f008a742b4.htm">Метод setBinaryStream (int, java.io.InputStream)</a>, если приложение обновляет столбец с помощью потока, длина которого неизвестна.</p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="2adb2b88-96d6-4645-86d0-0388c8186691.htm">Метод setBinaryStream (ISQLServerPreparedStatement)</a><br /><a href="2363902f-d4c6-4cd4-a5fc-86079eb9e418.htm">Члены SQLServerPreparedStatement</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

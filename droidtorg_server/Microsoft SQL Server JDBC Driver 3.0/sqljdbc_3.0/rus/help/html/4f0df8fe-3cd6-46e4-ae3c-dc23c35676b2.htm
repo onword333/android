@@ -1,0 +1,503 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getProcedureColumns (SQLServerDatabaseMetaData)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getProcedureColumns (SQLServerDatabaseMetaData)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Возвращает описание параметров и столбцов результата хранимой процедуры.</p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public java.sql.ResultSet <b>getProcedureColumns</b>(java.lang.String <i>sCatalog</i>,
+                                              java.lang.String <i>sSchema</i>,
+                                              java.lang.String <i>proc</i>,
+                                              java.lang.String <i>col</i>)</pre></span></div><h1 class="heading">Параметры</h1><div id="parametersSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <i>sCatalog</i>
+      </p>
+      <p xmlns="">Значение<b> String</b>, содержащее имя каталога. Задание значения NULL для этого параметра указывает на то, что имя каталога использовать не нужно.</p>
+      <p xmlns="">
+        <i>sSchema</i>
+      </p>
+      <p xmlns="">Значение<b> String</b>, содержащее шаблон имени схемы. Задание значения NULL для этого параметра указывает на то, что имя схемы использовать не нужно.</p>
+      <p xmlns="">
+        <i>proc</i>
+      </p>
+      <p xmlns="">Значение <b>String</b>, содержащее шаблон имени процедуры.</p>
+      <p xmlns="">
+        <i>col</i>
+      </p>
+      <p xmlns="">Значение <b>String</b>, содержащее шаблон имени столбца. Для каждого столбца возвращается строка при задании значения NULL для этого параметра.</p>
+    </content>
+  </div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Объект <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.</p>
+    </content>
+  </div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>getProcedureColumns</b> указывается методом <b>getProcedureColumns</b> в интерфейсе java.sql.DatabaseMetaData.</p>
+      <p xmlns="">Результирующий набор, возвращаемый методом <b>getProcedureColumns</b>, включает следующие данные.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th colspan="">
+              Имя
+            </th>
+            <th colspan="">
+              Тип
+            </th>
+            <th colspan="">
+              Описание
+            </th>
+          </tr><tr>
+          <td colspan="">
+            <p>PROCEDURE_CAT</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя базы данных, в которой находится указанная хранимая процедура.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>PROCEDURE_SCHEM</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Схема для хранимой процедуры.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>PROCEDURE_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя хранимой процедуры.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>COLUMN_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя столбца.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>COLUMN_TYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Тип столбца. Может иметь одно из следующих значений.</p>
+            <p>procedureColumnUnknown (0)</p>
+            <p>procedureColumnIn (1)</p>
+            <p>procedureColumnInOut (2)</p>
+            <p>procedureColumnOut (4)</p>
+            <p>procedureColumnReturn (5)</p>
+            <p>procedureColumnResult (3)</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>DATA_TYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Тип данных SQL из java.sql.Types.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>TYPE_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя типа данных.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>PRECISION</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Общее количество значащих цифр.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>LENGTH</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Длина данных в байтах.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SCALE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Число цифр справа от десятичной запятой.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>RADIX</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Основание системы счисления для числовых типов.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>NULLABLE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>short</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, может ли столбец содержать значение NULL. Может иметь одно из следующих значений.</p>
+            <p>procedureNoNulls (0)</p>
+            <p>procedureNullable (1)</p>
+            <p>procedureNullableUnknown (2)</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>REMARKS</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Описание этого столбца процедуры.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              SQL Server не возвращает значение для этого столбца.<p />
+            </div>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>COLUMN_DEF</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Значение по умолчанию для столбца.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SQL_DATA_TYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Этот столбец эквивалентен столбцу <b>DATA_TYPE</b>, за исключением типа данных <b>datetime</b> и типа данных ISO <b>interval</b>. </p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SQL_DATETIME_SUB</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>smallint</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Вложенный код типа ISO <b>datetime</b> <b>interval</b>, если значение <b>SQL_DATA_TYPE</b> равно <b>SQL_DATETIME</b> или <b>SQL_INTERVAL</b>. Для типов данных, отличных от <b>datetime</b> и <b>interval</b> по стандарту ISO, этот столбец имеет значение NULL.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>CHAR_OCTET_LENGTH</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Максимальное число байтов в столбце.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>ORDINAL_POSITION</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>int</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Индекс столбца в таблице.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>IS_NULLABLE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Указывает, допускает ли столбец значения NULL.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_TYPE_CATALOG_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя каталога, содержащего определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_TYPE_SCHEMA_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя схемы, содержащей определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_UDT_CATALOG_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Определяемый пользователем тип с полным именем.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_UDT_SCHEMA_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя каталога, в котором определено имя коллекции схем XML. Если не удается найти имя каталога, то эта переменная содержит пустую строку.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_UDT_ASSEMBLY_TYPE_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя схемы, в которой определено имя коллекции схем XML. Если не удается найти имя схемы, значением является пустая строка.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_XML_SCHEMACOLLECTION_CATALOG_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя коллекции схем XML. Если не удается найти имя, значением является пустая строка.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_XML_SCHEMACOLLECTION_SCHEMA_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя каталога, содержащего определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_XML_SCHEMACOLLECTION_NAME</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>String</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Имя схемы, содержащей определяемый пользователем тип.</p>
+          </td>
+        </tr><tr>
+          <td colspan="">
+            <p>SS_DATA_TYPE</p>
+          </td>
+          <td colspan="">
+            <p>
+              <b>tinyint</b>
+            </p>
+          </td>
+          <td colspan="">
+            <p>Тип данных SQL Server, используемый расширенными хранимыми процедурами.</p>
+            <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+              Дополнительные сведения о типах данных, возвращаемых SQL Server, см. раздел "Типы данных (Transact-SQL)" в электронной документации SQL Server.<p />
+            </div>
+          </td>
+        </tr></table>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Дополнительные сведения о данных, возвращаемых методом <b>getProcedureColumns</b>, см. в разделе "sp_sproc_columns (Transact-SQL)" электронной документации по SQL Server.<p />
+      </div>
+    </content>
+  </div><h1 class="heading">Пример</h1><div id="codeExampleSection" class="section" name="collapseableSection">
+    <description xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <content>
+        <p xmlns="">Следующий пример показывает использование метода <b>getProcedureColumns</b> для возврата сведений о хранимой процедуре uspGetBillOfMaterials в образце базы данных SQL Server 2005 AdventureWorks.</p>
+      </content>
+    </description>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void executeGetProcedureColumns(Connection con) {
+   try {
+      DatabaseMetaData dbmd = con.getMetaData();
+      ResultSet rs = dbmd.getProcedureColumns(null, null, "uspGetBillOfMaterials", null);
+      ResultSetMetaData rsmd = rs.getMetaData();
+
+      // Display the result set data.
+      int cols = rsmd.getColumnCount();
+      while(rs.next()) {
+         for (int i = 1; i &lt;= cols; i++) {
+            System.out.println(rs.getString(i));
+         }
+      }
+      rs.close();
+   } 
+
+   catch (Exception e) {
+      e.printStackTrace();
+   }
+}</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="8b8049d0-8c6d-4476-866b-098709f37eec.htm">Класс SQLServerDatabaseMetaData</a><br /><a href="327ba0bc-438a-494c-b119-1cd4a096bb58.htm">Элементы SQLServerDatabaseMetaData</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

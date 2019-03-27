@@ -1,0 +1,102 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Развертывание драйвера JDBC</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Развертывание драйвера JDBC</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>При развертывании приложения, которое зависит от драйвера JDBC Microsoft SQL Server, необходимо осуществить вторичное распространение драйвера JDBC совместно с приложением. В отличие от компонентов доступа к данным Windows DAC, которые являются компонентами операционной системы Windows, драйвер JDBC считается компонентом SQL Server.  </p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Хотя можно свободно выполнить распределение драйвера JDBC в соответствии с требованиями приложения, необходимо сначала зарегистрироваться. Дополнительные сведения о регистрации для повторного распределения драйвера JDBC см. в разделе <a href="http://go.microsoft.com/fwlink/?LinkId=111571" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Регистрация для получения прав для повторного распределения драйвера Microsoft SQL Server JDBC</linkText></a>.<p />
+    </div>
+    <p>Для развертывания драйвера JDBC в приложении используются два подхода. При использовании одного файлы драйвера JDBC включаются как часть собственного настраиваемого пакета установки. Во втором подходе используется пакет установки JDBC, предоставляемый Microsoft, который можно загрузить с <a href="http://go.microsoft.com/fwlink/?LinkId=70166" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Центра разработки драйвера JDBC для Microsoft SQL Server</linkText></a>.</p>
+    <p>В следующих разделах описывается использование пакета установки в операционных системах Windows и UNIX.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Дополнительные общие сведения о развертывании приложений Java см. в разделе <a href="http://go.microsoft.com/fwlink/?LinkId=70165" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Обзор развертывания Java </linkText></a> на веб-сайте компании Sun Microsystems.<p />
+    </div>
+  </div><h1 class="heading">Развертывание драйвера JDBC в системах Windows</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">При развертывании драйвера драйвера JDBC в операционных системах Windows необходимо использовать исполняемый файл в формате zip пакета установки, который обычно называется <code>sqljdbc_&lt;version&gt;_&lt;language&gt;.exe</code>.</p>
+      <p xmlns="">Для автоматического запуска исполняемого файла в формате zip необходимо использовать параметр командной строки <code> /auto </code> в командной строке или в пакетном файле, как описано ниже:</p>
+      <p xmlns="">
+        <code>sqljdbc_&lt;version&gt;_&lt;language&gt;.exe /auto</code>
+      </p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        При использовании параметра <code> /auto </code> установка не будет полностью автоматической, поскольку на экране пользователя все же будет отображаться диалоговое окно WinZip. Однако оно не требует выполнения каких-либо действий пользователя и закрывается после выполнения операции распаковки.<p />
+      </div>
+    </content></div><h1 class="heading">Развертывание драйвера в системах UNIX </h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">При развертывании драйвера драйвера JDBC в операционных системах UNIX необходимо использовать исполняемый файл в формате gzip пакета установки, который обычно называется <code>sqljdbc_&lt;version&gt;_&lt;language&gt;.tar.gz</code>.</p>
+      <p xmlns="">До установки драйвера JDBC необходимо убедиться в том, что в системе пользователя установлены программы gzip и tar, и что папки, содержащие исполняемые файлы обеих программ, добавлены к переменной среды PATH.</p>
+      <p xmlns="">Чтобы распаковать сжатый TAR-файл, перейдите в каталог, в который нужно распаковать драйвер, и введите следующую команду:</p>
+      <p xmlns="">
+        <code>gzip -d sqljdbc_&lt;version&gt;_&lt;language&gt;.tar.gz</code>
+      </p>
+      <p xmlns="">Чтобы распаковать TAR-файл, переместите его в каталог, в который нужно установить драйвер, и введите следующую команду:</p>
+      <p xmlns="">
+        <code>tar –xf sqljdbc_&lt;version&gt;_&lt;language&gt;.tar</code>
+      </p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="939a8773-2583-49a4-bf00-6b892fbe39dc.htm">Общие сведения о драйвере JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

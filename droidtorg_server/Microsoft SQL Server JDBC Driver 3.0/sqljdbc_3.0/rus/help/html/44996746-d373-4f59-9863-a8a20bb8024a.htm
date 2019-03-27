@@ -1,0 +1,175 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Формирование URL-адреса соединения</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Формирование URL-адреса соединения</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Обычно URL-адреса соединения  выглядят следующим образом:</p>
+    <p>
+      <code>jdbc:sqlserver://[serverName[\instanceName][:portNumber]][;property=value[;property=value]]</code>
+    </p>
+    <p>где: </p>
+    <ul><li>
+        
+          <b>jdbc:sqlserver://</b> (обязательно) известен как подпротокол и является константой. <br />
+      </li><li>
+        
+          <b>serverName</b> (необязательно) является адресом сервера, с которым выполняется соединение. Это может быть DNS, IP-адрес, локальный узел или 127.0.0.1 локального компьютера. Имя сервера необходимо указать в коллекции свойств, если оно не указано в URL-адресе соединения, .<br />
+      </li><li>
+        
+          <b>instanceName</b> (необязательно) является экземпляром, с которым выполняется соединение с serverName. Подключение выполняется к экземпляру по умолчанию, если не указано другое.<br />
+      </li><li>
+        
+          <b>portNumber</b> (необязательно) является портом, с которым выполняется соединение с serverName. Значение по умолчанию — 1433. Если соединение выполняется с портом по умолчанию, в URL-адресе необязательно указывать порт или символ ':' перед ним.<br />
+        <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+          Для оптимизации производительности соединения при соединении с именованным экземпляром необходимо указать portNumber. Это позволит избежать дополнительного обращения к серверу для определения номера порта. Если используются portNumber и instanceName, portNumber будет иметь более высокий приоритет, и instanceName будет пропущен.<p />
+        </div>
+      </li><li>
+        
+          <b>property</b> (необязательно) представляет собой одно или несколько свойств соединений. Дополнительные сведения см. в разделе <a href="f1b62700-f046-488d-bd6b-a5cd8fc345b7.htm">Задание свойств соединения</a>. Можно указать любое свойство из списка. В качестве разделителей в списке свойств можно использовать точку с запятой (';'), при этом свойства не могут повторяться. <br />
+      </li></ul>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Внимание! </b>
+      В целях безопасности не рекомендуется составлять URL-адрес соединения на основе данных пользователей. В URL-адресе необходимо указывать только имя сервера и драйвер. Для указания значений имени пользователя и пароля следует использовать коллекции свойств соединения. Дополнительные сведения о безопасности в приложениях JDBC см. в разделе <a href="90724ec6-a9cb-43ef-903e-793f89410bc0.htm">Защита приложений драйвера JDBC</a>.<p />
+    </div>
+  </div><h1 class="heading">Примеры соединения</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Подключитесь к базе данных по умолчанию на локальном компьютере с помощью имени пользователя и пароля:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost;user=MyUserName;password=*****;</code>
+      </p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Хотя в предыдущем примере в строке соединения используется имя пользователя и пароль, при запуске приложения в операционной системе Windows следует использовать встроенную систему безопасности, поскольку она позволяет обеспечить более высокий уровень защиты. Дополнительные сведения см. в подразделе <a href="#Connectingintegrated">Соединения с использованием встроенной проверки подлинности</a> далее в этом разделе.<p />
+      </div>
+      <p xmlns="">Подключитесь к базе данных по умолчанию на локальном компьютере с помощью встроенной проверки подлинности:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost;integratedSecurity=true;</code>
+      </p>
+      <p xmlns="">Подключитесь к именованной базе данных на удаленном сервере:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost;databaseName=AdventureWorks;integratedSecurity=true;</code>
+      </p>
+      <p xmlns="">Подключитесь к удаленному серверу с использованием порта по умолчанию:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost:1433;databaseName=AdventureWorks;integratedSecurity=true;</code>
+      </p>
+      <p xmlns="">Подключитесь, указав настраиваемое имя приложения:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost;databaseName=AdventureWorks;integratedSecurity=true;applicationName=MyApp;</code>
+      </p>
+    </content></div><h1 class="heading">Именованные и множественные экземпляры SQL Server</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        SQL Server обеспечивает возможность установки нескольких экземпляров на одном сервере. Все экземпляры идентифицируются с помощью специального имени. Для соединения с именованным экземпляром SQL Server можно либо указать номер порта именованного экземпляра (рекомендуется), либо указать имя экземпляра в качестве свойства URL-адреса JDBC или свойства <b>datasource</b>. Если имя экземпляра или свойство номера порта не указано, создается соединение с экземпляром по умолчанию. См. следующие примеры:</p>
+      <p xmlns="">Чтобы использовать номер порта, выполните следующие действия:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost:1433;integratedSecurity=true;&lt;more properties as required&gt;;</code>
+      </p>
+      <p xmlns="">Чтобы использовать свойство URL-адреса JDBC, выполните следующие действия:</p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://localhost;instanceName=instance1;integratedSecurity=true;&lt;more properties as required&gt;;</code>
+      </p>
+    </content></div><h1 class="heading">Экранирование значений в URL-адресе соединения</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Может потребоваться преобразование определенных частей значений URL-адреса соединения из-за включения специальных символов, таких как пробелы, точек с запятой и кавычек.  Драйвер JDBC поддерживает преобразование этих значений, если они заключены в скобки. Например, {;} указывает на преобразование точки с запятой.</p>
+      <p xmlns="">Преобразованные значения могут содержать специальные символы (особенно '=', ';', '[]' и пробелы), но не могут содержать скобок. Значения, которые необходимо преобразовать, и значения, содержащие скобки, следует добавить к коллекции свойств.</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Пустое пространство внутри скобок является литералом и не усекается.<p />
+      </div>
+    </content></div><a name="Connectingintegrated"> </a><h1 class="heading">Соединение с использованием встроенной проверки подлинности</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает использование встроенной проверки подлинности типа 2 в операционных системах Windows с использованием свойства строки соединения integratedSecurity. Чтобы использовать встроенную проверку подлинности, скопируйте файл sqljdbc_auth.dll в системный каталог Windows на компьютере, на котором установлен драйвер JDBC. </p>
+      <p xmlns="">Файлы sqljdbc_auth.dll устанавливаются в следующем местоположении:</p>
+      <p xmlns="">&lt;<i>каталог установки</i>&gt;\sqljdbc_&lt;<i>версия</i>&gt;\&lt;<i>язык</i>&gt;\auth\</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        При использовании 32-разрядной виртуальной машины Java (JVM) следует использовать файл sqljdbc_auth.dll в папке x86 folder, даже если используется операционная система x64. При использовании 64-разрядной виртуальной машины и процессора x64 используйте файл sqljdbc_auth.dll в папке x64. При использовании 64-разрядной виртуальной машины JVM и процессора Itanium используйте файл sqljdbc_auth.dll в папке IA64.<p />
+      </div>
+      <p xmlns="">Или можно задать системное свойство java.libary.path для указания каталога, в котором содержится файл sqljdbc_auth.dll. Например, если драйвер JDBC установлен в каталоге по умолчанию, можно указать местоположение файла DLL, использовав следующий аргумент виртуальной машины (VM) при запуске приложения Java: </p>
+      <p xmlns="">
+        <code>-Djava.library.path=C:\Microsoft SQL Server JDBC Driver\sqljdbc_&lt;version&gt;\enu\auth\x86</code>
+      </p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Драйвер JDBC не поддерживает использование встроенной проверки подлинности при запуске драйвера в операционных системах, отличных от Windows. Драйвер также не предоставляет функций передачи учетных данных для проверки подлинности Windows, таких как имя пользователя и пароль, при соединении с SQL Server из операционных систем, отличных от Windows. В таких случаях приложения должны вместо этого использовать проверку подлинности SQL Server.<p />
+      </div>
+    </content></div><h1 class="heading">Соединение с помощью IPv6-адресов</h1><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC поддерживает использование IPv6-адресов с коллекцией свойств соединения и свойством строки соединения serverName. Исходное значение serverName, такое как  jdbc:<i>sqlserver</i>://<i>serverName</i>, не поддерживается для IPv6-адресов в строках соединения. Использования имени для <i>serverName</i> вместо неизмененного IPv6-адреса будет достаточно для всех вариантов соединений. Следующие примеры можно использовать как дополнительные источники сведений.</p>
+      <p xmlns="">
+        <b>Использование свойства serverName</b>
+      </p>
+      <p xmlns="">
+        <code>jdbc:sqlserver://;serverName=3ffe:8311:eeee:f70f:0:5eae:10.203.31.9\\instance1;integratedSecurity=true;</code>
+      </p>
+      <p xmlns="">
+        <b>Использование коллекции свойств</b>
+      </p>
+      <p xmlns="">
+        <code>Properties pro = new Properties();</code>
+      </p>
+      <p xmlns="">
+        <code>pro.setProperty("serverName", "serverName=3ffe:8311:eeee:f70f:0:5eae:10.203.31.9\\instance1");</code>
+      </p>
+      <p xmlns="">
+        <code>Connection con = DriverManager.getConnection("jdbc:sqlserver://;integratedSecurity=true;", pro);</code>
+      </p>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="94bcfbe3-f00e-4774-bda8-bb7577518fec.htm">Соединение с SQL Server с помощью драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

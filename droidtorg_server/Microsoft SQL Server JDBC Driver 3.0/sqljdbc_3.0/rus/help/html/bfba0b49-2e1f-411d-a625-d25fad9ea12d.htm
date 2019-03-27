@@ -1,0 +1,96 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Устранение неполадок подключения</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Устранение неполадок подключения</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Для связи с базой данных SQL Server драйверу JDBC Microsoft SQL Server необходим установленный и запущенный протокол TCP/IP. Просмотреть установленные протоколы сетевой библиотеки можно с помощью диспетчера конфигурации SQL Server . </p>
+    <p>Попытка подключить к базе данных может завершиться неуспешно по многим причинам. Можно выполнить следующие действия.</p>
+    <ul><li>
+        Протокол TCP/IP не включен для SQL Server, либо указан неправильный сервер или номер порта. Убедитесь, что SQL Server с включенным протоколом TCP/IP прослушивает указанный порт на указанном сервере. При этом может быть вызвано исключение, схожее с «Не удалось войти в систему. Не удалось соединениться с хостом по протоколу TCP/IP». Это указывает на одну из следующих причин:<br />
+        <ul><li>
+            
+              SQL Server установлен, но сетевой протокол TCP/IP не установлен для SQL Server с помощью программы SQL Server Network Utility для SQL Server 2000 или диспетчера конфигурации SQL Server для SQL Server 2005 и более поздних версий.<br />
+          </li><li>
+            TCP/IP установлен в качестве протокола SQL Server, но не прослушивается порт, указанный в URL-адресе для соединения с JDBC. Порт 1433 задан по умолчанию, но при установке продукта SQL Server можно настроить прослушивание любого порта. Убедитесь, что SQL Server прослушивает порт 1433. Кроме того, если порт был изменен, убедитесь, что порт, указаный в URL-адресе для соединения с JDBC, совпадает с измененным портом. Дополнительные сведения об URL-адресах для соединения с JDBC см. в разделе <a href="44996746-d373-4f59-9863-a8a20bb8024a.htm">Формирование URL-адреса соединения</a>.<br />
+          </li><li>
+            Адрес компьютера, указанный в URL-адресе для соединения с JDBC содержит ссылки на сервер, где установлен и запущен SQL Server. <br />
+          </li><li>
+            Нарушено взаимодействие по протоколу TCP/IP между клиентом и сервером, где запущен SQL Server. Проверьте подключение TCP/IP к SQL Server при с помощью программы telnet. Например, введите в командной строке <code> telnet 192.168.0.0 1433 </code>, где 192.168.0.0 — это адрес компьютера, где запущен SQL Server, а 1433 — это прослушиваемый порт. Если появится сообщение «Подключение telnet невозможно», значит TCP/IP не прослушивает соединения SQL Server на этом порте. Используйте программу SQL Server Network Utility для SQL Server 2000 или диспетчер конфигурации SQL Server для SQL Server 2005 и более поздних версий, чтобы настроить в SQL Server использование TCP/IP по порту 1433. <br />
+          </li><li>
+            Используемый сервером порт закрыт брандмауэом. Это может быть порт, используемый сервером, или (необязательно) порт, связанный с именованным экземпляром сервера.<br />
+          </li></ul>
+      </li><li>
+        Указано неверное имя базы данных. Проверьте, что такая база данных SQL Server действительно существует.<br />
+      </li><li>
+        Неправильное имя пользователя или пароль. Проверьте вводимые данные.<br />
+      </li><li>
+        При использовании проверки подлинности SQL Server драйвер JDBC требует, чтобы на SQL Server была установлена проверка подлинности SQL Server, отличная от проверки по умолчанию. Убедитесь, что этот параметр включен при установке или настройке вашего экземпляра SQL Server.<br />
+      </li></ul>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="723e2680-a0c5-4a7d-a319-1e49e41078cf.htm">Диагностика проблем с драйвером JDBC</a><br /><a href="94bcfbe3-f00e-4774-bda8-bb7577518fec.htm">Соединение с SQL Server с помощью драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

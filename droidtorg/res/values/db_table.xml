@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="tables">
+        <item>CREATE TABLE IF NOT EXISTS "tblPartnerPrice" (				           <!-- fk_partner -->
+				"_id" INTEGER NOT NULL,
+  				"fk_tovar" INTEGER NOT NULL,
+  				"fk_tovar_setka" INTEGER NOT NULL,
+  				"fBase" INTEGER NOT NULL,
+  				"fPrice" FLOAT(17, 3) NOT NULL,
+  				"fParcent" FLOAT(17, 3) NOT NULL,
+  				"fHow" INTEGER NOT NULL);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblDebitorka" (                  <!-- fNDoc -->
+  				"_id" INTEGER NOT NULL PRIMARY KEY,
+  				"fDDoc" DATE NOT NULL,
+  				"fVDoc" VARCHAR(255) NOT NULL,
+  				"fk_partner" INTEGER NOT NULL,
+  				"fk_magazin" INTEGER NOT NULL,
+  				"fPrihod" FLOAT(17, 3) NOT NULL,
+  				"fRashod" FLOAT(17, 3) NOT NULL);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblTovar" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY, 
+  				"fCount" FLOAT(17, 3),
+  				"fName" VARCHAR(255), 
+  				"fPriceKOpt" FLOAT(17, 3),
+  				"fPriceOpt" FLOAT(17, 3),
+  				"fPriceRozn" FLOAT(17, 3),
+  				"fLevel" INTEGER NOT NULL,
+  				"fCodeParent" INTEGER NOT NULL,
+  				"fIsRed" VARCHAR (1) NULL,
+  				"fIsGroup" VARCHAR (1) NULL,
+  				"fPriceMOpt" FLOAT(17, 3),
+  				"fPriceO" FLOAT(17, 3) NOT NULL,
+  				"fCodeRoot" INTEGER NULL,
+  				"fKeyEdIzm" INTEGER NULL,
+  				"fPriceBN" FLOAT(17, 3) NULL,
+  				"fPriceOpt2" FLOAT(17, 3) NULL,
+  				"fPriceVip" FLOAT(17, 3) NULL);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblTovarSetka" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY,
+  				"fName" VARCHAR(255),
+  				"fPrice" FLOAT(17, 3), 
+  				"fk_tovar" INTEGER NOT NULL);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblTovKr" (                <!-- fKeyTovar -->
+  				"_id" INTEGER NOT NULL, 
+  				"fKeyKr" INTEGER NOT NULL);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblCounteragent" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY, 
+  				"fName" VARCHAR(255),
+  				"fRestOur" FLOAT(17, 3),
+  				"fRestThem" FLOAT(17, 3),
+  				"fTypePrice" INTEGER, 
+  				"fPercentPrice" FLOAT(17, 3));		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblMag" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY,
+  				"fRestOur" FLOAT(17, 3),
+  				"fRestThem" FLOAT(17, 3),
+  				"fKeyPartner" INTEGER, 
+  				"fName" VARCHAR(255));		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblDocTable" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  				"fKeyZ" INTEGER NOT NULL,
+  				"fKeyTovar" INTEGER NOT NULL,
+  				"fCount" FLOAT(17, 3),
+  				"fPrice" FLOAT(17, 3),
+  				"fSum" DOUBLE(17, 2),
+  				"fKeyEdIzm" INTEGER NOT NULL,
+  				"fKeyEdIzmKr" INTEGER NOT NULL,
+  				"fCountKr" FLOAT(17, 3));		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblDocHead" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  				"fKeyPartner" INTEGER NOT NULL,
+  				"fDate" DATE DEFAULT (CURRENT_DATE),
+  				"fSum" DOUBLE(17, 2) NOT NULL,
+  				"fOut" VARCHAR(1),
+  				"fNote" VARCHAR(255),
+  				"fKeyMag" INTEGER);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblEdIzm" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY,   				 
+  				"fName" VARCHAR(255));		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblEdIzmKr" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY, 
+  				 "fName" VARCHAR(255),
+  				"fKr" INTEGER NOT NULL,
+  				"fKeyEdIzm" INTEGER NOT NULL);		</item>
+        <item>CREATE TABLE IF NOT EXISTS "tblConstant" (
+  				"_id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  				"fProgID" VARCHAR(255) NOT NULL,
+  				"fName" VARCHAR(255),
+  				"fValue" VARCHAR(255));		</item>
+    </string-array>
+
+</resources>

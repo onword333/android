@@ -1,0 +1,478 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Трассировка операций драйвера</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Трассировка операций драйвера</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Драйвер JDBC Microsoft SQL Server поддерживает использование трассировки (или ведения журнала) для разрешения проблем с драйвером JDBC при его использовании в приложении. Чтобы включить использование трассировки, драйвер JDBC использует API-интерфейсы ведения журнала в java.util.logging, который обеспечивает набор классов для создания объектов <b>Logger</b> и <b>LogRecord</b>.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Для собственного компонента (sqljdbc_xa.dll), который включен в комплект драйвера JDBC, трассировка включается стандартом BID. Дополнительные сведения о BID см. в разделе <a href="http://go.microsoft.com/fwlink/?LinkId=70042" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Трассировка доступа к данным в SQL Server</linkText></a>. <p />
+    </div>
+    <p>При разработке приложения можно вызывать объекты <b>Logger</b>, которые в свою очередь создают объекты <b>LogRecord</b>, которые далее передаются объектам <b>Handler</b> для обработки. Объекты <b>Logger</b> и <b>Handler</b> используют как уровни ведения журнала, так и необязательные фильтры ведения журнала для управления обработкой записей <b>LogRecords</b>. Когда операции ведения журнала завершены, объекты <b>Handler</b> могут также использовать объекты <b>Formatter</b> для публикации информации журнала.</p>
+    <p>По умолчанию, среда java.util.logging записывает выходные данные в файл. Файл журнала с выходными данными должен иметь разрешения записи для контекста, в рамках которого работает драйвер JDBC.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Дополнительные сведения об использовании различных объектов ведения журнала для отслеживания программ см. в разделе <a href="http://go.microsoft.com/fwlink/?LinkId=57239" target="_blank" alt=""><linkText xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">API-интерфейсы ведения журнала Java</linkText></a> документации на веб-сайте Sun Microsystems.<p />
+    </div>
+    <p>В следующих разделах приводится описание уровней ведения журнала и категорий, которые могут быть занесены в журнал, а также включение трассировки в приложении.</p>
+  </div><h1 class="heading">Уровни ведения журнала</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Каждое создаваемое сообщение журнала имеет связанный уровень ведения журнала. Уровень ведения журнала определяет важность сообщения журнала, который задается классом <b>Level</b> в java.util.logging. Включение ведения журнала на одном уровне также включает ведение журнала на всех более высоких уровнях. В данном разделе приводится описание уровней ведения журнала как для открытых категорий ведения журнала, так и для внутренних. Дополнительные сведения о категориях ведения журнала см. в подразделе «Категории ведения журнала» данного раздела.</p>
+      <p xmlns="">В следующей таблице приводится описание каждого из доступных уровней ведения журнала для открытых категорий ведения журнала.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Имя
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>SEVERE</p>
+          </td>
+          <td>
+            <p>Указывает серьезный сбой и имеет самый высокий уровень ведения журнала. В драйвере JDBC этот уровень используется для выдачи ошибок и исключений.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>WARNING</p>
+          </td>
+          <td>
+            <p>Указывает на возможную проблему.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>INFO</p>
+          </td>
+          <td>
+            <p>Предоставляет информационные сообщения.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>CONFIG</p>
+          </td>
+          <td>
+            <p>Предоставляет сообщения о конфигурации. Обратите внимание, что драйвер JDBC в настоящий момент не предоставляет сообщений о конфигурации.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FINE</p>
+          </td>
+          <td>
+            <p>Обеспечивает базовую информацию об отслеживании, включая все исключения, возникшие по вине открытых методов.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FINER</p>
+          </td>
+          <td>
+            <p>Предоставляет подробные данные трассировки, включая все входные и выходные точки открытых методов с типами данных связанных параметров, а также все открытые свойства для открытых классов. Кроме этого, входные и выходные параметры и значения, возвращенные методами, кроме возвращаемых значений CLOB, BLOB, NCLOB, Reader, &lt;поток&gt;. </p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FINEST</p>
+          </td>
+          <td>
+            <p>Обеспечивает наивысший уровень детализации данных трассировки. Это самый низкий уровень ведения журнала.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>OFF</p>
+          </td>
+          <td>
+            <p>Отключает ведение журнала.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>ALL</p>
+          </td>
+          <td>
+            <p>Включает регистрацию в журнале всех сообщений.</p>
+          </td>
+        </tr></table>
+      <p xmlns="">В следующей таблице приводится описание каждого из доступных уровней ведения журнала для внутренних категорий ведения журнала.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Имя
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>SEVERE</p>
+          </td>
+          <td>
+            <p>Указывает серьезный сбой и имеет самый высокий уровень ведения журнала. В драйвере JDBC этот уровень используется для выдачи ошибок и исключений. </p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>WARNING</p>
+          </td>
+          <td>
+            <p>Указывает на возможную проблему.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>INFO</p>
+          </td>
+          <td>
+            <p>Предоставляет информационные сообщения.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FINE</p>
+          </td>
+          <td>
+            <p>Обеспечивает информацию о трассировке, включая создание и удаление базового объекта. Помимо этого, все исключения, возникшие по вине открытых методов.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FINER</p>
+          </td>
+          <td>
+            <p>Предоставляет подробные данные трассировки, включая все входные и выходные точки открытых методов с типами данных связанных параметров, а также все открытые свойства для открытых классов. Кроме этого, входные и выходные параметры и значения, возвращенные методами, кроме возвращаемых значений CLOB, BLOB, NCLOB, Reader, &lt;поток&gt;.</p>
+            <p>Следующие категории ведения журнала существовали в версии 1.2 драйвера JDBC и имели уровень ведения журнала FINE: <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>, <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>, XA и <a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">SQLServerDataSource</a>. Начиная с версии 2.0, эти категории обновлены до уровня FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>FINEST</p>
+          </td>
+          <td>
+            <p>Обеспечивает наивысший уровень детализации данных трассировки. Это самый низкий уровень ведения журнала.</p>
+            <p>Следующие категории ведения журнала существовали в версии 1.2 драйвера JDBC и имели уровень ведения журнала FINEST: TDS.DATA и TDS.TOKEN. Начиная с версии 2.0, эти категории сохраняют уровень ведения журнала FINEST. </p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>OFF</p>
+          </td>
+          <td>
+            <p>Отключает ведение журнала.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>ALL</p>
+          </td>
+          <td>
+            <p>Включает регистрацию в журнале всех сообщений.</p>
+          </td>
+        </tr></table>
+    </content></div><h1 class="heading">Категории ведения журнала</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">При создании объекта <b>Logger</b> следует указать объекту именованную сущность или категорию, из которой необходимо получать сведения журнала. Драйвер JDBC поддерживает следующие открытые категории ведения журнала, определенные в пакете драйвера com.microsoft.sqlserver.jdbc.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Имя
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>Соединение</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. Приложение может задать уровень ведения журнала FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>Инструкция</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>. Приложение может задать уровень ведения журнала FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>DataSource</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">SQLServerDataSource</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>ResultSet</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>. Приложение может задать уровень ведения журнала FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>Драйвер</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="fbdceae5-7e7b-4edb-8c33-c701ca6b2d53.htm">SQLServerDriver</a>. Приложение может задать уровень ведения журнала FINER.</p>
+          </td>
+        </tr></table>
+      <p xmlns="">Начиная с версии 2.0 драйвера Microsoft JDBC, драйвер также обеспечивает пакет com.microsoft.sqlserver.jdbc.internals, который включает поддержку ведения журнала для следующих внутренних категорий ведения журнала.</p>
+      <table width="100%" cellspacing="0" cellpadding="0" border="1" style="background-color: #CCCCCC;" xmlns=""><tr>
+            <th>
+              Имя
+            </th>
+            <th>
+              Описание
+            </th>
+          </tr><tr>
+          <td>
+            <p>AuthenticationJNI</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения относительно проблем со встроенной проверкой подлинности Windows.</p>
+            <p>Приложение может задать уровень ведения журнала FINEST и FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerConnection</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. Приложение может задать уровень ведения журнала FINE и FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerDataSource</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классах <a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">SQLServerDataSource</a>, <a href="b00e5a90-2af7-4d04-8ef8-256183777dcf.htm">SQLServerConnectionPoolDataSource</a> и <a href="4c87e9d3-904a-4b86-90cc-3684034c86ee.htm">SQLServerPooledConnection</a>. </p>
+            <p>Приложение может задать уровень ведения журнала FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>InputStream</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения относительно следующих типов данных: java.io.InputStream, java.io.Reader и типы данных, которые имеют описатель максимального значения, то есть типы данных varchar, nvarchar и varbinary.</p>
+            <p>Приложение может задать уровень ведения журнала FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerException</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerResultSet</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>. Приложение может задать уровень ведения журнала FINE, FINER и FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerStatement</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>. Приложение может задать уровень ведения журнала FINE, FINER и FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>XA</p>
+          </td>
+          <td>
+            <p>Регистрирует все транзакции XA в классе <a href="95fc7b07-2498-4a7e-8f7f-ee0d86b598b4.htm">SQLServerXADataSource</a>. Приложение может задать уровень ведения журнала FINE и FINER.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TDS.DATA</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения, содержащие диалог на уровне протокола TDS между драйвером и SQL Server. Подробное содержимое каждого отправленного и полученного пакета TDS вносится в журнал в виде значений ASCII или шестнадцатеричных значений. Учетные данные для входа (имена пользователей и пароли) не вносятся в журнал. Все остальные данные записываются в журнал. </p>
+            <p>Данная категория создает очень длинные и подробные сообщения, ее можно включить, только если установить уровень ведения журнала на FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TDS.Channel</p>
+          </td>
+          <td>
+            <p>Данная категория отслеживает действия канала связи TCP с SQL Server. Вносимые в журнал сообщения включают открытие и закрытие сокета, а также операции считывания и записи. Категория также отслеживает сообщения, связанные с установкой соединения SSL с SQL Server.</p>
+            <p>Эта категория может быть включена, если установить уровень ведения журнала на FINE, FINER или FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TDS.Writer</p>
+          </td>
+          <td>
+            <p>Эта категория отслеживает операции записи в канал TDS. Обратите внимание, что отслеживается длина записей, а не содержимое. Данная категория также отслеживает отправку сигнала на сервер, запрашивающего отмену выполнения инструкции.</p>
+            <p>Эта категория может быть включена только установкой уровня ведения журнала FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TDS.Reader</p>
+          </td>
+          <td>
+            <p>Данная категория отслеживает операции считывания из канала TDS на уровне FINEST. На уровне FINEST отслеживание может быть очень подробным. На уровнях WARNING и SEVERE данная категория отслеживает получение драйвером недействительного протокола TDS от SQL Server до того, как драйвер закроет соединение. </p>
+            <p>Эта категория может быть включена, если установить уровень ведения журнала на FINER и FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TDS.Command</p>
+          </td>
+          <td>
+            <p>Данная категория отслеживает переходы состояния низкого уровня и другую информацию, связанную с выполнением команд TDS, таких как инструкции T-SQL, выборки курсора ResultSet, фиксации и так далее.</p>
+            <p>Эта категория может быть включена только установкой уровня ведения журнала FINEST.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>TDS.TOKEN</p>
+          </td>
+          <td>
+            <p>Данная категория вносит в журнал только токены внутри пакетов TDS и является менее подробной, чем категория TDS.DATA. Эта категория может быть включена, только если установить уровень ведения журнала на FINEST.</p>
+            <p>На уровне FINEST данная категория отслеживает токены TDS по мере их обработки в ответе. На уровне SEVERE данная категория отслеживает обнаружение недопустимого токена TDS. </p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerDatabaseMetaData</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="8b8049d0-8c6d-4476-866b-098709f37eec.htm">SQLServerDatabaseMetaData</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerResultSetMetaData</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="9a36885f-83f3-44af-85f0-2b849dfd20d4.htm">SQLServerResultSetMetaData</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerParameterMetaData</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="546290e0-9411-4a2b-aa36-61251e70e9cf.htm">SQLServerParameterMetaData</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerBlob</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="88bd8623-889d-4b5d-99ff-c85b32f3ff5c.htm">SQLServerBlob</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerClob</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="24170524-e1ab-4e80-8fd1-6688efacfbde.htm">SQLServerClob</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerSQLXML</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения во внутреннем классе <b>SQLServerSQLXML</b>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerDriver</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="fbdceae5-7e7b-4edb-8c33-c701ca6b2d53.htm">SQLServerDriver</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr><tr>
+          <td>
+            <p>SQLServerNClob</p>
+          </td>
+          <td>
+            <p>Регистрирует сообщения в классе <a href="3d3883a2-c39c-439f-bbc0-01e73968672b.htm">SQLServerNClob</a>. Приложение может задать уровень ведения журнала FINE.</p>
+          </td>
+        </tr></table>
+    </content></div><h1 class="heading">Включение трассировки программным способом</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Трассировку можно включить программно, создав объект <b>Logger</b> и указав категорию для регистрации. Например, в следующем коде показано включение ведения журнала для инструкций SQL:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>Logger logger = Logger.getLogger("com.microsoft.sqlserver.jdbc.Statement");
+logger.setLevel(Level.FINER);</pre></span></div>
+      <p xmlns="">Чтобы отключить ведение журнала в коде, используйте следующую инструкцию:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>logger.setLevel(Level.OFF);</pre></span></div>
+      <p xmlns="">Чтобы регистрировать все доступные категории, используйте следующую инструкцию:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>Logger logger = Logger.getLogger("com.microsoft.sqlserver.jdbc");
+logger.setLevel(Level.FINE);</pre></span></div>
+      <p xmlns="">Чтобы отключить регистрацию в журнале определенной категории, используйте следующую инструкцию:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>Logger logger = Logger.getLogger("com.microsoft.sqlserver.jdbc.Statement");
+logger.setLevel(Level.OFF);</pre></span></div>
+    </content></div><h1 class="heading">Включение трассировки при помощи файла Logging.Properties</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Можно также включить трассировку при помощи файла<code> logging.properties </code>, который находится в каталоге<code> lib </code>установки Java Runtime Environment. Файл может быть использован для установки значений по умолчанию для журналов и обработчиков, которые будут использованы, если трассировка включена.</p>
+      <p xmlns="">Далее приводится пример настроек, которые можно задать в файлах <code>logging.properties</code>:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>   # Specify the handlers to create in the root logger
+   # (all loggers are children of the root logger).
+   # The following creates two handlers.
+   handlers = java.util.logging.ConsoleHandler, java.util.logging.FileHandler
+
+   # Set the default logging level for the root logger.
+   .level = OFF
+
+   # Set the default logging level for new ConsoleHandler instances.
+   java.util.logging.ConsoleHandler.level = FINE
+
+   # Set the default logging level for new FileHandler instances.
+   java.util.logging.FileHandler.level = OFF
+
+   # Set the default formatter for new ConsoleHandler instances.
+   java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
+
+   # Set the default logging level for the logger named ConnectionPool.
+   ConnectionPool.level = OFF</pre></span></div>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Свойства можно задать в файле<code> logging.properties </code> при помощи объекта <b>LogManager</b>, который является частью java.util.logging.<p />
+      </div>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="723e2680-a0c5-4a7d-a319-1e49e41078cf.htm">Диагностика проблем с драйвером JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

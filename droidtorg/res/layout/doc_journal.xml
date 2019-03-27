@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/journal_tv_period"
+            style="@style/text_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/DodgerBlue1"
+            android:textSize="@dimen/font_16"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/journal_bt_choice_period"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="..." />
+    </LinearLayout>
+
+    <!--
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:ems="1"
+                android:gravity="center_horizontal"
+                android:text="@string/str_number_jour"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:ems="1"
+                android:gravity="center_horizontal"
+                android:text="@string/str_date_jour"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:ems="1"
+                android:gravity="center_horizontal"
+                android:text="@string/str_sum_jour"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+    
+android:cacheColorHint="#00000000" -->
+
+    <ListView
+        android:id="@+id/docJournalList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/grey61"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="true" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/journal_tv_total_sum"
+        style="@style/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

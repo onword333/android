@@ -1,0 +1,97 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Метод getHoldability (ISQLServerResultSet)</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Метод getHoldability (ISQLServerResultSet)</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Извлекает значение удержания этого объекта <a href="eaffcff1-286c-459f-83da-3150778480c9.htm">SQLServerResultSet</a>.</p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      Эта функция введена в драйвере JDBC Microsoft SQL Server версии 2.0.<p />
+    </div>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public int <b>getHoldability</b>()</pre></span></div></div><h1 class="heading">Возвращаемое значение</h1><div id="returnValueSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Значение <b>int</b>, содержащее один из следующих уровней удержания:</p>
+      <p xmlns="">HOLD_CURSORS_OVER_COMMIT</p>
+      <p xmlns="">CLOSE_CURSORS_AT_COMMIT</p>
+    </content>
+  </div><h1 class="heading">Исключения</h1><div id="exceptionsSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">
+        <a href="af5ef257-7cf6-4db3-b1ee-07d22d82bef1.htm">SQLServerException</a>
+      </p>
+    </content>
+  </div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Этот метод <b>getHoldability</b> указывается с помощью метода <b>getHoldability</b> в интерфейсе java.sql.ResultSet.</p>
+      <p xmlns="">Чтобы задать уровень удержания для результирующего набора, приложения могут использовать метод <a href="552eebd0-4c38-43f0-961f-35244f99109b.htm">setHoldability</a> класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a>. После вызова метода <a href="552eebd0-4c38-43f0-961f-35244f99109b.htm">setHoldability</a>, создания объекта инструкции и объекта результирующего набора и выполнения инструкции приложению может потребоваться повторное изменение уровня удержания. </p>
+      <p xmlns="">Для серверных курсоров при соединении с SQL Server 2005 или более поздней версии параметр возможности сохранения влияет только на новые результирующие наборы, которые будут созданы для этого соединения. Однако для SQL Server 2000 установка возможности сохранения относится и к существующим результирующим наборам, и к новым, которые пока не созданы для данного соединения.</p>
+      <p xmlns="">При сбросе уровня удержания и вызове метода  <b>getHoldability</b> на ранее созданном объекте результирующего набора возвращенное этим методов значение может отличаться от значения уровня удержания, возвращенного следующими методами: <b>Statement.getResultSetHoldability</b>, <b>Connection.getHoldability</b> или  <b>DatabaseMetaData.getResultSetHoldability</b>. </p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="eaffcff1-286c-459f-83da-3150778480c9.htm">Класс SQLServerResultSet</a><br /><a href="2a438d5d-2d6a-46a0-a2ae-f35fbae4a472.htm">Элементы ISQLServerResultSet</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

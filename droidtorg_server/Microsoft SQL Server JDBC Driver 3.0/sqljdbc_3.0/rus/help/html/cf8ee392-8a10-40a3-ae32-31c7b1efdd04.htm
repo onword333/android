@@ -1,0 +1,138 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Работа с соединением</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Работа с соединением</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>В следующих разделах приведены примеры различных способов соединения с базой данных SQL Server с помощью класса <a href="937292a6-1525-423e-a2b2-a18fd34c2893.htm">SQLServerConnection</a> драйвера JDBC Microsoft SQL Server. </p>
+    <div style="margin: .5em 1.5em .5em 1.5em"><b>Примечание. </b>
+      При возникновении неполадок с соединением с SQL Server с помощью драйвера JDBC см. раздел <a href="bfba0b49-2e1f-411d-a625-d25fad9ea12d.htm">Профилактика подключений</a>, где можно найти сведения по их устранению.<p />
+    </div>
+  </div><h1 class="heading">Создание соединения с помощью класса DriverManager</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Простейший способ соединения с базой данных SQL Server — загрузка драйвера JDBC и вызов метода <b>getConnection</b> класса <b>DriverManager</b>:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+String connectionUrl = "jdbc:sqlserver://localhost;database=AdventureWorks;integratedSecurity=true;"
+Connection con = DriverManager.getConnection(connectionUrl);</pre></span></div>
+      <p xmlns="">По этой методике соединение с базой данных будет создано с помощью первого доступного драйвера из списка драйверов, способных успешно подсоединиться к данному URL-адресу.</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        При использовании библиотеки классов sqljdbc4.jar приложениям не обязательно явно регистрировать или загружать метод <b>Class.forName</b>. При вызове метода <b>getConnection</b> класса <b>DriverManager</b> подходящий драйвер выбирается из набора зарегистрированных драйверов JDBC. Дополнительные сведения об использовании JDBC см. в разделе «Использование драйвера JDBC».<p />
+      </div>
+    </content></div><h1 class="heading">Создание соединения с помощью класса SQLServerDriver</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Если нужно указать конкретный драйвер из списка драйверов для <b>DriverManager</b>, то можно создать соединения с базой данных с помощью метода <a href="43813a4c-1cc7-4659-ba27-f1786f1371eb.htm">connect</a> класса <a href="fbdceae5-7e7b-4edb-8c33-c701ca6b2d53.htm">SQLServerDriver</a>:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>Driver d = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+String connectionUrl = "jdbc:sqlserver://localhost;database=AdventureWorks;integratedSecurity=true;"
+Connection con = d.connect(connectionUrl, new Properties());</pre></span></div>
+    </content></div><h1 class="heading">Создание соединения с помощью класса SQLServerDataSource</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">При необходимости создать соединение с помощью класса <a href="097434fd-2b74-411c-a5ed-eba04481dde5.htm">SQLServerDataSource</a> можно использовать различные методы задания класса, после чего вызывается метод<a href="7f520e96-5313-468f-b987-535ddaea027e.htm">getConnection</a>:</p>
+      <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>SQLServerDataSource ds = new SQLServerDataSource();
+ds.setUser("MyUserName");
+ds.setPassword("*****");
+ds.setServerName("localhost");
+ds.setPortNumber(1433); 
+ds.setDatabaseName("AdventureWorks");
+Connection con = ds.getConnection();</pre></span></div>
+    </content></div><h1 class="heading">Создание соединения, целью которого является конкретный источник данных</h1><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Создать соединение с базой данных, целью которого является конкретный источник данных, можно несколькими способами. Каждый способ зависит от свойств, задаваемых с помощью URL-адреса соединения.</p>
+      <p xmlns="">Подключиться к экземпляру по умолчанию на удаленном сервере можно следующим образом:</p>
+      <p xmlns="">
+        <code>String url = "jdbc:sqlserver://MyServer;integratedSecurity=true;"</code>
+      </p>
+      <p xmlns="">Подключиться к конкретной точке на сервере можно следующим образом:</p>
+      <p xmlns="">
+        <code>String url = "jdbc:sqlserver://MyServer:1533;integratedSecurity=true;"</code>
+      </p>
+      <p xmlns="">Подключиться к именованному экземпляру на сервере можно следующим образом:</p>
+      <p xmlns="">
+        <code>String url = "jdbc:sqlserver://209.196.43.19;instanceName=INSTANCE1;integratedSecurity=true;"</code>
+      </p>
+      <p xmlns="">Подключиться к конкретной базе данных на сервере можно следующим образом:</p>
+      <p xmlns="">
+        <code>String url = "jdbc:sqlserver://172.31.255.255;database=AdventureWorks;integratedSecurity=true;"</code>
+      </p>
+      <p xmlns="">Дополнительные примеры URL-адресов соединения см. в разделе <a href="44996746-d373-4f59-9863-a8a20bb8024a.htm">Формирование URL-адреса соединения</a>.</p>
+    </content></div><h1 class="heading">Создание соединения с настраиваемым временем сохранения учетных данных</h1><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Если приходится подстраиваться под нагрузку сервера или сети, можно создать соединение с заданным временем сохранения учетных данных в секундах:</p>
+      <p xmlns="">
+        <code>String url = "jdbc:sqlserver://MyServer;loginTimeout=90;integratedSecurity=true;"</code>
+      </p>
+    </content></div><h1 class="heading">Создание соединения с идентификацией на уровне приложения</h1><div id="sectionSection5" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Если для работы требуется ведение журнала и профилирование, то необходимо идентифицировать соединение по инициировавшему его приложению:</p>
+      <p xmlns="">
+        <code>String url = "jdbc:sqlserver://MyServer;applicationName=MYAPP.EXE;integratedSecurity=true;"</code>
+      </p>
+    </content></div><h1 class="heading">Закрытие соединения</h1><div id="sectionSection6" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Соединение с базой данных можно явно закрыть путем вызова метода <a href="f0f26585-bdf7-4737-b434-8c7e115c8e94.htm">close</a> класса <b>SQLServerConnection</b>:</p>
+      <p xmlns="">
+        <code>con.close();</code>
+      </p>
+      <p xmlns="">Освобождение ресурсов базы данных, используемых объектом <b>SQLServerConnection</b>, или возврат соединения в пул соединений в сценариях с пулами.</p>
+      <div style="margin: .5em 1.5em .5em 1.5em" xmlns=""><b>Примечание. </b>
+        Вызов метода <b>close</b> также приведет к откату любой запланированной транзакции.<p />
+      </div>
+    </content></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="94bcfbe3-f00e-4774-bda8-bb7577518fec.htm">Соединение с SQL Server с помощью драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Оболочки и интерфейсы</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Оболочки и интерфейсы</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Драйвер JDBC для Microsoft SQL Server поддерживает интерфейсы, позволяющие создавать заместитель класса и оболочки, позволяющие осуществлять доступ к расширениям API-интерфейса JDBC, имеющимся в драйвере JDBC для SQL Server, с помощью прокси-интерфейса.</p>
+  </div><h1 class="heading">Оболочки</h1><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Драйвер JDBC для SQL Server поддерживает интерфейс java.sql.Wrapper. Этот интерфейс обеспечивает механизм доступа к расширениям API-интерфейсов JDBC, предоставляемых драйвером JDBC для SQL Server, с помощью интерфейса замещения.</p>
+      <p xmlns="">Интерфейс java.sql.Wrapper определяет два метода: <b>isWrapperFor</b> и <b>unwrap</b>. Метод <b>isWrapperFor</b> проверяет, реализует ли указанный объект ввода данный интерфейс. Метод <b>unwrap</b> возвращает объект, в котором реализован указанный интерфейс для разрешения доступа к методам, предоставляемым драйвером JDBC для SQL Server.</p>
+      <p xmlns="">
+        Методы <b>isWrapperFor</b> и <b>unwrap</b> предоставляются следующим образом.</p>
+      <ul xmlns=""><li>
+          
+            <a href="71156863-3588-453e-b5a5-0573b2c1bebf.htm">Метод isWrapperFor (SQLServerCallableStatement)</a>
+          <br />
+        </li><li>
+          
+            <a href="cbbf2728-b8c8-4c35-875a-6e967c8285dc.htm">Метод unwrap (SQLServerCallableStatement)</a>
+          <br />
+        </li><li>
+          
+            <a href="09ed10eb-6e46-437b-a7c0-3c55574aad38.htm">Метод isWrapperFor (SQLServerConnectionPoolDataSource)</a>
+          <br />
+        </li><li>
+          
+            <a href="f5c9b734-2096-4ae4-a284-6b4d1b4a00d4.htm">Метод unwrap (SQLServerConnectionPoolDataSource)</a>
+          <br />
+        </li><li>
+          
+            <a href="f77af027-c021-4a17-b264-1ee592bfdd84.htm">Метод isWrapperFor (SQLServerDataSource)</a>
+          <br />
+        </li><li>
+          
+            <a href="eb8abe29-f3ec-4752-a590-1d5dc3e48f08.htm">Метод unwrap (SQLServerDataSource)</a>
+          <br />
+        </li><li>
+          
+            <a href="b0e591b1-73e2-4f90-967f-5555eadfc3f1.htm">Метод isWrapperFor (SQLServerPreparedStatement)</a>
+          <br />
+        </li><li>
+          
+            <a href="8e3ec950-3ac1-4c28-9e97-ddce3bd46578.htm">Метод unwrap (SQLServerPreparedStatement)</a>
+          <br />
+        </li><li>
+          
+            <a href="53f3291f-d43a-476b-a656-d86168dacf6c.htm">Метод isWrapperFor (SQLServerStatement)</a>
+          <br />
+        </li><li>
+          
+            <a href="ce680176-ef04-4e44-bb6c-ec50bd06e7e6.htm">Метод unwrap (SQLServerStatement)</a>
+          <br />
+        </li><li>
+          
+            <a href="d612461d-4c3f-46db-b968-ff4c80b2aa7c.htm">Метод isWrapperFor (SQLServerXADataSource)</a>
+          <br />
+        </li><li>
+          
+            <a href="d97c99b3-2224-4abb-8b32-40aff49fe759.htm">Метод unwrap (SQLServerXADataSource)</a>
+          <br />
+        </li></ul>
+    </content></div><h1 class="heading">Интерфейсы</h1><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Начиная с версии 3.0 драйвера JDBC для SQL Server, доступны интерфейсы для сервера приложений, позволяющие осуществлять доступ к методу, определяемому драйвером, из связанного класса. Сервер приложений может поместить класс в оболочку, создав учетную запись-посредник, предоставляющую определяемые драйвером JDBC для SQL Server функциональные возможности через интерфейс. Драйвер JDBC для SQL Server поддерживает интерфейсы, имеющие методы, определяемые драйвером JDBC для SQL Server, и константы, позволяя серверу приложений создавать учетную запись-посредник для класса.</p>
+      <p xmlns="">Эти интерфейсы являются производными от стандартных Java-интерфейсов, поэтому один и тот же объект можно использовать и после извлечения из оболочки для доступа к функциональным возможностям, определяемым драйвером, или к стандартным функциональным возможностям драйвера JDBC для SQL Server.</p>
+      <p xmlns="">Добавлены следующие интерфейсы:</p>
+      <ul xmlns=""><li>
+          
+            <a href="030a1631-cfcd-41e0-beb5-47f93c01e8e0.htm">ISQLServerCallableStatement</a>
+          <br />
+        </li><li>
+          
+            <a href="031c01e2-2c65-4fe4-9700-fdbcc7a39f30.htm">ISQLServerConnection</a>
+          <br />
+        </li><li>
+          
+            <a href="ba1d3242-19ca-4321-83fe-867a4f69f1d4.htm">ISQLServerDataSource</a>
+          <br />
+        </li><li>
+          
+            <a href="cf87892e-5c34-4ac6-8258-c2a81e117b26.htm">ISQLServerPreparedStatement</a>
+          <br />
+        </li><li>
+          
+            <a href="002496f7-8ec0-4267-b4e6-ba095e2ef306.htm">ISQLServerResultSet</a>
+          <br />
+        </li><li>
+          
+            <a href="7f83b514-6e76-4f37-baf3-a10db2010e7c.htm">ISQLServerStatement</a>
+          <br />
+        </li></ul>
+    </content></div><h1 class="heading">Пример</h1><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+    </content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <h1 class="heading" xmlns="">Описание</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <p xmlns="">В образце показано, как получить доступ к функции, определяемой драйвером JDBC для SQL Server, из объекта <b>DataSource</b>. Класс <b>DataSource</b> может быть помещен в оболочку сервером приложений. Для доступа к функции или константе, определяемой драйвером JDBC, можно снять оболочку с datasource для интерфейса <b>ISQLServerDataSource</b> и использовать функции, объявленные в данном интерфейсе.</p>
+        </content></div>
+      <h1 class="heading" xmlns="">Код</h1><div id="sectionSection" class="section" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+          <div class="sampleCode" xmlns=""><span codeLanguage="other"><pre>import javax.sql.*;
+import java.sql.*;
+import com.microsoft.sqlserver.jdbc.*;
+
+public class UnWrapTest {
+   public static void main(String[] args) {
+      // This is a test.  This DataSource object could be something from an appserver 
+      // which has wrapped the real SQLServerDataSource with its own wrapper
+      SQLServerDataSource ds = new SQLServerDataSource();
+      checkSendStringParametersAsUnicode(ds);
+   }
+
+   // Unwrap to the ISQLServerDataSource interface to access the getSendStringParametersAsUnicode function
+   static void checkSendStringParametersAsUnicode(DataSource ds) {
+      try {
+         final ISQLServerDataSource sqlServerDataSource = ds.unwrap(ISQLServerDataSource.class);
+         boolean sendStringParametersAsUnicode = sqlServerDataSource.getSendStringParametersAsUnicode();
+
+         System.out.println("Send string as parameter value is:-" + sendStringParametersAsUnicode);
+
+      } catch (SQLException sqlE) {
+         System.out.println("Exception:-" + sqlE);
+      }
+   }
+}</pre></span></div>
+        </content></div>
+    </sections></div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7802328d-4d23-4775-9573-4169b127d258.htm">Основные сведения о типах данных драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

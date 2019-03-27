@@ -1,0 +1,105 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Обработка сложных инструкций</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Обработка сложных инструкций</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Во время использования драйвера Microsoft SQL Server JDBC может понадобиться обработка сложных инструкций, включая инструкции, которые динамически создаются во время выполнения. Сложные инструкции часто выполняют разнообразные задачи, включая обновление, вставку и удаление. Такие типы инструкций также могут возвращать несколько результирующих наборов и выходных параметров. В подобных ситуациях в коде Java, выполняющем инструкции, типы и количество возвращаемых объектов и данных могут быть не известны заранее. </p>
+    <p>Для эффективной обработки сложных инструкций драйвер JDBC предоставляет многочисленные методы запроса возвращаемых объектов и данных, что позволяет приложению правильно их обрабатывать. Ключевым моментом в обработки сложных инструкций является вызов метода <a href="e1367f39-23d7-4e26-b160-6d988d7e6988.htm">execute</a> класса <a href="ec24963c-8b51-4838-91e9-1fbfa2347451.htm">SQLServerStatement</a>. Этот метод возвращает значение типа <b>boolean</b>. Значение true показывает, что первым из инструкции возвращается результирующий набор. Значение false показывает, что первым возвращается количество операций обновления.</p>
+    <p>Если известен тип возвращаемого объекта или данных, то для обработки этих данных можно использовать метод <a href="929a14e2-8e98-4c32-89aa-86733c717ec1.htm">getResultSet</a> или <a href="e9570228-4500-44b6-b2f1-84ac050b5112.htm">getUpdateCount</a>. Чтобы обработать следующий объект или набор данных, возвращаемый сложной инструкцией, можно вызвать метод <a href="df89db50-0b2f-4094-820a-30be25ad72fe.htm">getMoreResults</a>.</p>
+    <p>В следующем примере в функцию передается открытое соединение с образцом базы данных SQL Server 2005 AdventureWorks, составляется сложная инструкция, сочетающая вызов хранимой процедуры и инструкцию SQL, инструкции выполняются, а затем в цикле <code>do</code> обрабатываются все возвращенные результирующие наборы и обновленные значения.</p>
+    <div class="sampleCode"><span codeLanguage="other"><pre>public static void executeComplexStatement(Connection con) {
+   try {
+      String sqlStringWithUnknownResults = "{call dbo.uspGetEmployeeManagers(50)};SELECT TOP 10 * FROM Person.Contact";
+      Statement stmt = con.createStatement();
+      boolean results = stmt.execute(sqlStringWithUnknownResults);
+      int count = 0;
+      do {
+         if (results) {
+            ResultSet rs = stmt.getResultSet();
+            System.out.println("Result set data displayed here.");
+            rs.close();
+         } else {
+            count = stmt.getUpdateCount();
+            if (count &gt;= 0) {
+               System.out.println("DDL or update data displayed here.");
+            } else {
+               System.out.println("No more results to process.");
+            }
+         }
+         results = stmt.getMoreResults();
+      } while (results || count != -1);
+      stmt.close();
+   }
+   catch (Exception e) {
+      e.printStackTrace();
+   }
+}
+</pre></span></div>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="7f8f3e8f-841e-4449-9154-b5366870121f.htm">Использование инструкций с драйвером JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>

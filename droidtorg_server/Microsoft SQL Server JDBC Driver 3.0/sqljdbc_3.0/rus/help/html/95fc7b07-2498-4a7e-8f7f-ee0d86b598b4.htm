@@ -1,0 +1,89 @@
+﻿<html DIR="LTR" xmlns:tool="http://www.microsoft.com/tooltip" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" />
+    <META NAME="save" CONTENT="history" />
+    <title>Класс SQLServerXADataSource</title>
+    
+    <link rel="stylesheet" type="text/css" href="../local/Classic.css">
+      
+    </link>
+    
+    <script src="../local/script.js">
+      
+    </script><script src="../local/script_main.js">&amp;nbsp;</script>
+  </head>
+  <body>
+    <!--Topic built:04/01/2010 05:03:29-->
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="header">
+      <table width="100%" id="topTable"><tr>
+          <td align="left">
+            <span id="headerBold">Класс SQLServerXADataSource</span>
+          </td>
+          <td align="right">
+            
+          </td>
+        </tr></table>
+      
+      
+      
+    </div>
+    <div id="mainSection">
+      
+        
+        
+    <font color="DarkGray">
+      
+    </font>
+    <p />
+    
+    <p />
+  
+        <div id="introductionSection" class="section">
+    <p>Представляет фабрику для объектов <a href="5ecb4bf1-b8d1-47cf-9cb1-7a18acc11ce2.htm">SQLServerXAConnection</a>, предназначенных для внутреннего использования.</p>
+    <p>
+      <b>Пакет:</b> com.microsoft.sqlserver.jdbc</p>
+    <p>
+      <b>Расширяет:</b> <a href="b00e5a90-2af7-4d04-8ef8-256183777dcf.htm">SQLServerConnectionPoolDataSource</a></p>
+    <p>
+      <b>Реализует:</b> javax.sql.XADataSource</p>
+  </div><h1 class="heading">Синтаксис</h1><div id="syntaxSection" class="section"><div class="sampleCode"><span codeLanguage="other"><pre>
+public class <b>SQLServerXADataSource</b></pre></span></div></div><h1 class="heading">Примечания</h1><div id="remarksSection" class="section" name="collapseableSection">
+    <content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+      <p xmlns="">Объект, который реализует интерфейс <b>SQLServerXADataSource</b>, обычно регистрируется в службе имен, которая использует интерфейс JNDI. </p>
+      <p xmlns="">Класс <b>SQLServerXADataSource</b> представляет соединения с базой данных для использования в распределенных транзакциях (XA). Класс <b>SQLServerXADataSource</b> также поддерживает организацию пулов для физических соединений. Интерфейсы <b>SQLServerXADataSource</b> и <b>SQLServerXAConnection</b>, которые определены в пакете javax.sql, реализуются в SQL Server.</p>
+      <p xmlns="">Объект <b>SQLServerXAConnection</b> представляет соединение из пула, которое может участвовать в распределенной транзакции. Точнее, <b>SQLServerXAConnection</b> расширяет интерфейс <b>SQLServerPooledConnection</b>, добавляя метод <a href="e1d2828f-fd20-44b0-b796-dc70f77c5b03.htm">getXAResource</a>. Этот метод создает объект <a href="df957b79-536f-4db7-b6ac-3d59343559fc.htm">SQLServerXAResource</a>, который может использоваться диспетчером транзакций для координации работы, выполняемой по этому соединению, с другими участниками распределенной транзакции. Поскольку объекты <b>SQLServerXAConnection</b> расширяют интерфейс <b>SQLServerPooledConnection</b>, они поддерживают все методы объектов <b>SQLServerPooledConnection</b>. Эти объекты представляют многократно используемые физические соединения с базовым источником данных и создают дескрипторы логических соединений, которые можно передавать обратно в приложение JDBC.</p>
+      <p xmlns="">
+        Объекты <b>SQLServerXAConnection</b> создаются объектом <b>SQLServerXADataSource</b>. Объекты <b>SQLServerConnectionPoolDataSource</b> схожи с объектами <b>SQLServerXADataSource</b>, поскольку оба типа объектов реализуются под уровнем источника данных, видимым для приложения JDBC. Такая архитектура позволяет SQL Server поддерживать распределенные транзакции незаметно для приложения. <b>SQLServerXADataSource</b> можно настроить для интеграции с координатором распределенных транзакций (Майкрософт), чтобы реализовать полноценную обработку распределенных транзакций.</p>
+    </content>
+  </div><span id="seeAlsoSpan"><h1 class="heading">См. также</h1></span><div id="seeAlsoSection" class="section" name="collapseableSection"><a href="04178645-915f-4569-8907-d45e299bbe7d.htm">Элементы SQLServerXADataSource</a><br /><a href="e4e1ae9d-18a6-41db-8bd2-9cf0eee4cccb.htm">Справочник интерфейса драйвера JDBC</a><br /><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/><tool:tip element="roleInfoSpan" avoidmouse="false"/>
+		<![endif]-->
+      <div id="footer" class="section">
+        
+		<hr />
+		
+		<span id="fb" class="feedbackcss">
+			
+			
+		</span>
+		
+		<a href="9bad553b-9e70-4696-8499-2e35f772a1e0.htm">
+			
+			© Корпорация Майкрософт (Microsoft Corporation), 2010. Все права защищены.
+		</a>
+ 	
+	
+      </div>
+    </div>
+  </body>
+</html>
